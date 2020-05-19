@@ -1,0 +1,13 @@
+<template>
+  <div>
+    <h1>This is a register page</h1>
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+export default {
+  name: "Register",
+  components: {}
+};
+</script>

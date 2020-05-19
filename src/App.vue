@@ -13,6 +13,8 @@
       <router-link to="/auctions">AUCTIONS</router-link>
       <router-link to="/varieties">VARIETIES</router-link>
       <router-link to="/news">NEWS</router-link>
+      <router-link to="/contact">CONTACT</router-link>
+      <router-link to="/login">LOGIN</router-link>
     </div>
 
     <router-view />
