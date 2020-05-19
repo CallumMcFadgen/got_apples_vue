@@ -1,5 +1,6 @@
 <template>
   <b-container fluid class="container_style">
+
     <!-- NAVIGATION BREADCRUMBS -->
     <b-row>
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
@@ -9,6 +10,7 @@
         <div class="crumb_padding"></div>
       </b-col>
     </b-row>
+
     <!-- PAGE HEADING -->
     <b-row>
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
@@ -20,22 +22,26 @@
         <h1 class="page_heading_txt">Welcome to Got Apples!</h1>
       </b-col>
     </b-row>
+
     <!-- SPACING -->
     <b-row class="spacing_style">
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
         <br />
       </b-col>
     </b-row>
+
     <!-- SLIDER -->
     <b-row class="spacing_style">
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">Slider here</b-col>
     </b-row>
+
     <!-- SPACING -->
     <b-row class="spacing_style">
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
         <br />
       </b-col>
     </b-row>
+
     <!-- FOOTER -->
     <b-row class="page_footer_style">
       <b-col class="affiliate_link_style" xs="4" sm="4" md="4" lg="4" xl="4">
@@ -57,11 +63,13 @@
         </div>
       </b-col>
     </b-row>
+
     <!-- SUBFOOTER -->
     <b-row class="sub_footer_style">
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
       </b-col>
     </b-row>
+    
   </b-container>
 </template>
 

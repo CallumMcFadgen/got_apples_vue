@@ -9,10 +9,15 @@
           <span class="breadcrumb_style">></span>
           &nbsp;
         <router-link class="breadcrumb_style" to="login">Login</router-link>
-        </div>
+          &nbsp;
+          <span class="breadcrumb_style">></span>
+          &nbsp;
+        <router-link class="breadcrumb_style" to="register">Register</router-link>
+      </div>
       <div class="crumb_padding"></div>
     </b-col>
-    </b-row>
+  </b-row>
+
     <!-- PAGE HEADING -->
     <b-row>
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
@@ -24,6 +29,7 @@
         <h1 class="page_heading_txt">Register</h1>
       </b-col>
     </b-row>
+
     <!-- SPACING -->
     <b-row class="spacing_style">
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
@@ -32,8 +38,114 @@
     </b-row>
 
     <!-- REGISTER FORM -->
-    <b-row class="spacing_style">
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">Register</b-col>
+    <b-row>
+      <b-col xs="12" sm="12" md="6" offsetMd="3" lg="6" offsetlg="3" xl="6" offsetxl="3">
+        <b-form class="login_form_style">
+            <br />
+            <h2>Create your account</h2>
+            <br />
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="first_name"
+            type="text"
+            required
+            placeholder="First name">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="last_name"
+            type="text"
+            required
+            placeholder="Last name">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="username"
+            type="text"
+            required
+            placeholder="Username">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="password"
+            type="password"
+            required
+            placeholder="Password">
+            </b-form-input>
+           </b-form-group> 
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="email"
+            type="email"
+            required
+            placeholder="Email">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="phone_number"
+            type="text"
+            required
+            placeholder="Phone number">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="address_line_1"
+            type="text"
+            required
+            placeholder="Address line 1">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="address_line_2"
+            type="text"
+            required
+            placeholder="Address line 2">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="region"
+            type="text"
+            required
+            placeholder="Region">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="city"
+            type="text"
+            required
+            placeholder="City">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+            id="zip_code"
+            type="text"
+            required
+            placeholder="ZIP code">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group>
+            <b-form-checkbox-group>
+              <b-form-checkbox>Request membership privilages</b-form-checkbox>
+            </b-form-checkbox-group>
+          </b-form-group>
+          <br />
+          <div>
+            <router-link to="dashboard">
+              <b-button class="button_style" type="submit">Register</b-button>
+            </router-link>
+          </div>
+          <br />
+        </b-form>
+      </b-col>
     </b-row>
 
     <!-- SPACING -->
@@ -42,6 +154,7 @@
         <br />
       </b-col>
     </b-row>
+
     <!-- FOOTER -->
     <b-row class="page_footer_style">
       <b-col class="affiliate_link_style" xs="4" sm="4" md="4" lg="4" xl="4">
@@ -63,6 +176,7 @@
         </div>
       </b-col>
     </b-row>
+
     <!-- SUBFOOTER -->
     <b-row class="sub_footer_style">
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
@@ -123,6 +237,27 @@
 // spacing
 .spacing_style {
   background-color: #e3e4e6;
+}
+
+.login_form_style {
+    background-color: white;
+    text-align: center;
+    padding: none;
+}
+
+.login_input_style {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.register_tile_text {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.button_style {
+  background-color: #64676c;
 }
 
 // FOOTER ////////////////////////////////////////////////
