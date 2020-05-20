@@ -32,7 +32,67 @@
 
     <!-- SLIDER -->
     <b-row class="spacing_style">
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">Slider here</b-col>
+      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
+        <div>
+          <b-carousel :interval="4000">
+            <b-carousel-slide class="slide_style">
+              <template v-slot:img>
+                <img class="slide_image_style" src="@/assets/images/home_page_slider/apples_on_branch.jpg">
+                <div>
+                  <br />
+                  <h1>Test</h1>
+                  <p>Ko te moemoea a Maui kia haere ngatahi ai ratou ko ona tuakana ki te hii ika. I te hokinga mai o ona tuakana ki tatahi, ka kii atu a Maui, “ka taea e au te haramai i to koutou na taha ki te hii ika?” Engari, ko te whakautu o ona tuakana ki a ia ano</p>
+                  <br />
+                </div>
+              </template>
+            </b-carousel-slide>
+            <b-carousel-slide class="slide_style">
+              <template v-slot:img>
+                <img  class="slide_image_style" src="@/assets/images/home_page_slider/apples_on_chopping_board.jpg">
+                <div>
+                  <br />
+                  <h1>Test</h1>
+                  <p>Ko te moemoea a Maui kia haere ngatahi ai ratou ko ona tuakana ki te hii ika. I te hokinga mai o ona tuakana ki tatahi, ka kii atu a Maui, “ka taea e au te haramai i to koutou na taha ki te hii ika?” Engari, ko te whakautu o ona tuakana ki a ia ano</p>
+                  <br />
+                </div>
+              </template>
+            </b-carousel-slide>
+            <b-carousel-slide class="slide_style">
+              <template v-slot:img>
+                <img class="slide_image_style" src="@/assets/images/home_page_slider/apples_on_ground.jpg">
+                <div>
+                  <br />
+                  <h1>Test</h1>
+                  <p>Ko te moemoea a Maui kia haere ngatahi ai ratou ko ona tuakana ki te hii ika. I te hokinga mai o ona tuakana ki tatahi, ka kii atu a Maui, “ka taea e au te haramai i to koutou na taha ki te hii ika?” Engari, ko te whakautu o ona tuakana ki a ia ano</p>
+                  <br />
+                </div>
+              </template>
+            </b-carousel-slide>
+            <b-carousel-slide class="slide_style">
+              <template v-slot:img>
+                <img  class="slide_image_style" src="@/assets/images/home_page_slider/girl_by_trees.jpg">
+                <div>
+                  <br />
+                  <h1>Test</h1>
+                  <p>Ko te moemoea a Maui kia haere ngatahi ai ratou ko ona tuakana ki te hii ika. I te hokinga mai o ona tuakana ki tatahi, ka kii atu a Maui, “ka taea e au te haramai i to koutou na taha ki te hii ika?” Engari, ko te whakautu o ona tuakana ki a ia ano</p>
+                  <br />
+                </div>
+              </template>
+            </b-carousel-slide>
+            <b-carousel-slide class="slide_style">
+              <template v-slot:img>
+                <img class="slide_image_style" src="@/assets/images/home_page_slider/red_apples.jpg">
+                <div>
+                  <br />
+                  <h1>Test</h1>
+                  <p>Ko te moemoea a Maui kia haere ngatahi ai ratou ko ona tuakana ki te hii ika. I te hokinga mai o ona tuakana ki tatahi, ka kii atu a Maui, “ka taea e au te haramai i to koutou na taha ki te hii ika?” Engari, ko te whakautu o ona tuakana ki a ia ano</p>
+                  <br />
+                </div>
+              </template>
+            </b-carousel-slide>
+          </b-carousel>
+        </div>
+      </b-col>
     </b-row>
 
     <!-- SPACING -->
@@ -127,6 +187,18 @@
   background-color: #e3e4e6;
 }
 
+//styling for slides
+.slide_style {
+  text-align: center;
+  background-color: white;
+  padding: 0%;
+}
+
+// styling for the slide images
+.slide_image_style {
+  width: 100%;
+}
+
 // FOOTER ////////////////////////////////////////////////
 
 // overall styling for page footer
@@ -160,7 +232,6 @@
   background: #2a6f03;
 }
 </style>
-
 
 <script>
 export default {
