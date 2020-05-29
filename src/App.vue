@@ -17,7 +17,6 @@
       <router-link to="/login">LOGIN</router-link>
     </div>
 
-    <router-view />
   </div>
 </template>
 

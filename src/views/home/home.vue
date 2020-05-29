@@ -17,8 +17,7 @@
         <img
           src="@/assets/images/heading_backgrounds/home.png"
           class="img-fluid"
-          alt="Responsive image"
-        />
+          alt="Responsive image"/>
         <h1 class="page_heading_txt">Welcome to Got Apples!</h1>
       </b-col>
     </b-row>
