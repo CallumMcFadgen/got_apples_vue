@@ -16,7 +16,7 @@
       <router-link to="/contact">CONTACT</router-link>
       <router-link to="/login">LOGIN</router-link>
     </div>
-
+    <router-view />
   </div>
 </template>
 

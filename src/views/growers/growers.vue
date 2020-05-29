@@ -1,13 +1,40 @@
 <template>
-  <div>
-    <h1>This is the growers page</h1>
+  <div class="text-left">
+    <h1>User information from API GET request</h1>
+    <div v-for="(user, index) in users" :key="`fruit-${index}`">
+      <br />
+      <h2>User : {{ user.user_name }}</h2>
+      <P><b>First name</b></P>
+      <p>{{ user.first_name }}</p>
+      <P><b>Last name</b></P>
+      <p>{{ user.last_name }}</p>
+      <P><b>Phone number</b></P>
+      <p>{{ user.phone_number }}</p>
+      <P><b>Email address</b></P>
+      <p>{{ user.email_address }}</p>
+      <br />
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import axios from "axios";
+
 export default {
   name: "Growers",
-  components: {}
+  components: {},
+  data() {
+    return {
+      users: []
+    };
+  },
+
+  // run on launch
+  mounted: function() {
+    axios.get("http://localhost:3333/get_users").then(response => {
+      this.users = response.data;
+    });
+  }
 };
 </script>
