@@ -4,10 +4,24 @@
   </div>
 </template>
 
+
 <script>
-// @ is an alias to /src
 export default {
   name: "About",
   components: {}
 };
 </script>
+
+
+<style lang="scss"> 
+
+// navigation breadcrumb style
+.breadcrumb_style {
+  text-decoration: none;
+  background-color: transparent;
+  font-size: 1.5vh;
+  color: black !important;
+  text-align: left;
+}
+
+</style>

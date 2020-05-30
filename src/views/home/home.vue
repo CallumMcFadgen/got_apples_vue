@@ -17,8 +17,7 @@
         <img
           src="@/assets/images/heading_backgrounds/home.png"
           class="img-fluid"
-          alt="Responsive image"
-        />
+          alt="Responsive image"/>
         <h1 class="page_heading_txt">Welcome to Got Apples!</h1>
       </b-col>
     </b-row>
@@ -34,7 +33,7 @@
     <b-row class="spacing_style">
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
         <div>
-          <b-carousel :interval="4000">
+          <b-carousel autoplay: true :interval="4000" >
             <b-carousel-slide class="slide_style">
               <template v-slot:img>
                 <img class="slide_image_style" src="@/assets/images/home_page_slider/apples_on_branch.jpg">
@@ -129,7 +128,7 @@
       <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
       </b-col>
     </b-row>
-    
+  
   </b-container>
 </template>
 
@@ -238,4 +237,5 @@ export default {
   name: "Home",
   components: {}
 };
+
 </script>
