@@ -16,8 +16,8 @@ Click here to view the video walkthrough
   <li>Page navigation</li>
   <li>Basic responsiveness</li>
   <li>Basic CSS styling on some pages</li>
-  <li>Forms for login and register</li>
-  <li>Dynamic web content - Dynamic picture carousel on Home page</li> 
+  <li>Forms for login, register, account details, etc</li>
+  <li>Dynamic web content - dynamic picture carousel on Home page</li> 
   <li>Rest API implementation - growers information displayed on Growers page</li>
 </ul>
 
