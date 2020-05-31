@@ -1,8 +1,9 @@
 <template>
   <div class="text-left">
+
     <h1>Grower information from API GET request</h1>
-    <div v-for="(user, index) in users" :key="`fruit-${index}`">
-      <di v-if="user.got_apples_member === 1">
+    <div v-for="(user, index) in users" :key="`user-${index}`">
+      <div v-if="user.got_apples_member === 1">
         <br />
         <h2>User : {{ user.user_name }}</h2>
         <P><b>First name</b></P>
@@ -14,8 +15,9 @@
         <P><b>Email address</b></P>
         <p>{{ user.email_address }}</p>
         <br />
-      </di>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -36,6 +38,7 @@ export default {
   mounted: function() {
     axios.get("http://localhost:3333/get_users").then(response => {
       this.users = response.data;
+      console.log(response.data);
     });
   }
 };
