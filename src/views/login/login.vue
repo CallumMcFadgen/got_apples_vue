@@ -1,9 +1,17 @@
 <template>
   <b-container fluid class="container_style">
-
     <!-- NAVIGATION BREADCRUMBS -->
     <b-row>
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="1"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      >
         <div class="breadcrumbs_style">
           <router-link class="breadcrumb_style" to="/">Home</router-link>
           &nbsp;
@@ -17,7 +25,16 @@
 
     <!-- PAGE HEADING -->
     <b-row>
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="1"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      >
         <img
           src="@/assets/images/heading_backgrounds/home.png"
           class="img-fluid"
@@ -29,32 +46,52 @@
 
     <!-- SPACING -->
     <b-row class="spacing_style">
-      <b-col xs="12" sm="12" md="10" offsetMd="3" lg="10" offsetlg="1" xl="10" offsetxl="1">
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="3"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      >
         <br />
       </b-col>
     </b-row>
 
     <!-- LOGIN FORM -->
     <b-row>
-      <b-col xs="12" sm="12" md="6" offsetMd="3" lg="6" offsetlg="3" xl="6" offsetxl="3">
+      <b-col
+        xs="12"
+        sm="12"
+        md="6"
+        offsetMd="3"
+        lg="6"
+        offsetlg="3"
+        xl="6"
+        offsetxl="3"
+      >
         <b-form class="login_form_style">
           <br />
           <h2>Enter user login</h2>
           <br />
           <b-form-group class="login_input_style">
             <b-form-input
-            id="username"
-            type="text"
-            required
-            placeholder="Username">
+              id="username"
+              type="text"
+              required
+              placeholder="Username"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
             <b-form-input
-            id="password"
-            type="password"
-            required
-            placeholder="Password">
+              id="password"
+              type="password"
+              required
+              placeholder="Password"
+            >
             </b-form-input>
           </b-form-group>
           <br />
@@ -70,19 +107,42 @@
 
     <!-- SPACING -->
     <b-row class="spacing_style">
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="1"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      >
         <br />
       </b-col>
     </b-row>
 
     <!-- REGISTER TILE -->
     <b-row>
-      <b-col xs="12" sm="12" md="6" offsetMd="3" lg="6" offsetlg="3" xl="6" offsetxl="3">
+      <b-col
+        xs="12"
+        sm="12"
+        md="6"
+        offsetMd="3"
+        lg="6"
+        offsetlg="3"
+        xl="6"
+        offsetxl="3"
+      >
         <div class="login_form_style">
           <br />
           <h2>Not a member?</h2>
           <br />
-          <p class="register_tile_text">Ko te moemoea a Maui kia haere ngatahi ai ratou ko ona tuakana ki te hii ika. I te hokinga mai o ona tuakana ki tatahi, ka kii atu a Maui, “ka taea e au te haramai i to koutou na taha ki te hii ika?” Engari, ko te whakautu o ona tuakana ki a ia ano</p>
+          <p class="register_tile_text">
+            Ko te moemoea a Maui kia haere ngatahi ai ratou ko ona tuakana ki te
+            hii ika. I te hokinga mai o ona tuakana ki tatahi, ka kii atu a
+            Maui, “ka taea e au te haramai i to koutou na taha ki te hii ika?”
+            Engari, ko te whakautu o ona tuakana ki a ia ano
+          </p>
           <br />
           <div>
             <router-link to="register">
@@ -96,7 +156,16 @@
 
     <!-- SPACING -->
     <b-row class="spacing_style">
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="1"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      >
         <br />
       </b-col>
     </b-row>
@@ -125,11 +194,19 @@
 
     <!-- SUBFOOTER -->
     <b-row class="sub_footer_style">
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1"></b-col>
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="1"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      ></b-col>
     </b-row>
   </b-container>
 </template>
-
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -185,26 +262,25 @@
 }
 
 .login_form_style {
-    background-color: white;
-    text-align: center;
-    padding: none;
+  background-color: white;
+  text-align: center;
+  padding: none;
 }
 
 .login_input_style {
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .register_tile_text {
-    margin-left: 3%;
-    margin-right: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .button_style {
   background-color: #64676c;
 }
-
 
 // FOOTER ////////////////////////////////////////////////
 
@@ -239,7 +315,6 @@
   background: #2a6f03;
 }
 </style>
-
 
 <script>
 export default {

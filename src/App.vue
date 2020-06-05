@@ -3,11 +3,42 @@
     <!-- LOGO/TITLE -->
     <div class="header_style">
       <h1 class="header_logo_style">Got Apples!</h1>
+      <div class="header_icons_style">
+        <a href="https://www.facebook.com/">
+          <img
+            src="@/assets/images/social_media_icons/facebook.png"
+            class="header_icon_style"
+          />
+        </a>
+        <a href="https://www.twitter.com/">
+          <img
+            src="@/assets/images/social_media_icons/twitter.png"
+            class="header_icon_style"
+          />
+        </a>
+        <a href="https://www.instagram.com/">
+          <img
+            src="@/assets/images/social_media_icons/instagram.png"
+            class="header_icon_style"
+          />
+        </a>
+        <a href="https://www.linkedin.com/">
+          <img
+            src="@/assets/images/social_media_icons/linkedin.png"
+            class="header_icon_style"
+          />
+        </a>
+        <img
+          src="@/assets/images/social_media_icons/phone.png"
+          class="header_icon_style"
+        />
+      </div>
     </div>
 
     <!-- NAVBAR -->
     <div id="nav">
       <router-link to="/">HOME</router-link>
+
       <router-link to="/about">ABOUT</router-link>
       <router-link to="/growers">GROWERS</router-link>
       <router-link to="/auctions">AUCTIONS</router-link>
@@ -20,14 +51,12 @@
   </div>
 </template>
 
-
 <style lang="scss">
 // APP STYLE /////////////////////////////////////////
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
@@ -39,12 +68,13 @@
   align-items: center;
   background: #2a6f03;
   border: thin, black, solid;
-  min-height: 6.5vh;
+  min-height: 9vh;
 }
 
 // styling for the header logo
 .header_logo_style {
-  font-size: 250%;
+  font-family: Lato;
+  font-size: 2.25vw;
   font-weight: bold;
   color: white;
   display: flex;
@@ -53,11 +83,23 @@
   margin-left: 1%;
 }
 
+// styling for the header icons
+.header_icons_style {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 77vw;
+}
+
+// styling for a header icon
+.header_icon_style {
+  padding: 0.5vh;
+}
+
 // NAV BAR STYLE ////////////////////////////////////
 #nav {
   background: #64676c;
   align-items: center;
-  min-height: 5.5vh;
+  min-height: 5.8vh;
 
   a {
     padding-top: 1.25vh;
@@ -66,8 +108,9 @@
     padding-right: 1vh;
     color: white;
     background: #64676c;
-    font-size: 1.8vh;
+    font-size: 1vw;
     font-weight: 500;
+    font-family: Lato;
     float: left;
 
     &.router-link-exact-active {

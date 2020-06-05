@@ -1,26 +1,46 @@
 <template>
   <b-container fluid class="container_style">
-  <!-- NAVIGATION BREADCRUMBS -->
-  <b-row>
-    <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
-      <div class="breadcrumbs_style">
-        <router-link class="breadcrumb_style" to="/">Home</router-link>
+    <!-- NAVIGATION BREADCRUMBS -->
+    <b-row>
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="1"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      >
+        <div class="breadcrumbs_style">
+          <router-link class="breadcrumb_style" to="/">Home</router-link>
           &nbsp;
           <span class="breadcrumb_style">></span>
           &nbsp;
-        <router-link class="breadcrumb_style" to="login">Login</router-link>
+          <router-link class="breadcrumb_style" to="login">Login</router-link>
           &nbsp;
           <span class="breadcrumb_style">></span>
           &nbsp;
-        <router-link class="breadcrumb_style" to="register">Register</router-link>
-      </div>
-      <div class="crumb_padding"></div>
-    </b-col>
-  </b-row>
+          <router-link class="breadcrumb_style" to="register"
+            >Register</router-link
+          >
+        </div>
+        <div class="crumb_padding"></div>
+      </b-col>
+    </b-row>
 
     <!-- PAGE HEADING -->
     <b-row>
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="1"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      >
         <img
           src="@/assets/images/heading_backgrounds/home.png"
           class="img-fluid"
@@ -32,104 +52,118 @@
 
     <!-- SPACING -->
     <b-row class="spacing_style">
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="1"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      >
         <br />
       </b-col>
     </b-row>
 
     <!-- REGISTER FORM -->
     <b-row>
-      <b-col xs="12" sm="12" md="6" offsetMd="3" lg="6" offsetlg="3" xl="6" offsetxl="3">
+      <b-col
+        xs="12"
+        sm="12"
+        md="6"
+        offsetMd="3"
+        lg="6"
+        offsetlg="3"
+        xl="6"
+        offsetxl="3"
+      >
         <b-form class="login_form_style">
-            <br />
-            <h2>Create your account</h2>
-            <br />
+          <br />
+          <h2>Create your account</h2>
+          <br />
           <b-form-group class="login_input_style">
             <b-form-input
-            id="first_name"
-            type="text"
-            required
-            placeholder="First name">
+              id="first_name"
+              type="text"
+              required
+              placeholder="First name"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
             <b-form-input
-            id="last_name"
-            type="text"
-            required
-            placeholder="Last name">
+              id="last_name"
+              type="text"
+              required
+              placeholder="Last name"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
             <b-form-input
-            id="username"
-            type="text"
-            required
-            placeholder="Username">
+              id="username"
+              type="text"
+              required
+              placeholder="Username"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
             <b-form-input
-            id="password"
-            type="password"
-            required
-            placeholder="Password">
+              id="password"
+              type="password"
+              required
+              placeholder="Password"
+            >
             </b-form-input>
-           </b-form-group> 
+          </b-form-group>
           <b-form-group class="login_input_style">
-            <b-form-input
-            id="email"
-            type="email"
-            required
-            placeholder="Email">
+            <b-form-input id="email" type="email" required placeholder="Email">
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
             <b-form-input
-            id="phone_number"
-            type="text"
-            required
-            placeholder="Phone number">
+              id="phone_number"
+              type="text"
+              required
+              placeholder="Phone number"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
             <b-form-input
-            id="address_line_1"
-            type="text"
-            required
-            placeholder="Address line 1">
+              id="address_line_1"
+              type="text"
+              required
+              placeholder="Address line 1"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
             <b-form-input
-            id="address_line_2"
-            type="text"
-            required
-            placeholder="Address line 2">
+              id="address_line_2"
+              type="text"
+              required
+              placeholder="Address line 2"
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input id="region" type="text" required placeholder="Region">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input id="city" type="text" required placeholder="City">
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
             <b-form-input
-            id="region"
-            type="text"
-            required
-            placeholder="Region">
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="login_input_style">
-            <b-form-input
-            id="city"
-            type="text"
-            required
-            placeholder="City">
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="login_input_style">
-            <b-form-input
-            id="zip_code"
-            type="text"
-            required
-            placeholder="ZIP code">
+              id="zip_code"
+              type="text"
+              required
+              placeholder="ZIP code"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group>
@@ -150,7 +184,16 @@
 
     <!-- SPACING -->
     <b-row class="spacing_style">
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="1"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      >
         <br />
       </b-col>
     </b-row>
@@ -179,12 +222,20 @@
 
     <!-- SUBFOOTER -->
     <b-row class="sub_footer_style">
-      <b-col xs="12" sm="12" md="10" offsetMd="1" lg="10" offsetlg="1" xl="10" offsetxl="1">
+      <b-col
+        xs="12"
+        sm="12"
+        md="10"
+        offsetMd="1"
+        lg="10"
+        offsetlg="1"
+        xl="10"
+        offsetxl="1"
+      >
       </b-col>
     </b-row>
   </b-container>
 </template>
-
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -240,20 +291,20 @@
 }
 
 .login_form_style {
-    background-color: white;
-    text-align: center;
-    padding: none;
+  background-color: white;
+  text-align: center;
+  padding: none;
 }
 
 .login_input_style {
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .register_tile_text {
-    margin-left: 3%;
-    margin-right: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .button_style {
@@ -293,7 +344,6 @@
   background: #2a6f03;
 }
 </style>
-
 
 <script>
 export default {

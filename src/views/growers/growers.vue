@@ -1,6 +1,5 @@
 <template>
   <div class="text-left">
-
     <h1>Grower information from API GET request</h1>
     <div v-for="(user, index) in users" :key="`user-${index}`">
       <div v-if="user.got_apples_member === 1">
@@ -17,7 +16,6 @@
         <br />
       </div>
     </div>
-
   </div>
 </template>
 
