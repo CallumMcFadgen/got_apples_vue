@@ -2,20 +2,8 @@
   <b-container fluid class="container_style">
     <!-- NAVIGATION BREADCRUMBS -->
     <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
-        <div class="breadcrumbs_style">
-          <router-link class="breadcrumb_style" to="/">Home</router-link>
-        </div>
-        <div class="crumb_padding"></div>
+      <b-col xs="12" sm="12" md="12" lg="10" offsetlg="1" xl="10" offsetxl="1">
+        <b-breadcrumb class="breadcrumb_style" :items="items"></b-breadcrumb>
       </b-col>
     </b-row>
 
@@ -36,7 +24,7 @@
           class="img-fluid"
           alt="heading background"
         />
-        <h1 class="page_heading_txt">Welcome to Got Apples!</h1>
+        <h1 class="page_heading_txt">Welcome!</h1>
       </b-col>
     </b-row>
 
@@ -219,7 +207,7 @@
         xl="10"
         offsetxl="2"
       >
-        <div class="statement_style">
+        <b-card class="statement_style">
           <h2 class="statement_heading_style">
             Heritage apples direct from the grower
           </h2>
@@ -235,7 +223,7 @@
             rangatahi noa iho koe. Kaore he wahi mau kei te waka te te waka nei,
             na reira me noho tau ki tatahi ke”.
           </p>
-        </div>
+        </b-card>
       </b-col>
     </b-row>
 
@@ -256,7 +244,7 @@
     <!-- TILES -->
     <b-row class="tile_row_style">
       <b-col>
-        <div class="tile_style">
+        <b-card class="tile_style">
           <h4 class="title_heading_style">New seasons harvest</h4>
           <img
             class="tile_image_style"
@@ -271,12 +259,13 @@
           </p>
           <p class="tile_link_style">
             Click
-            <router-link to="login">here</router-link>to learn more
+            <router-link to="login">here</router-link>
+            to learn more
           </p>
-        </div>
+        </b-card>
       </b-col>
       <b-col>
-        <div class="tile_style">
+        <b-card class="tile_style">
           <h4 class="title_heading_style">Exciting new variety trialed</h4>
           <img
             class="tile_image_style"
@@ -291,12 +280,13 @@
           </p>
           <p class="tile_link_style">
             Click
-            <router-link to="login">here</router-link>to learn more
+            <router-link to="login">here</router-link>
+            to learn more
           </p>
-        </div>
+        </b-card>
       </b-col>
       <b-col>
-        <div class="tile_style">
+        <b-card class="tile_style">
           <h4 class="title_heading_style">Rediscovering apple crumble</h4>
           <img
             class="tile_image_style"
@@ -311,9 +301,10 @@
           </p>
           <p class="tile_link_style">
             Click
-            <router-link to="login">here</router-link>to learn more
+            <router-link to="login">here</router-link>
+            to learn more
           </p>
-        </div>
+        </b-card>
       </b-col>
     </b-row>
 
@@ -430,24 +421,18 @@
   background-color: #e3e4e6;
 }
 
+.no_padding {
+  padding: 0;
+}
+
 // navigation breadcrumbs style
-.breadcrumbs_style {
-  background-color: transparent;
-  align-items: center;
-}
-
-// navigation breadcrumb style
 .breadcrumb_style {
-  text-decoration: none;
-  background-color: transparent;
-  font-size: 1.5 vw;
-  color: black !important;
-  float: left;
-}
-
-// padding for nav breadcrumbs
-.crumb_padding {
-  min-height: 0.5vh;
+  background-color: #e3e4e6 !important;
+  position: relative;
+  font-size: 100% !important;
+  left: 0;
+  margin-left: 8vw;
+  align-items: center;
 }
 
 // spacing
@@ -534,8 +519,6 @@
   text-align: center;
   font-weight: semi-bold;
   color: black;
-  padding-top: 1.5vh;
-  padding-bottom: 0.25vh;
 }
 
 // styling for the tile image
@@ -626,6 +609,17 @@
 import "reset-css";
 export default {
   name: "Home",
-  components: {}
+  components: {},
+  data() {
+    return {
+      items: [
+        {
+          text: "Home",
+          to: { name: "HOME" },
+          active: true
+        }
+      ]
+    };
+  }
 };
 </script>

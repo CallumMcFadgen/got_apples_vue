@@ -85,9 +85,9 @@
 
 // styling for the header icons
 .header_icons_style {
-  display: flex;
-  justify-content: space-around;
-  margin-left: 77vw;
+  position: absolute;
+  right: 0;
+  margin-right: 1vw;
 }
 
 // styling for a header icon
