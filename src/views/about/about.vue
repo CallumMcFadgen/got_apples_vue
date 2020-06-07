@@ -1,24 +1,16 @@
 <template>
   <b-container fluid class="container_style">
+
     <!-- NAVIGATION BREADCRUMBS -->
-    <b-row>
-      <b-col xs="12" sm="12" md="12" lg="10" offsetlg="1" xl="10" offsetxl="1">
-        <b-breadcrumb class="breadcrumb_style" :items="items"></b-breadcrumb>
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </b-col>
     </b-row>
 
     <!-- PAGE HEADING -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <img
           src="@/assets/images/heading_backgrounds/home.png"
           class="img-fluid"
@@ -29,34 +21,19 @@
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      ></b-col>
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+        <br />
+      </b-col>
     </b-row>
 
     <!-- STATEMENT -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="2"
-        xl="10"
-        offsetxl="2"
-      >
-        <div class="statement_style">
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <b-card class="statement_style">
           <h2 class="statement_heading_style">
-            Our mission
+            Heritage apples direct from the grower
           </h2>
           <p class="statement_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
@@ -70,89 +47,89 @@
             rangatahi noa iho koe. Kaore he wahi mau kei te waka te te waka nei,
             na reira me noho tau ki tatahi ke”.
           </p>
-        </div>
+        </b-card>
       </b-col>
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style_2">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      ></b-col>
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+      </b-col>
     </b-row>
 
     <!-- TILES -->
-    <b-row class="tile_row_style">
-      <b-col 6>
+    <b-row class="row_style">
+      <b-col cols="6">
         <b-card class="tile_style">
           <h4 class="title_heading_style">New seasons harvest</h4>
-          <img
-            class="tile_image_style"
-            src="@/assets/images/home_page_tiles/tile_1.png"
-          />
-          <p class="tile_text_style">
+          <b-card-text class="tile_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
             ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
             e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
             hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
-            te rarangahia he rakau hii-ika.
-          </p>
-          <p class="tile_link_style">
-            Click
-            <router-link to="login">here</router-link>
-            to learn more
-          </p>
+            te rarangahia he rakau hii-ika. Ka riri haere a Maui. “Maku e whai
+            kaha, whai mana hei whakamana i ahau ano”, noku te mana hei
+            whakaarahi i oku tuakana. Ka whakaritea e Maui he tatai hei
+            whakamanahia i ona ake pukenga mo tenei mea te hii-ika. I tetahi po
+            i a Maui e noho tau ana, ka timatahia e Maui ki te rarangahia he
+            rakau hii-ika. Ka riri haere a Maui. “Maku e whai kaha, whai mana
+            hei whakamana i ahau ano”, noku te mana hei whakaarahi i oku
+            tuakana. Ka whakaritea e Maui he tatai hei whakamanahia i ona ake
+            pukenga mo tenei mea te hii-ika. I tetahi po i a Maui e noho tau
+            ana, ka timatahia e Maui ki te rarangahia he rakau hii-ika.
+            <br />
+            <br />
+            Click <router-link to="login">here</router-link> to learn more
+            <br />
+            <br />
+          </b-card-text>
         </b-card>
       </b-col>
-      <b-col>
+
+      
+      <b-col cols="6">
         <b-card class="tile_style">
-          <h4 class="title_heading_style">Exciting new variety trialed</h4>
-          <img
-            class="tile_image_style"
-            src="@/assets/images/home_page_tiles/tile_2.png"
-          />
-          <p class="tile_text_style">
+          <h4 class="title_heading_style">New seasons harvest</h4>
+          <b-card-text class="tile_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-            ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
-            e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
-            hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
+            ahau ano”, noku te mana hei whakaarahi i oku tuakana.
+            <br />
+            <br />
+            Click <router-link to="login">here</router-link> to learn more
+            <br />
+            <br />
+          </b-card-text>
+        </b-card>
+        <br />
+        <br />
+        <b-card class="tile_style">
+          <h4 class="title_heading_style">New seasons harvest</h4>
+          <b-card-text class="tile_text_style">
+            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
+            ahau ano”, noku te mana hei whakaarahi i oku tuakana.
             te rarangahia he rakau hii-ika.
-          </p>
-          <p class="tile_link_style">
-            Click
-            <router-link to="login">here</router-link>
-            to learn more
-          </p>
+            <br />
+            <br />
+            Click <router-link to="login">here</router-link> to learn more
+            <br />
+            <br />
+          </b-card-text>
         </b-card>
       </b-col>
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
         <br />
       </b-col>
     </b-row>
 
     <!-- FOOTER -->
     <b-row class="footer_style">
-      <b-col xs="4" sm="4" md="4" lg="4" xl="4">
+      <b-col cols="4">
         <div class="footer_affiliate_style">
           <span>Affiliate Link</span>
           <br />
@@ -161,12 +138,12 @@
           <span>Affiliate Link</span>
         </div>
       </b-col>
-      <b-col class="footer_logo_style" xs="4" sm="4" md="4" lg="4" xl="4">
+      <b-col class="footer_logo_style" cols="4">
         <div>
           <p>Got Apples!</p>
         </div>
       </b-col>
-      <b-col xs="4" sm="4" md="4" lg="4" xl="4">
+      <b-col cols="4">
         <div class="footer_icons_style">
           <a href="https://www.facebook.com/">
             <img
@@ -200,23 +177,181 @@
       </b-col>
     </b-row>
 
-    <!-- SUBFOOTER -->
+
     <b-row class="sub_footer_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
   </b-container>
 </template>
+
+
+<style lang="scss">
+// HEADING STYLE /////////////////////////////////////////////
+
+//sizing for a heading image
+.heading_img_style {
+  width: 100%;
+  height: auto;
+}
+
+//page heading text
+.page_heading_txt {
+  font-family: Lato;
+  color: #fff;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  font-size: 10vw;
+  font-weight: 500;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// PAGE STYLE ////////////////////////////////////////////////
+
+// background color
+.container_style {
+  background-color: #e3e4e6;
+}
+
+// navigation breadcrumbs style
+.breadcrumb {
+  background-color: #e3e4e6 !important;
+  position: relative;
+  font-size: 100% !important;
+}
+
+// styling for the statment
+.statement_style {
+  background-color: white;
+}
+
+// styling for the statment heading
+.statement_heading_style {
+  text-align: center;
+  font: Lato;
+  font-size: 2vw;
+  font-weight: bold;
+  color: black;
+  padding-top: 1vh;
+}
+
+// styling for the statment heading
+.statement_text_style {
+  font: Merriweather;
+  font-style: italic;
+  color: #3d3d3d;
+  font-size: 1.05vw;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-bottom: 2.5vh;
+}
+
+// margins for a row
+.row_style {
+  margin-right: 7% !important;
+  margin-left: 7% !important;
+}
+
+// styling for the tile
+.tile_style {
+  background-color: white;
+}
+
+// styling for the tile heading
+.title_heading_style {
+  font: Lato;
+  font-size: 1.5vw;
+  text-align: center;
+  font-weight: semi-bold;
+  color: black;
+  padding: 0;
+}
+
+// styling for the tile image
+.tile_image_style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  border: thin black solid;
+  border-radius: 3px;
+}
+
+// styling for the tile text
+.tile_text_style {
+  font: Merriweather;
+  color: #3d3d3d;
+  font-size: 1vw;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-top: 2.5vh;
+}
+
+// styling for the tile link
+.tile_link_style {
+  font: Merriweather;
+  color: #3d3d3d;
+  font-size: 1vw;
+}
+
+// FOOTER ////////////////////////////////////////////////
+
+// overall styling for page footer
+.footer_style {
+  align-items: center;
+  background: #64676c;
+  color: #ffffff;
+}
+
+// styling for the affilate links in the footer
+.footer_affiliate_style {
+  font: Merriweather;
+  font-size: 0.8vw;
+  text-align: center;
+  border: thin, white, solid;
+}
+
+// styling for the page footer heading
+.footer_logo_style {
+  text-align: center;
+  font-family: Lato;
+  font-size: 1.8vw;
+  font-weight: bold;
+  color: white;
+  padding-top: 0.5vh;
+}
+
+// styling for the header icons
+.footer_icons_style {
+  align-items: center;
+  display: flex;
+  margin-left: 10vw;
+}
+
+// styling for a header icon
+.footer_icon_style {
+  padding: 0.5vh;
+}
+
+// over all styling for the page sub footer
+.sub_footer_style {
+  height: 3vh;
+  background: #2a6f03;
+  align-items: center;
+}
+
+// styling for the copyright text
+.sub_footer_style {
+  padding: 0;
+  font-size: 1.5vh;
+  text-align: center;
+  color: white;
+  font-family: Lato;
+}
+</style>
 
 <script>
 export default {
@@ -224,13 +359,13 @@ export default {
   components: {},
   data() {
     return {
-      items: [
+      breadcrumbs: [
         {
           text: "Home",
           to: { name: "HOME" }
         },
         {
-          text: "Growers",
+          text: "About",
           to: { name: "ABOUT" },
           active: true
         }

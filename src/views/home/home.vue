@@ -1,24 +1,16 @@
 <template>
   <b-container fluid class="container_style">
+
     <!-- NAVIGATION BREADCRUMBS -->
-    <b-row>
-      <b-col xs="12" sm="12" md="12" lg="10" offsetlg="1" xl="10" offsetxl="1">
-        <b-breadcrumb class="breadcrumb_style" :items="items"></b-breadcrumb>
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </b-col>
     </b-row>
 
     <!-- PAGE HEADING -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <img
           src="@/assets/images/heading_backgrounds/home.png"
           class="img-fluid"
@@ -29,31 +21,16 @@
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      ></b-col>
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+        <br />
+      </b-col>
     </b-row>
 
     <!-- SLIDER -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <div>
           <b-carousel :interval="4000">
             <b-carousel-slide class="slide_style">
@@ -182,31 +159,16 @@
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      ></b-col>
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+        <br />
+      </b-col>
     </b-row>
 
     <!-- STATEMENT -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="2"
-        xl="10"
-        offsetxl="2"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-card class="statement_style">
           <h2 class="statement_heading_style">
             Heritage apples direct from the grower
@@ -228,105 +190,88 @@
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style_2">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      ></b-col>
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+        <br />
+      </b-col>
     </b-row>
 
     <!-- TILES -->
-    <b-row class="tile_row_style">
-      <b-col>
-        <b-card class="tile_style">
-          <h4 class="title_heading_style">New seasons harvest</h4>
+    <b-row class="row_style">
+        <b-col cols="4">
+          <b-card class="tile_style">
+            <h4 class="title_heading_style">Try a new apple drink</h4>
           <img
             class="tile_image_style"
-            src="@/assets/images/home_page_tiles/tile_1.png"
+            src="@/assets/images/user/callum_mcfadgen.png"
           />
-          <p class="tile_text_style">
-            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-            ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
-            e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
-            hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
-            te rarangahia he rakau hii-ika.
-          </p>
-          <p class="tile_link_style">
-            Click
-            <router-link to="login">here</router-link>
-            to learn more
-          </p>
-        </b-card>
-      </b-col>
-      <b-col>
-        <b-card class="tile_style">
-          <h4 class="title_heading_style">Exciting new variety trialed</h4>
+
+<!-- @/assets/images/home_page_tiles/tile_1.png -->
+
+            <b-card-text class="tile_text_style">
+              Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
+              ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
+              e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
+              hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
+              te rarangahia he rakau hii-ika.
+              <br />
+              <br />
+              Click <router-link to="login">here</router-link> to learn more
+            </b-card-text>
+          </b-card>
+        </b-col>
+        <b-col cols="4">
+          <b-card class="tile_style">
+            <h4 class="title_heading_style">Meet our newest member</h4>
           <img
             class="tile_image_style"
             src="@/assets/images/home_page_tiles/tile_2.png"
           />
-          <p class="tile_text_style">
-            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-            ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
-            e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
-            hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
-            te rarangahia he rakau hii-ika.
-          </p>
-          <p class="tile_link_style">
-            Click
-            <router-link to="login">here</router-link>
-            to learn more
-          </p>
-        </b-card>
-      </b-col>
-      <b-col>
-        <b-card class="tile_style">
-          <h4 class="title_heading_style">Rediscovering apple crumble</h4>
+            <b-card-text class="tile_text_style">
+              Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
+              ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
+              e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
+              hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
+              te rarangahia he rakau hii-ika.
+              <br />
+              <br />
+              Click <router-link to="login">here</router-link> to learn more
+            </b-card-text>
+          </b-card>
+        </b-col>
+        <b-col cols="4">
+          <b-card class="tile_style">
+            <h4 class="title_heading_style">Benifits of cleaning your apples</h4>
           <img
             class="tile_image_style"
             src="@/assets/images/home_page_tiles/tile_3.png"
           />
-          <p class="tile_text_style">
-            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-            ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
-            e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
-            hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
-            te rarangahia he rakau hii-ika.
-          </p>
-          <p class="tile_link_style">
-            Click
-            <router-link to="login">here</router-link>
-            to learn more
-          </p>
-        </b-card>
-      </b-col>
+            <b-card-text class="tile_text_style">
+              Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
+              ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
+              e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
+              hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
+              te rarangahia he rakau hii-ika.
+              <br />
+              <br />
+              Click <router-link to="login">here</router-link> to learn more
+            </b-card-text>
+          </b-card>
+        </b-col>
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
         <br />
       </b-col>
     </b-row>
 
     <!-- FOOTER -->
     <b-row class="footer_style">
-      <b-col xs="4" sm="4" md="4" lg="4" xl="4">
+      <b-col cols="4">
         <div class="footer_affiliate_style">
           <span>Affiliate Link</span>
           <br />
@@ -335,12 +280,12 @@
           <span>Affiliate Link</span>
         </div>
       </b-col>
-      <b-col class="footer_logo_style" xs="4" sm="4" md="4" lg="4" xl="4">
+      <b-col class="footer_logo_style" cols="4">
         <div>
           <p>Got Apples!</p>
         </div>
       </b-col>
-      <b-col xs="4" sm="4" md="4" lg="4" xl="4">
+      <b-col cols="4">
         <div class="footer_icons_style">
           <a href="https://www.facebook.com/">
             <img
@@ -376,16 +321,7 @@
 
     <!-- SUBFOOTER -->
     <b-row class="sub_footer_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
@@ -406,7 +342,7 @@
   font-family: Lato;
   color: #fff;
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-  font-size: 4.6vw;
+  font-size: 10vw;
   font-weight: 500;
   position: absolute;
   top: 50%;
@@ -421,35 +357,18 @@
   background-color: #e3e4e6;
 }
 
-.no_padding {
-  padding: 0;
-}
-
 // navigation breadcrumbs style
-.breadcrumb_style {
+.breadcrumb {
   background-color: #e3e4e6 !important;
   position: relative;
   font-size: 100% !important;
-  left: 0;
-  margin-left: 8vw;
-  align-items: center;
-}
-
-// spacing
-.spacing_style {
-  background-color: #e3e4e6;
-  min-height: 5vh;
-}
-
-.spacing_style_2 {
-  background-color: #e3e4e6;
-  min-height: 3vh;
 }
 
 //styling for slides
 .slide_style {
   text-align: center;
   background-color: white;
+  border-radius: 3px;
 }
 
 //styling for the slide headings
@@ -501,10 +420,10 @@
   padding-bottom: 2.5vh;
 }
 
-// padding for the tile row
-.tile_row_style {
-  padding-left: 17vh;
-  padding-right: 17vh;
+// margins for a row
+.row_style {
+  margin-right: 7% !important;
+  margin-left: 7% !important;
 }
 
 // styling for the tile
@@ -519,6 +438,7 @@
   text-align: center;
   font-weight: semi-bold;
   color: black;
+  padding-bottom: 1vh;
 }
 
 // styling for the tile image
@@ -527,6 +447,8 @@
   margin-left: auto;
   margin-right: auto;
   width: 80%;
+  border: thin black solid;
+  border-radius: 3px;
 }
 
 // styling for the tile text
@@ -544,9 +466,6 @@
   font: Merriweather;
   color: #3d3d3d;
   font-size: 1vw;
-  padding-left: 5vh;
-  padding-right: 5vh;
-  padding-bottom: 2.5vh;
 }
 
 // FOOTER ////////////////////////////////////////////////
@@ -612,7 +531,7 @@ export default {
   components: {},
   data() {
     return {
-      items: [
+      breadcrumbs: [
         {
           text: "Home",
           to: { name: "HOME" },
