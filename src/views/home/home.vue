@@ -24,7 +24,6 @@
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <br />
-        <br />
       </b-col>
     </b-row>
 
@@ -162,7 +161,6 @@
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <br />
-        <br />
       </b-col>
     </b-row>
 
@@ -193,7 +191,6 @@
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <br />
-        <br />
       </b-col>
     </b-row>
 
@@ -204,11 +201,8 @@
             <h4 class="title_heading_style">Try a new apple drink</h4>
           <img
             class="tile_image_style"
-            src="@/assets/images/user/callum_mcfadgen.png"
+            src="@/assets/images/home_page_tiles/tile_1.png"
           />
-
-<!-- @/assets/images/home_page_tiles/tile_1.png -->
-
             <b-card-text class="tile_text_style">
               Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
               ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
@@ -217,7 +211,7 @@
               te rarangahia he rakau hii-ika.
               <br />
               <br />
-              Click <router-link to="login">here</router-link> to learn more
+            Click <router-link to="login">here</router-link> to learn more
             </b-card-text>
           </b-card>
         </b-col>
@@ -264,7 +258,6 @@
     <!-- SPACING -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
-        <br />
         <br />
       </b-col>
     </b-row>

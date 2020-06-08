@@ -1,6 +1,5 @@
 <template>
   <b-container fluid class="container_style">
-
     <!-- NAVIGATION BREADCRUMBS -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
@@ -20,10 +19,9 @@
       </b-col>
     </b-row>
 
-   <!-- SPACING -->
+    <!-- SPACING -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
-        <br />
         <br />
       </b-col>
     </b-row>
@@ -32,9 +30,7 @@
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-card class="statement_style">
-          <h2 class="statement_heading_style">
-            Heritage apples direct from the grower
-          </h2>
+          <h2 class="statement_heading_style">Reconnecting with our food producers</h2>
           <p class="statement_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
             ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
@@ -58,35 +54,48 @@
       </b-col>
     </b-row>
 
-    <!-- GROWER CARD -->
+    <!-- GROWER ROW/CARD -->
     <b-row class="row_style">
-      <div v-for="(user, index) in users" :key="`user-${index}`">
-        <template >
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12"
-      v-if="user.got_apples_member === 1">
+      <b-col
+        v-for="(grower, index) in growers" :key="`grower-${index}`" 
+        xs="12" sm="12" md="12" lg="6" xl="6">
         <b-card>
-            <br />
-            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+          <img
+            class="grower_image_style"
+            src="@/assets/images/user/callum_mcfadgen.png"
+          />
 
-            <!-- <img v-bind:src="require('@/assets/images/user/' + user.image_url)" /> -->
-            <!-- <img :src="require(`@/assets/images/user/${user.image_url}`)" /> -->
-            <!-- <img :src="'@/assets/images/user/' + user.image_url" /> -->
-            <!-- <img :src="'@/assets/images/user/'`${user.image_url}`" /> -->
+          <!-- <img v-bind:src="require('@/assets/images/user/' + user.image_url)" /> -->
+          <!-- <img :src="require(`@/assets/images/user/${user.image_url}`)" /> -->
+          <!-- <img :src="'@/assets/images/user/' + user.image_url" /> -->
+          <!-- <img :src="'@/assets/images/user/'`${user.image_url}`" /> -->
 
-            <b-card-text>
-            <b>Bio:</b>
-                <span> {{ user.bio }}</span>
+          <h2 class="grower_heading_style">
+            {{ grower.first_name }} {{ grower.last_name }}
+          </h2>
+          <b-card-text class="grower_text_style">
+            Ka tohea ki uta te waka e nga tuakana, engari ahua rereke te ahua o
+            te waka. Ka kii mai, “Kei te ahua taumaha te waka nei, kei te hoe
+            tahi tatou, kao ranei?” Ka kii atu tetahi, “na to kaha kai i nga
+            kumara te take” Ka kii atu tetahi ano, “Katia to korua mahi
+            whakatoi”. I to ratou taenga atu ki te wahi taunga ika, ka puta mai
+            a Maui, aue ko te ohorere o ona tuakana! “He aha.” “He aha tau?” “To
+            mahi hianga e Maui.” “Ko koe te take e kore ai matou e whiwhi ika
+            ana, ko koe ke”
             <br />
-            <b>Phone:</b>
-            <span> {{ user.phone_number }}</span>
             <br />
-            <b>Email:</b>
-            <span> {{ user.email_address }}</span>
-            </b-card-text>
-          </b-card>
-         </b-col>
-         </template>
-        </div>
+            Click <router-link to="login">here</router-link> to learn more
+          </b-card-text>
+        </b-card>
+        <br />
+      </b-col>
+    </b-row>
+
+    <!-- SPACING -->
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+      </b-col>
     </b-row>
 
     <!-- FOOTER -->
@@ -108,33 +117,18 @@
       <b-col cols="4">
         <div class="footer_icons_style">
           <a href="https://www.facebook.com/">
-            <img
-              src="@/assets/images/social_media_icons/facebook.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/facebook.png" class="footer_icon_style" />
           </a>
           <a href="https://www.twitter.com/">
-            <img
-              src="@/assets/images/social_media_icons/twitter.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/twitter.png" class="footer_icon_style" />
           </a>
           <a href="https://www.instagram.com/">
-            <img
-              src="@/assets/images/social_media_icons/instagram.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/instagram.png" class="footer_icon_style" />
           </a>
           <a href="https://www.linkedin.com/">
-            <img
-              src="@/assets/images/social_media_icons/linkedin.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/linkedin.png" class="footer_icon_style" />
           </a>
-          <img
-            src="@/assets/images/social_media_icons/phone.png"
-            class="footer_icon_style"
-          />
+          <img src="@/assets/images/social_media_icons/phone.png" class="footer_icon_style" />
         </div>
       </b-col>
     </b-row>
@@ -216,7 +210,42 @@
   margin-left: 7% !important;
 }
 
+// styling for the grower heading
+.grower_heading_style {
+  font: Lato;
+  font-size: 1.5vw;
+  text-align: center;
+  font-weight: semi-bold;
+  color: black;
+  padding-top: 3%;
+}
 
+// styling for the grower image
+.grower_image_style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 98%;
+  border: thin black solid;
+  border-radius: 3px;
+}
+
+// styling for the tile text
+.grower_text_style {
+  font: Merriweather;
+  color: #3d3d3d;
+  font-size: 1vw;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-top: 2.5vh;
+}
+
+// styling for the tile link
+.grower_link_style {
+  font: Merriweather;
+  color: #3d3d3d;
+  font-size: 1vw;
+}
 
 // FOOTER ////////////////////////////////////////////////
 
@@ -282,7 +311,7 @@ export default {
   components: {},
   data() {
     return {
-      users: [],
+      growers: [],
       breadcrumbs: [
         {
           text: "Home",
@@ -299,8 +328,8 @@ export default {
 
   // run on launch
   mounted: function() {
-    axios.get("http://localhost:3333/get_users").then(response => {
-      this.users = response.data;
+    axios.get("http://localhost:3333/get_growers").then(response => {
+      this.growers = response.data;
       console.log(response.data);
     });
   }

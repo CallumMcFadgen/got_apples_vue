@@ -24,7 +24,6 @@
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <br />
-        <br />
       </b-col>
     </b-row>
 
@@ -33,7 +32,7 @@
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-card class="statement_style">
           <h2 class="statement_heading_style">
-            Heritage apples direct from the grower
+           About us
           </h2>
           <p class="statement_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
@@ -62,7 +61,7 @@
     <b-row class="row_style">
       <b-col cols="6">
         <b-card class="tile_style">
-          <h4 class="title_heading_style">New seasons harvest</h4>
+          <h4 class="title_heading_style">Join Got Apples!</h4>
           <b-card-text class="tile_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
             ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
@@ -90,7 +89,7 @@
       
       <b-col cols="6">
         <b-card class="tile_style">
-          <h4 class="title_heading_style">New seasons harvest</h4>
+          <h4 class="title_heading_style">Our friends</h4>
           <b-card-text class="tile_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
             ahau ano”, noku te mana hei whakaarahi i oku tuakana.
@@ -102,9 +101,8 @@
           </b-card-text>
         </b-card>
         <br />
-        <br />
         <b-card class="tile_style">
-          <h4 class="title_heading_style">New seasons harvest</h4>
+          <h4 class="title_heading_style">Contact us</h4>
           <b-card-text class="tile_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
             ahau ano”, noku te mana hei whakaarahi i oku tuakana.
@@ -122,7 +120,6 @@
     <!-- SPACING -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
-        <br />
         <br />
       </b-col>
     </b-row>
