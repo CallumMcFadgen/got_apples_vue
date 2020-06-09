@@ -1,5 +1,6 @@
 <template>
   <b-container fluid class="container_style">
+    
     <!-- NAVIGATION BREADCRUMBS -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
@@ -54,49 +55,45 @@
       </b-col>
     </b-row>
 
-    <!-- GROWER ROW/CARD -->
-    <b-row class="row_style">
-      <b-col
-        v-for="(grower, index) in growers" :key="`grower-${index}`" 
-        xs="12" sm="12" md="12" lg="6" xl="6">
-        <b-card>
-          <img
-            class="grower_image_style"
-            src="@/assets/images/user/callum_mcfadgen.png"
-          />
+    <!-- GROWERS -->
+    <div v-for="(grower, index) in growers" :key="`grower-${index}`">
+      <b-row class="row_style">
+        <b-col class="col_style" xs="12" sm="12" md="12" lg="12" xl="12">
+          <div class="grower_image_box_style">
+            <img
+              class="grower_image_style"
+              src="@/assets/images/user/callum_mcfadgen.png"/>
+          </div>
 
-          <!-- <img v-bind:src="require('@/assets/images/user/' + user.image_url)" /> -->
-          <!-- <img :src="require(`@/assets/images/user/${user.image_url}`)" /> -->
-          <!-- <img :src="'@/assets/images/user/' + user.image_url" /> -->
-          <!-- <img :src="'@/assets/images/user/'`${user.image_url}`" /> -->
+          <div class="grower_content_box_style">
+            <h2 class="grower_heading_style">
+              {{ grower.first_name }} {{ grower.last_name }}
+            </h2>
+            <p class="grower_text_style">
+              Ka tohea ki uta te waka e nga tuakana, engari ahua rereke te ahua o
+              o te waka. Ka kii mai, “Kei te ahua taumaha te waka nei, kei te
+              tahi tatou, kao ranei?” Ka kii atu tetahi, “na to kaha kai i nga
+              kumara te take” Ka kii atu tetahi ano, “Katia to korua mahi
+              whakatoi”. I to ratou taenga atu ki te wahi taunga ika, ka puta mai
+              a Maui, aue ko te ohorere o ona tuakana! “He aha.” “He aha tau?” “To
+              mahi hianga e Maui.” “Ko koe te take e kore ai matou e whiwhi ika
+              ana, ko koe ke”
+              <br />
+              <br />
+              Click <router-link to="login">here</router-link> to learn more
+            </p>
+          </div>
+          <br />
+        </b-col>
+      </b-row>
 
-          <h2 class="grower_heading_style">
-            {{ grower.first_name }} {{ grower.last_name }}
-          </h2>
-          <b-card-text class="grower_text_style">
-            Ka tohea ki uta te waka e nga tuakana, engari ahua rereke te ahua o
-            te waka. Ka kii mai, “Kei te ahua taumaha te waka nei, kei te hoe
-            tahi tatou, kao ranei?” Ka kii atu tetahi, “na to kaha kai i nga
-            kumara te take” Ka kii atu tetahi ano, “Katia to korua mahi
-            whakatoi”. I to ratou taenga atu ki te wahi taunga ika, ka puta mai
-            a Maui, aue ko te ohorere o ona tuakana! “He aha.” “He aha tau?” “To
-            mahi hianga e Maui.” “Ko koe te take e kore ai matou e whiwhi ika
-            ana, ko koe ke”
-            <br />
-            <br />
-            Click <router-link to="login">here</router-link> to learn more
-          </b-card-text>
-        </b-card>
-        <br />
-      </b-col>
-    </b-row>
-
-    <!-- SPACING -->
-    <b-row class="row_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
-        <br />
-      </b-col>
-    </b-row>
+      <!-- SPACING -->
+      <b-row class="row_style">
+        <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+          <br />
+        </b-col>
+      </b-row>
+    </div>
 
     <!-- FOOTER -->
     <b-row class="footer_style">
@@ -210,6 +207,41 @@
   margin-left: 7% !important;
 }
 
+.col_style {
+  display: inline-block;
+  padding: none;
+  margin: none;
+  display: flex;
+}
+
+// styling for the grower image box
+.grower_image_box_style {
+  padding: none;
+  margin: none;
+  background-color: white;
+  flex: 1.5;
+  float: left;
+}
+
+// styling for the grower image
+.grower_image_style {
+  display: flex;
+  margin: auto;
+  width: 100%;
+  border: thin black solid;
+  border-radius: 3px;
+}
+
+
+// styling for the auction content box
+.grower_content_box_style {
+  padding: none;
+  margin: none;
+  background-color: white;
+  float: left;
+  flex: 2.5;
+}
+
 // styling for the grower heading
 .grower_heading_style {
   font: Lato;
@@ -218,16 +250,6 @@
   font-weight: semi-bold;
   color: black;
   padding-top: 3%;
-}
-
-// styling for the grower image
-.grower_image_style {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 98%;
-  border: thin black solid;
-  border-radius: 3px;
 }
 
 // styling for the tile text
