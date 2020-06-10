@@ -85,8 +85,6 @@
           </b-card-text>
         </b-card>
       </b-col>
-
-      
       <b-col cols="6">
         <b-card class="tile_style">
           <h4 class="title_heading_style">Our friends</h4>

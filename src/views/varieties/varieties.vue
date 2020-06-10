@@ -56,15 +56,14 @@
     </b-row>
 
     <!-- VARIETIES -->
-
     <b-row class="row_style">
       <b-col class="col_style" xs="6" sm="6" md="3" lg="3" xl="3"
         v-for="(variety, index) in varieties" :key="`variety-${index}`">
           <div class="varieties_style">
-            <img class="varieties_image_style" src="@/assets/images/user/callum_mcfadgen.png"/>
-              <h2 class="varieties_heading_style">
+             <h2 class="varieties_heading_style">
                 {{ variety.variety_name }}
-              </h2>
+            </h2>
+            <img class="varieties_image_style" :src="'images/' + variety.image" />
               <p class="varieties_text_style">
               <b>Colour: </b> {{ variety.colour }}
               <br />
@@ -78,18 +77,8 @@
               <br />
               </p>
             </div>
-          <br />
         </b-col>
-      <br />
     </b-row>
-
-    <!-- SPACING -->
-    <b-row class="row_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
-        <br />
-      </b-col>
-    </b-row>
-
 
     <!-- FOOTER -->
     <b-row class="footer_style">
@@ -206,14 +195,14 @@
 .col_style {
   display: inline-block;
   padding: none;
-  margin: none;
+  margin-bottom: 3vh;
 }
 
 // styling for the grower image
 .varieties_image_style {
   display: flex;
   margin: auto;
-  width: 100%;
+  width: 80%;
   border: thin black solid;
   border-radius: 3px;
 }

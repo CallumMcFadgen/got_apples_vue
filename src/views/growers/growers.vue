@@ -60,11 +60,8 @@
       <b-row class="row_style">
         <b-col class="col_style" xs="12" sm="12" md="12" lg="12" xl="12">
           <div class="grower_image_box_style">
-            <img
-              class="grower_image_style"
-              src="@/assets/images/user/callum_mcfadgen.png"/>
+            <img class="grower_image_style" :src="'images/' + grower.image" />
           </div>
-
           <div class="grower_content_box_style">
             <h2 class="grower_heading_style">
               {{ grower.first_name }} {{ grower.last_name }}
@@ -83,13 +80,6 @@
               Click <router-link to="login">here</router-link> to learn more
             </p>
           </div>
-          <br />
-        </b-col>
-      </b-row>
-
-      <!-- SPACING -->
-      <b-row class="row_style">
-        <b-col xs="12" sm="12" md="12" lg="12" xl="12">
           <br />
         </b-col>
       </b-row>

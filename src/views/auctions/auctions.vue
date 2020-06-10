@@ -59,22 +59,19 @@
     <div v-for="(auction, index) in auctions" :key="`auction-${index}`">
       <b-row class="row_style">
         <b-col class="col_style" xs="12" sm="12" md="12" lg="12" xl="12">
-
           <div class="auction_image_box_style">
-            <img
-              class="auction_image_style"
-              src="@/assets/images/user/callum_mcfadgen.png"
-            />
+             <img class="auction_image_style" :src="'images/' + auction.image" />
           </div>
-
           <div class="auction_content_box_style">
             <h2 class="auction_heading_style">
               {{ auction.title }}
             </h2>
             <p class="auction_text_style">
-              <b>Listed on : </b> {{ auction.start_date }}
+              <b>Listed on : </b>
+              {{ auction.start_date | moment("dddd, MMMM Do YYYY") }}
               <br />
-              <b>Closing on : </b> {{ auction.start_date }}
+              <b>Closing on : </b>
+              {{ auction.end_date | moment("dddd, MMMM Do YYYY") }}
               <br />
               <b>Variety :</b> {{ auction.variety_name }}
               <br />
@@ -101,7 +98,6 @@
               <br />
             </p>
           </div>
-
           <div class="auction_button_box_style">
             <br />
             <b-button class="auction_button_style">View auction</b-button>
@@ -112,25 +108,9 @@
             <br />
             <b-button class="auction_button_style">Place bid</b-button>
           </div>
-
         </b-col>
       </b-row>
-
-      <!-- SPACING -->
-      <b-row class="row_style">
-        <b-col xs="12" sm="12" md="12" lg="12" xl="12">
-          <br />
-        </b-col>
-      </b-row>
-
-      </div>
-
-    <!-- SPACING -->
-    <b-row class="row_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
-        <br />
-      </b-col>
-    </b-row>
+    </div>
 
     <!-- FOOTER -->
     <b-row class="footer_style">
@@ -381,6 +361,8 @@
 
 <script>
 import axios from "axios";
+
+
 
 export default {
   name: "Auctions",

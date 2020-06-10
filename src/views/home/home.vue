@@ -215,7 +215,7 @@
         <b-col cols="4">
           <b-card class="tile_style">
             <h4 class="title_heading_style">Meet our newest member</h4>
-          <img class="tile_image_style" src="@/assets/images/home_page_tiles/tile_2.png"/>
+          <img class="tile_image_style" src="@/assets/images/home_page_tiles/tile_2.png" />
             <b-card-text class="tile_text_style">
               Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
               ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
@@ -231,7 +231,10 @@
         <b-col cols="4">
           <b-card class="tile_style">
             <h4 class="title_heading_style">Benifits of cleaning your apples</h4>
-          <img class="tile_image_style" src="@/assets/images/home_page_tiles/tile_3.png"/>
+          <img class="tile_image_style" src="@/assets/images/home_page_tiles/tile_3.png" />
+
+          <!-- <img class="tile_image_style" :src="'images/' + 'callum_mcfadgen.png'" /> -->
+
             <b-card-text class="tile_text_style">
               Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
               ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
@@ -515,6 +518,7 @@ export default {
   components: {},
   data() {
     return {
+      publicPath: process.env.BASE_URL,
       breadcrumbs: [
         {
           text: "Home",
