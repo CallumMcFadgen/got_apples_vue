@@ -59,25 +59,25 @@
     <b-row class="row_style">
       <b-col class="col_style" xs="6" sm="6" md="3" lg="3" xl="3"
         v-for="(variety, index) in varieties" :key="`variety-${index}`">
-          <div class="varieties_style">
-             <h2 class="varieties_heading_style">
-                {{ variety.variety_name }}
-            </h2>
-            <img class="varieties_image_style" :src="'images/' + variety.image" />
-              <p class="varieties_text_style">
-              <b>Colour: </b> {{ variety.colour }}
-              <br />
-              <b>Taste: </b> {{ variety.taste }}
-              <br />
-              <b>Texture: </b> {{ variety.texture }}
-              <br />
-              <br />
-              Click <router-link to="login">here</router-link> to learn more
-              <br />
-              <br />
-              </p>
-            </div>
-        </b-col>
+        <div class="varieties_style">
+          <h2 class="varieties_heading_style">
+            {{ variety.variety_name }}
+          </h2>
+          <img class="varieties_image_style" :src="'images/' + variety.image" />
+          <p class="varieties_text_style">
+            <b>Colour: </b> {{ variety.colour }}
+            <br />
+            <b>Taste: </b> {{ variety.taste }}
+            <br />
+            <b>Texture: </b> {{ variety.texture }}
+            <br />
+            <br />
+            Click <router-link to="login">here</router-link> to learn more
+            <br />
+            <br />
+          </p>
+        </div>
+      </b-col>
     </b-row>
 
     <!-- FOOTER -->

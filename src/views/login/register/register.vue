@@ -83,39 +83,19 @@
           <h2>Create your account</h2>
           <br />
           <b-form-group class="login_input_style">
-            <b-form-input
-              id="first_name"
-              type="text"
-              required
-              placeholder="First name"
-            >
+            <b-form-input id="first_name" type="text" required placeholder="First name">
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
-            <b-form-input
-              id="last_name"
-              type="text"
-              required
-              placeholder="Last name"
-            >
+            <b-form-input id="last_name" type="text" required placeholder="Last name">
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
-            <b-form-input
-              id="username"
-              type="text"
-              required
-              placeholder="Username"
-            >
+            <b-form-input id="username" type="text" required placeholder="Username">
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
-            <b-form-input
-              id="password"
-              type="password"
-              required
-              placeholder="Password"
-            >
+            <b-form-input id="password" type="password" required placeholder="Password">
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
@@ -123,30 +103,16 @@
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
-            <b-form-input
-              id="phone_number"
-              type="text"
-              required
-              placeholder="Phone number"
-            >
+            <b-form-input id="phone_number" type="text" required placeholder="Phone number">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input id="address_line_1" type="text" required placeholder="Address line 1">
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
             <b-form-input
-              id="address_line_1"
-              type="text"
-              required
-              placeholder="Address line 1"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="login_input_style">
-            <b-form-input
-              id="address_line_2"
-              type="text"
-              required
-              placeholder="Address line 2"
-            >
+              id="address_line_2" type="text" required placeholder="Address line 2">
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
@@ -158,12 +124,7 @@
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
-            <b-form-input
-              id="zip_code"
-              type="text"
-              required
-              placeholder="ZIP code"
-            >
+            <b-form-input id="zip_code" type="text" required placeholder="ZIP code">
             </b-form-input>
           </b-form-group>
           <b-form-group>

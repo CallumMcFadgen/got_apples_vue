@@ -479,7 +479,6 @@
   font-size: 1.8vw;
   font-weight: bold;
   color: white;
-  padding-top: 0.5vh;
 }
 
 // styling for the header icons
@@ -489,7 +488,7 @@
   margin-left: 10vw;
 }
 
-// styling for a header icon
+// styling for a footer icon
 .footer_icon_style {
   padding: 0.5vh;
 }
@@ -527,6 +526,10 @@ export default {
         }
       ]
     };
+  },
+
+  mounted: function() {
+    console.log(this.$store.state.grower_id);
   }
 };
 </script>

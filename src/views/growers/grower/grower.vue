@@ -1,135 +1,31 @@
 <template>
   <b-container fluid class="container_style">
+
     <!-- NAVIGATION BREADCRUMBS -->
-    <b-row>
-      <b-col xs="12" sm="12" md="12" lg="10" offsetlg="1" xl="10" offsetxl="1">
-        <b-breadcrumb
-          class="breadcrumb_style"
-          :items="breadcrumbs"
-        ></b-breadcrumb>
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </b-col>
     </b-row>
 
     <!-- PAGE HEADING -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <img
           src="@/assets/images/heading_backgrounds/home.png"
           class="img-fluid"
           alt="heading background"
         />
-        <h1 class="page_heading_txt">About</h1>
+        <h1 class="page_heading_txt">Welcome!</h1>
       </b-col>
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      ></b-col>
-    </b-row>
-
-    <!-- STATEMENT -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="2"
-        xl="10"
-        offsetxl="2"
-      >
-        <div class="statement_style">
-          <h2 class="statement_heading_style">
-            Our mission
-          </h2>
-          <p class="statement_text_style">
-            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-            ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
-            e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
-            hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
-            te rarangahia he rakau hii-ika. Ko te moemoea a Maui kia haere
-            ngatahi ai ratou ko ona tuakana ki te hii ika. I te hokinga mai o
-            ona tuakana ki tatahi, ka kii atu a Maui, “ka taea e au te haramai i
-            koutou na taha ki te hii ika?” Engari, ko te whakautu o ona “Kao, he
-            rangatahi noa iho koe. Kaore he wahi mau kei te waka te te waka nei,
-            na reira me noho tau ki tatahi ke”.
-          </p>
-        </div>
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12" v-if="grower.length > 0">
+        test : {{ grower[0].first_name }}
+        <br />
       </b-col>
-    </b-row>
-
-    <!-- SPACING -->
-    <b-row class="spacing_style_2">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      ></b-col>
-    </b-row>
-
-
-    <b-card class="text-left">
-      <h1>Grower information from API GET request</h1>
-      <div v-for="(user, index) in users" :key="`user-${index}`">
-        <div v-if="user.got_apples_member === 1">
-          <br />
-          <h2>User : {{ user.user_name }}</h2>
-          <b-card-text>
-            <b>First name</b>
-            <br />
-            {{ user.first_name }}
-
-
-
-            </b-card-text>
-          <p>{{ user.first_name }}</p>
-          <P><b>Last name</b></P>
-          <p>{{ user.last_name }}</p>
-          <P><b>Phone number</b></P>
-          <p>{{ user.phone_number }}</p>
-          <P><b>Email address</b></P>
-          <p>{{ user.email_address }}</p>
-          <br />
-        </div>
-      </div>
-    </b-card>
-
-    <!-- SPACING -->
-    <b-row class="spacing_style_2">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      ></b-col>
     </b-row>
 
     <!-- FOOTER -->
@@ -182,24 +78,81 @@
       </b-col>
     </b-row>
 
-
     <!-- SUBFOOTER -->
     <b-row class="sub_footer_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
   </b-container>
 </template>
+
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "Grower",
+  components: {},
+  data() {
+    return {
+      grower_id: null,
+      grower: {
+        first_name: ""
+      },
+      orchard: [],
+      breadcrumbs: [
+        {
+          text: "Home",
+          to: { name: "HOME" }
+        },
+        {
+          text: "Growers",
+          to: { name: "GROWERS" }
+        },
+        {
+          text: "Grower",
+          to: { name: "GROWER" },
+          active: true
+        }
+      ]
+    };
+  },
+  methods: {
+
+    getGrower() {
+      this.grower_id = this.$store.state.grower_id;
+      axios.get("http://localhost:3333/get_user/"+this.grower_id)
+        .then(response => {
+          this.grower = response.data;
+          console.log(this.grower);
+        });
+    },
+
+    getOrchard() {
+      this.grower_id = this.$store.state.grower_id;
+      axios.get("http://localhost:3333/get_orchard/"+this.grower_id)
+        .then(response => {
+          this.orchard = response.data;
+          console.log(this.orchard);
+        });
+    }
+
+    // setGrowerID(id) {
+    //   this.$store.dispatch("addGrowerId", id);
+    //   this.$router.push("/");
+    //   console.log(this.$store.state.grower_id);
+    // }
+  },
+  // run on launch
+  mounted: function() {
+    this.getGrower();
+    this.getOrchard();
+  }
+};
+</script>
+
+
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -385,25 +338,4 @@
 }
 </style>
 
-<script>
-// @ is an alias to /src
-export default {
-  name: "Grower",
-  components: {}, 
-    breadcrumbs: [
-    {
-      text: "Home",
-      to: { name: "HOME" }
-    },
-    {
-      text: "Growers",
-      to: { name: "GROWERS" },
-    },
-    {
-      text: "Grower",
-      to: { name: "GROWERS" },
-      active: true
-    }
-  ]
-};
-</script>
+

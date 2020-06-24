@@ -67,20 +67,23 @@
               {{ grower.first_name }} {{ grower.last_name }}
             </h2>
             <p class="grower_text_style">
-              Ka tohea ki uta te waka e nga tuakana, engari ahua rereke te ahua o
-              o te waka. Ka kii mai, “Kei te ahua taumaha te waka nei, kei te
-              tahi tatou, kao ranei?” Ka kii atu tetahi, “na to kaha kai i nga
-              kumara te take” Ka kii atu tetahi ano, “Katia to korua mahi
-              whakatoi”. I to ratou taenga atu ki te wahi taunga ika, ka puta mai
-              a Maui, aue ko te ohorere o ona tuakana! “He aha.” “He aha tau?” “To
-              mahi hianga e Maui.” “Ko koe te take e kore ai matou e whiwhi ika
-              ana, ko koe ke”
+              Ki ta Maui e kii ai, “Kaore au e whakahoha i a koutou, ka noho hei
+              karetao noa iho, koinei taku whakapono ki a koutou.” Ko te
+              whakautu o te tuakana, “Na to hiroki ka pohehe matou he kai noa
+              iho ma nga ika”. Ka riri haere a Maui. “Maku e whai kaha, whai
+              mana hei whakamana i ahau ano”, noku te mana hei whakaarahi i oku
+              tuakana. Ka whakaritea e Maui he tatai hei whakamanahia i ona ake
+              pukenga mo tenei mea te hii-ika. I tetahi po i a Maui e noho tau
+              ana, ka timatahia e Maui ki te rarangahia he rakau hii-ika. I a ia
+              e rarangahia e waiatatia e Maui tetahi karakia tawhito hei
+              whakakaha i te rakau hii-ika.
               <br />
               <br />
-              Click <router-link to="login">here</router-link> to learn more
+              Click <b-button class="grower_button_style" variant="link" v-on:click="navToGrower(grower.user_name)">here</b-button> to learn more
+              <br />
+              <br />
             </p>
-          </div>
-          <br />
+           </div>
         </b-col>
       </b-row>
     </div>
@@ -128,6 +131,52 @@
     </b-row>
   </b-container>
 </template>
+
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "Growers",
+  components: {},
+  data() {
+    return {
+      growers: [],
+      breadcrumbs: [
+        {
+          text: "Home",
+          to: { name: "HOME" }
+        },
+        {
+          text: "Growers",
+          to: { name: "GROWERS" },
+          active: true
+        }
+      ]
+    };
+  },
+  methods: {
+
+    getGrowers() {
+      axios.get("http://localhost:3333/get_growers")
+        .then(response => {
+          this.growers = response.data;
+          console.log(response.data);
+      });
+    },
+
+    navToGrower(id) {
+      this.$store.dispatch("addGrowerId", id);
+      this.$router.push("grower");
+      console.log(this.$store.state.grower_id);
+    }
+  },
+  // run on launch
+  mounted: function() {
+    this.getGrowers();
+  }
+};
+</script>
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -252,6 +301,12 @@
   padding-top: 2.5vh;
 }
 
+.grower_button_style {
+  font: Merriweather !important;
+  font-size: 1vw !important;
+  padding: 0% !important;
+}
+
 // styling for the tile link
 .grower_link_style {
   font: Merriweather;
@@ -315,35 +370,3 @@
 }
 </style>
 
-<script>
-import axios from "axios";
-
-export default {
-  name: "Growers",
-  components: {},
-  data() {
-    return {
-      growers: [],
-      breadcrumbs: [
-        {
-          text: "Home",
-          to: { name: "HOME" }
-        },
-        {
-          text: "Growers",
-          to: { name: "GROWERS" },
-          active: true
-        }
-      ]
-    };
-  },
-
-  // run on launch
-  mounted: function() {
-    axios.get("http://localhost:3333/get_growers").then(response => {
-      this.growers = response.data;
-      console.log(response.data);
-    });
-  }
-};
-</script>
