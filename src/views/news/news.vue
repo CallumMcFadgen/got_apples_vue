@@ -1,6 +1,6 @@
 <template>
   <b-container fluid class="container_style">
-    
+
     <!-- NAVIGATION BREADCRUMBS -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
@@ -31,18 +31,10 @@
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-card class="statement_style">
-          <h2 class="statement_heading_style">How it works</h2>
+          <h2 class="statement_heading_style">Page content pending</h2>
+          <br />
           <p class="statement_text_style">
-            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-            ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
-            e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
-            hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
-            te rarangahia he rakau hii-ika. Ko te moemoea a Maui kia haere
-            ngatahi ai ratou ko ona tuakana ki te hii ika. I te hokinga mai o
-            ona tuakana ki tatahi, ka kii atu a Maui, “ka taea e au te haramai i
-            koutou na taha ki te hii ika?” Engari, ko te whakautu o ona “Kao, he
-            rangatahi noa iho koe. Kaore he wahi mau kei te waka te te waka nei,
-            na reira me noho tau ki tatahi ke”.
+            Keep an eye on this space for upcoming content and features!
           </p>
         </b-card>
       </b-col>
@@ -56,7 +48,7 @@
     </b-row>
 
     <!-- FOOTER -->
-    <b-row class="footer_style">
+    <b-row class="blank_page_footer_style">
       <b-col cols="4">
         <div class="footer_affiliate_style">
           <span>Affiliate Link</span>
@@ -88,16 +80,38 @@
           <img src="@/assets/images/social_media_icons/phone.png" class="footer_icon_style" />
         </div>
       </b-col>
-    </b-row>
-
-    <!-- SUBFOOTER -->
-    <b-row class="sub_footer_style">
-      <b-col cols="12">
+      <b-col cols="12" class="sub_footer_style">
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
+    
   </b-container>
 </template>
+
+
+<script>
+// @ is an alias to /src
+export default {
+  name: "News",
+  components: {},
+  data() {
+    return {
+      breadcrumbs: [
+        {
+          text: "Home",
+          to: { name: "HOME" }
+        },
+        {
+          text: "News",
+          to: { name: "NEWS" },
+          active: true
+        }
+      ]
+    };
+  }
+};
+</script>
+
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -125,6 +139,7 @@
 
 // background color
 .container_style {
+  min-height: 85vh;
   background-color: #e3e4e6;
 }
 
@@ -159,6 +174,7 @@
   padding-left: 5vh;
   padding-right: 5vh;
   padding-bottom: 2.5vh;
+  text-align: center;
 }
 
 // margins for a row
@@ -177,10 +193,13 @@
 // FOOTER ////////////////////////////////////////////////
 
 // overall styling for page footer
-.footer_style {
+.blank_page_footer_style {
   align-items: center;
   background: #64676c;
   color: #ffffff;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
 
 // styling for the affilate links in the footer
@@ -198,7 +217,6 @@
   font-size: 1.8vw;
   font-weight: bold;
   color: white;
-  padding-top: 0.5vh;
 }
 
 // styling for the header icons
@@ -230,25 +248,3 @@
 }
 </style>
 
-<script>
-// @ is an alias to /src
-export default {
-  name: "News",
-  components: {},
-  data() {
-    return {
-      breadcrumbs: [
-        {
-          text: "Home",
-          to: { name: "HOME" }
-        },
-        {
-          text: "News",
-          to: { name: "NEWS" },
-          active: true
-        }
-      ]
-    };
-  },
-};
-</script>

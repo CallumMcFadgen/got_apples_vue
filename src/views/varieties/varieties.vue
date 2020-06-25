@@ -31,7 +31,7 @@
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-card class="statement_style">
-          <h2 class="statement_heading_style">Not all apples are the</h2>
+          <h2 class="statement_heading_style">Not all apples are the same</h2>
           <p class="statement_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
             ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
@@ -72,7 +72,7 @@
             <b>Texture: </b> {{ variety.texture }}
             <br />
             <br />
-            Click <router-link to="login">here</router-link> to learn more
+            Click <b-button class="varieties_button_style" variant="link" v-on:click="navToVariety(variety.variety_name)">here</b-button> to learn more
             <br />
             <br />
           </p>
@@ -123,6 +123,52 @@
     </b-row>
   </b-container>
 </template>
+
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "Varieties",
+  components: {},
+  data() {
+    return {
+      varieties: [],
+      breadcrumbs: [
+        {
+          text: "Home",
+          to: { name: "HOME" }
+        },
+        {
+          text: "Varieties",
+          to: { name: "VARIETIES" },
+          active: true
+        }
+      ]
+    };
+  },
+  methods: {
+
+    getVarieties() {
+      axios.get("http://localhost:3333/get_varieties")
+      .then(response => {
+        this.varieties = response.data;
+        console.log(this.varieties);
+      });
+    },
+
+    navToVariety(id) {
+      this.$store.dispatch("addVarietyId", id);
+      this.$router.push("variety");
+      console.log(this.$store.state.variety_id);
+    }
+  },
+  // run on launch
+  mounted: function() {
+    this.getVarieties();
+  }
+};
+</script>
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -232,6 +278,14 @@
   padding-top: 2.5vh;
 }
 
+.varieties_button_style {
+  font: Merriweather !important;
+  font-size: 1vw !important;
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+  padding-bottom: 4% !important;
+}
+
 // styling for the tile link
 .varieties_link_style {
   font: Merriweather;
@@ -295,36 +349,5 @@
 }
 </style>
 
-<script>
-import axios from "axios";
 
-export default {
-  name: "Varieties",
-  components: {},
-  data() {
-    return {
-      varieties: [],
-      breadcrumbs: [
-        {
-          text: "Home",
-          to: { name: "HOME" }
-        },
-        {
-          text: "Varieties",
-          to: { name: "VARIETIES" },
-          active: true
-        }
-      ]
-    };
-  },
-
-  // run on launch
-  mounted: function() {
-    axios.get("http://localhost:3333/get_varieties").then(response => {
-      this.varieties = response.data;
-      console.log(response.data);
-    });
-  }
-};
-</script>
 

@@ -196,57 +196,60 @@
 
     <!-- TILES -->
     <b-row class="row_style">
-        <b-col cols="4">
-          <b-card class="tile_style">
-            <h4 class="title_heading_style">Try a new apple drink</h4>
-          <img class="tile_image_style" src="@/assets/images/home_page_tiles/tile_1.png"/>
-            <b-card-text class="tile_text_style">
-              Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-              ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
-              e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
-              hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
-              te rarangahia he rakau hii-ika.
-              <br />
-              <br />
-            Click <router-link to="login">here</router-link> to learn more
-            </b-card-text>
-          </b-card>
-        </b-col>
-        <b-col cols="4">
-          <b-card class="tile_style">
-            <h4 class="title_heading_style">Meet our newest member</h4>
-          <img class="tile_image_style" src="@/assets/images/home_page_tiles/tile_2.png" />
-            <b-card-text class="tile_text_style">
-              Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-              ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
-              e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
-              hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
-              te rarangahia he rakau hii-ika.
-              <br />
-              <br />
-              Click <router-link to="login">here</router-link> to learn more
-            </b-card-text>
-          </b-card>
-        </b-col>
-        <b-col cols="4">
-          <b-card class="tile_style">
-            <h4 class="title_heading_style">Benifits of cleaning your apples</h4>
-          <img class="tile_image_style" src="@/assets/images/home_page_tiles/tile_3.png" />
-
-          <!-- <img class="tile_image_style" :src="'images/' + 'callum_mcfadgen.png'" /> -->
-
-            <b-card-text class="tile_text_style">
-              Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-              ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
-              e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
-              hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
-              te rarangahia he rakau hii-ika.
-              <br />
-              <br />
-              Click <router-link to="login">here</router-link> to learn more
-            </b-card-text>
-          </b-card>
-        </b-col>
+      <b-col cols="4">
+        <b-card class="tile_style">
+          <h4 class="title_heading_style">Try a new apple drink</h4>
+          <img
+            class="tile_image_style"
+            src="@/assets/images/home_page_tiles/tile_1.png"
+          />
+          <b-card-text class="tile_text_style">
+            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
+            ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
+            e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
+            hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
+            te rarangahia he rakau hii-ika.
+            <br />
+            <br />Click <router-link to="login">here</router-link>to learn more
+          </b-card-text>
+        </b-card>
+      </b-col>
+      <b-col cols="4">
+        <b-card class="tile_style">
+          <h4 class="title_heading_style">Meet our newest member</h4>
+          <img
+            class="tile_image_style"
+            src="@/assets/images/home_page_tiles/tile_2.png"
+          />
+          <b-card-text class="tile_text_style">
+            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
+            ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
+            e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
+            hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
+            te rarangahia he rakau hii-ika.
+            <br />
+            <br />Click <router-link to="login">here</router-link>to learn more
+          </b-card-text>
+        </b-card>
+      </b-col>
+      <b-col cols="4">
+        <b-card class="tile_style">
+          <h4 class="title_heading_style">Benifits of cleaning your apples</h4>
+          <img
+            class="tile_image_style"
+            src="@/assets/images/home_page_tiles/tile_3.png"
+          />
+          <b-card-text class="tile_text_style">
+            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
+            ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
+            e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
+            hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
+            te rarangahia he rakau hii-ika.
+            <br />
+            <br />Click <router-link to="login">here</router-link>to learn more
+          </b-card-text>
+        </b-card>
+      </b-col>
     </b-row>
 
     <!-- SPACING -->
@@ -304,16 +307,34 @@
           />
         </div>
       </b-col>
-    </b-row>
-
-    <!-- SUBFOOTER -->
-    <b-row class="sub_footer_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+      <b-col cols="12" class="sub_footer_style">
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
+
   </b-container>
 </template>
+
+
+<script>
+export default {
+  name: "Home",
+  components: {},
+  data() {
+    return {
+      publicPath: process.env.BASE_URL,
+      breadcrumbs: [
+        {
+          text: "Home",
+          to: { name: "HOME" },
+          active: true
+        }
+      ]
+    };
+  }
+};
+</script>
+
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -462,6 +483,7 @@
   align-items: center;
   background: #64676c;
   color: #ffffff;
+  bottom: 0px;
 }
 
 // styling for the affilate links in the footer
@@ -510,26 +532,3 @@
 }
 </style>
 
-<script>
-import "reset-css";
-export default {
-  name: "Home",
-  components: {},
-  data() {
-    return {
-      publicPath: process.env.BASE_URL,
-      breadcrumbs: [
-        {
-          text: "Home",
-          to: { name: "HOME" },
-          active: true
-        }
-      ]
-    };
-  },
-
-  mounted: function() {
-    console.log(this.$store.state.grower_id);
-  }
-};
-</script>

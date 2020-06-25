@@ -1,77 +1,35 @@
 <template>
   <b-container fluid class="container_style">
+
     <!-- NAVIGATION BREADCRUMBS -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
-        <div class="breadcrumbs_style">
-          <router-link class="breadcrumb_style" to="/">Home</router-link>
-          &nbsp;
-          <span class="breadcrumb_style">></span>
-          &nbsp;
-          <router-link class="breadcrumb_style" to="login">Login</router-link>
-        </div>
-        <div class="crumb_padding"></div>
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </b-col>
     </b-row>
 
     <!-- PAGE HEADING -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <img
           src="@/assets/images/heading_backgrounds/home.png"
           class="img-fluid"
-          alt="Responsive image"
+          alt="heading background"
         />
         <h1 class="page_heading_txt">Login</h1>
       </b-col>
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="3"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <br />
       </b-col>
     </b-row>
 
     <!-- LOGIN FORM -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="6"
-        offsetMd="3"
-        lg="6"
-        offsetlg="3"
-        xl="6"
-        offsetxl="3"
-      >
+    <b-row class="form_row_style">
+      <b-col xs="8" sm="8" md="8" lg="6" xl="8">
         <b-form class="login_form_style">
           <br />
           <h2>Enter user login</h2>
@@ -106,33 +64,15 @@
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <br />
       </b-col>
     </b-row>
 
     <!-- REGISTER TILE -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="6"
-        offsetMd="3"
-        lg="6"
-        offsetlg="3"
-        xl="6"
-        offsetxl="3"
-      >
+    <b-row class="form_row_style">
+      <b-col xs="8" sm="8" md="8" lg="6" xl="8">
         <div class="login_form_style">
           <br />
           <h2>Not a member?</h2>
@@ -155,58 +95,91 @@
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <br />
       </b-col>
     </b-row>
 
     <!-- FOOTER -->
-    <b-row class="page_footer_style">
-      <b-col class="affiliate_link_style" xs="4" sm="4" md="4" lg="4" xl="4">
-        <div>
-          Links
-          <br />Here
+    <b-row class="footer_style">
+      <b-col cols="4">
+        <div class="footer_affiliate_style">
+          <span>Affiliate Link</span>
+          <br />
+          <span>Affiliate Link</span>
+          <br />
+          <span>Affiliate Link</span>
         </div>
       </b-col>
-      <b-col class="footer_logo_style" xs="4" sm="4" md="4" lg="4" xl="4">
+      <b-col class="footer_logo_style" cols="4">
         <div>
-          Logo
-          <br />Here
+          <p>Got Apples!</p>
         </div>
       </b-col>
-      <b-col class="social_media_link_style" xs="4" sm="4" md="4" lg="4" xl="4">
-        <div>
-          Social Media
-          <br />Here
+      <b-col cols="4">
+        <div class="footer_icons_style">
+          <a href="https://www.facebook.com/">
+            <img
+              src="@/assets/images/social_media_icons/facebook.png"
+              class="footer_icon_style"
+            />
+          </a>
+          <a href="https://www.twitter.com/">
+            <img
+              src="@/assets/images/social_media_icons/twitter.png"
+              class="footer_icon_style"
+            />
+          </a>
+          <a href="https://www.instagram.com/">
+            <img
+              src="@/assets/images/social_media_icons/instagram.png"
+              class="footer_icon_style"
+            />
+          </a>
+          <a href="https://www.linkedin.com/">
+            <img
+              src="@/assets/images/social_media_icons/linkedin.png"
+              class="footer_icon_style"
+            />
+          </a>
+          <img
+            src="@/assets/images/social_media_icons/phone.png"
+            class="footer_icon_style"
+          />
         </div>
+      </b-col>
+      <b-col cols="12" class="sub_footer_style">
+        <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
 
-    <!-- SUBFOOTER -->
-    <b-row class="sub_footer_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      ></b-col>
-    </b-row>
   </b-container>
 </template>
+
+
+<script>
+export default {
+  name: "Login",
+  components: {},
+  data() {
+    return {
+      publicPath: process.env.BASE_URL,
+      breadcrumbs: [
+        {
+          text: "Home",
+          to: { name: "HOME" },
+        },
+        {
+          text: "Login",
+          to: { name: "LOGIN" },
+          active: true
+        }
+      ]
+    };
+  }
+};
+</script>
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -256,9 +229,21 @@
   min-height: 0.5vh;
 }
 
+// margins for a form row
+.form_row_style {
+  //margin-right: 50% !important;
+  margin-left: 25% !important;
+}
+
 // spacing
 .spacing_style {
   background-color: #e3e4e6;
+}
+
+// margins for a row
+.row_style {
+  margin-right: 7% !important;
+  margin-left: 7% !important;
 }
 
 .login_form_style {
@@ -279,7 +264,9 @@
 }
 
 .button_style {
-  background-color: #64676c;
+  color: white !important;
+  background-color: 64676c !important;
+  border: medium #2a6f03 solid !important;
 }
 
 // FOOTER ////////////////////////////////////////////////
@@ -316,9 +303,4 @@
 }
 </style>
 
-<script>
-export default {
-  name: "Login",
-  components: {}
-};
-</script>
+

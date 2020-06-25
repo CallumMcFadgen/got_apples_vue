@@ -16,14 +16,14 @@
           class="img-fluid"
           alt="heading background"
         />
-        <h1 class="page_heading_txt">Welcome!</h1>
+        <h1 class="page_heading_txt" v-if="grower.length > 0">{{ grower[0].first_name }} {{ grower[0].last_name }}</h1>
       </b-col>
     </b-row>
 
     <!-- SPACING -->
     <b-row class="row_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12" v-if="grower.length > 0">
-        test : {{ grower[0].first_name }}
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12" v-if="orchard.length > 0">
+        Orchard test : {{ orchard[0].orchard_name }}
         <br />
       </b-col>
     </b-row>
@@ -97,9 +97,7 @@ export default {
   data() {
     return {
       grower_id: null,
-      grower: {
-        first_name: ""
-      },
+      grower: [],
       orchard: [],
       breadcrumbs: [
         {
@@ -137,12 +135,6 @@ export default {
           console.log(this.orchard);
         });
     }
-
-    // setGrowerID(id) {
-    //   this.$store.dispatch("addGrowerId", id);
-    //   this.$router.push("/");
-    //   console.log(this.$store.state.grower_id);
-    // }
   },
   // run on launch
   mounted: function() {

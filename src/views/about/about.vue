@@ -16,7 +16,7 @@
           class="img-fluid"
           alt="heading background"
         />
-        <h1 class="page_heading_txt">About</h1>
+        <h1 class="page_heading_txt">About Us</h1>
       </b-col>
     </b-row>
 
@@ -32,7 +32,7 @@
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-card class="statement_style">
           <h2 class="statement_heading_style">
-           About us
+           Our Mission
           </h2>
           <p class="statement_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
@@ -87,13 +87,17 @@
       </b-col>
       <b-col cols="6">
         <b-card class="tile_style">
-          <h4 class="title_heading_style">Our friends</h4>
-          <b-card-text class="tile_text_style">
-            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-            ahau ano”, noku te mana hei whakaarahi i oku tuakana.
+          <h4 class="title_heading_style">Friends and Affiliates</h4>
+          <b-card-text class="tile_links_text_style">
+            Ka riri haere a Maui
             <br />
+            Maku e whai kaha
             <br />
-            Click <router-link to="login">here</router-link> to learn more
+            whai mana hei whakamana
+            <br />
+            ahau anonoku mana
+            <br />
+            hei whakaarahi oku
             <br />
             <br />
           </b-card-text>
@@ -103,8 +107,8 @@
           <h4 class="title_heading_style">Contact us</h4>
           <b-card-text class="tile_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-            ahau ano”, noku te mana hei whakaarahi i oku tuakana.
-            te rarangahia he rakau hii-ika.
+            ahau ano”, noku te mana hei whakaarahi i oku tuakana. te rarangahia
+            he rakau hii-ika.
             <br />
             <br />
             Click <router-link to="login">here</router-link> to learn more
@@ -141,45 +145,50 @@
       <b-col cols="4">
         <div class="footer_icons_style">
           <a href="https://www.facebook.com/">
-            <img
-              src="@/assets/images/social_media_icons/facebook.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/facebook.png" class="footer_icon_style" />
           </a>
           <a href="https://www.twitter.com/">
-            <img
-              src="@/assets/images/social_media_icons/twitter.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/twitter.png" class="footer_icon_style" />
           </a>
           <a href="https://www.instagram.com/">
-            <img
-              src="@/assets/images/social_media_icons/instagram.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/instagram.png" class="footer_icon_style" />
           </a>
           <a href="https://www.linkedin.com/">
-            <img
-              src="@/assets/images/social_media_icons/linkedin.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/linkedin.png" class="footer_icon_style" />
           </a>
-          <img
-            src="@/assets/images/social_media_icons/phone.png"
-            class="footer_icon_style"
-          />
+          <img src="@/assets/images/social_media_icons/phone.png" class="footer_icon_style" />
         </div>
       </b-col>
-    </b-row>
-
-
-    <b-row class="sub_footer_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+      <b-col cols="12" class="sub_footer_style">
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
+
   </b-container>
 </template>
+
+
+<script>
+export default {
+  name: "About",
+  components: {},
+  data() {
+    return {
+      breadcrumbs: [
+        {
+          text: "Home",
+          to: { name: "HOME" }
+        },
+        {
+          text: "About",
+          to: { name: "ABOUT" },
+          active: true
+        }
+      ]
+    };
+  }
+};
+</script>
 
 
 <style lang="scss">
@@ -285,6 +294,17 @@
   padding-top: 2.5vh;
 }
 
+// styling for the tile text
+.tile_links_text_style {
+  font: Merriweather;
+  color: #3d3d3d;
+  font-size: 1vw;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-top: 2.5vh;
+  text-align: center;
+}
+
 // styling for the tile link
 .tile_link_style {
   font: Merriweather;
@@ -299,6 +319,7 @@
   align-items: center;
   background: #64676c;
   color: #ffffff;
+  bottom: 0px;
 }
 
 // styling for the affilate links in the footer
@@ -348,24 +369,4 @@
 }
 </style>
 
-<script>
-export default {
-  name: "About",
-  components: {},
-  data() {
-    return {
-      breadcrumbs: [
-        {
-          text: "Home",
-          to: { name: "HOME" }
-        },
-        {
-          text: "About",
-          to: { name: "ABOUT" },
-          active: true
-        }
-      ]
-    };
-  }
-};
-</script>
+

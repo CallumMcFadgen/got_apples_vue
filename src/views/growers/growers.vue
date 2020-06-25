@@ -31,7 +31,9 @@
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-card class="statement_style">
-          <h2 class="statement_heading_style">Reconnecting with our food producers</h2>
+          <h2 class="statement_heading_style">
+            Reconnecting with our food producers
+          </h2>
           <p class="statement_text_style">
             Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
             ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
@@ -79,11 +81,17 @@
               whakakaha i te rakau hii-ika.
               <br />
               <br />
-              Click <b-button class="grower_button_style" variant="link" v-on:click="navToGrower(grower.user_name)">here</b-button> to learn more
-              <br />
+              Click
+              <b-button
+                class="grower_button_style"
+                variant="link"
+                v-on:click="navToGrower(grower.user_name)"
+                >here</b-button
+              >
+              to learn more
               <br />
             </p>
-           </div>
+          </div>
         </b-col>
       </b-row>
     </div>
@@ -107,28 +115,40 @@
       <b-col cols="4">
         <div class="footer_icons_style">
           <a href="https://www.facebook.com/">
-            <img src="@/assets/images/social_media_icons/facebook.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/facebook.png"
+              class="footer_icon_style"
+            />
           </a>
           <a href="https://www.twitter.com/">
-            <img src="@/assets/images/social_media_icons/twitter.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/twitter.png"
+              class="footer_icon_style"
+            />
           </a>
           <a href="https://www.instagram.com/">
-            <img src="@/assets/images/social_media_icons/instagram.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/instagram.png"
+              class="footer_icon_style"
+            />
           </a>
           <a href="https://www.linkedin.com/">
-            <img src="@/assets/images/social_media_icons/linkedin.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/linkedin.png"
+              class="footer_icon_style"
+            />
           </a>
-          <img src="@/assets/images/social_media_icons/phone.png" class="footer_icon_style" />
+          <img
+            src="@/assets/images/social_media_icons/phone.png"
+            class="footer_icon_style"
+          />
         </div>
       </b-col>
-    </b-row>
-
-    <!-- SUBFOOTER -->
-    <b-row class="sub_footer_style">
-      <b-col cols="12">
+      <b-col cols="12" class="sub_footer_style">
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
+    
   </b-container>
 </template>
 
@@ -156,22 +176,21 @@ export default {
     };
   },
   methods: {
-
+    // Get call for growers array
     getGrowers() {
-      axios.get("http://localhost:3333/get_growers")
-        .then(response => {
-          this.growers = response.data;
-          console.log(response.data);
+      axios.get("http://localhost:3333/get_growers").then(response => {
+        this.growers = response.data;
+        console.log(response.data);
       });
     },
-
+    // Set a grower_id and navigate to grower page
     navToGrower(id) {
       this.$store.dispatch("addGrowerId", id);
       this.$router.push("grower");
       console.log(this.$store.state.grower_id);
     }
   },
-  // run on launch
+  // run on page mount
   mounted: function() {
     this.getGrowers();
   }
@@ -304,7 +323,9 @@ export default {
 .grower_button_style {
   font: Merriweather !important;
   font-size: 1vw !important;
-  padding: 0% !important;
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+  padding-bottom: 1vh !important;
 }
 
 // styling for the tile link
