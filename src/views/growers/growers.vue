@@ -180,7 +180,7 @@ export default {
     getGrowers() {
       axios.get("http://localhost:3333/get_growers").then(response => {
         this.growers = response.data;
-        console.log(response.data);
+        console.log(this.growers);
       });
     },
     // Set a grower_id and navigate to grower page

@@ -76,14 +76,11 @@
           />
         </div>
       </b-col>
-    </b-row>
-
-    <!-- SUBFOOTER -->
-    <b-row class="sub_footer_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+      <b-col cols="12" class="sub_footer_style">
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
+
   </b-container>
 </template>
 
@@ -329,5 +326,3 @@ export default {
   font-family: Lato;
 }
 </style>
-
-

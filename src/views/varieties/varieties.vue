@@ -58,12 +58,17 @@
     <!-- VARIETIES -->
     <b-row class="row_style">
       <b-col class="col_style" xs="6" sm="6" md="3" lg="3" xl="3"
-        v-for="(variety, index) in varieties" :key="`variety-${index}`">
+        v-for="(variety, index) in varieties"
+        :key="`variety-${index}`"
+      >
         <div class="varieties_style">
           <h2 class="varieties_heading_style">
             {{ variety.variety_name }}
           </h2>
-          <img class="varieties_image_style" :src="'images/' + variety.image" />
+          <img 
+            class="varieties_image_style" 
+            :src="'images/' + variety.image" 
+            />
           <p class="varieties_text_style">
             <b>Colour: </b> {{ variety.colour }}
             <br />
@@ -71,9 +76,7 @@
             <br />
             <b>Texture: </b> {{ variety.texture }}
             <br />
-            <br />
             Click <b-button class="varieties_button_style" variant="link" v-on:click="navToVariety(variety.variety_name)">here</b-button> to learn more
-            <br />
             <br />
           </p>
         </div>

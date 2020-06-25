@@ -29,10 +29,10 @@
 
     <!-- LOGIN FORM -->
     <b-row class="form_row_style">
-      <b-col xs="8" sm="8" md="8" lg="6" xl="8">
+      <b-col xs="8" sm="8" md="8" lg="8" xl="8">
         <b-form class="login_form_style">
           <br />
-          <h2>Enter user login</h2>
+          <h2>Enter your user login</h2>
           <br />
           <b-form-group class="login_input_style">
             <b-form-input
@@ -72,10 +72,10 @@
 
     <!-- REGISTER TILE -->
     <b-row class="form_row_style">
-      <b-col xs="8" sm="8" md="8" lg="6" xl="8">
+      <b-col xs="8" sm="8" md="8" lg="8" xl="8">
         <div class="login_form_style">
           <br />
-          <h2>Not a member?</h2>
+          <h2>Not a member yet?</h2>
           <br />
           <p class="register_tile_text">
             Ko te moemoea a Maui kia haere ngatahi ai ratou ko ona tuakana ki te

@@ -1,6 +1,5 @@
 <template>
   <b-container fluid class="container_style">
-    
     <!-- NAVIGATION BREADCRUMBS -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
@@ -56,61 +55,90 @@
     </b-row>
 
     <!-- AUCTIONS -->
-    <div v-for="(auction, index) in auctions" :key="`auction-${index}`">
-      <b-row class="row_style">
-        <b-col class="col_style" xs="12" sm="12" md="12" lg="12" xl="12">
-          <div class="auction_image_box_style">
-             <img class="auction_image_style" :src="'images/' + auction.image" />
-          </div>
-          <div class="auction_content_box_style">
-            <h2 class="auction_heading_style">
-              {{ auction.title }}
-            </h2>
-            <p class="auction_text_style">
-              <b>Listed on : </b>
-              {{ auction.start_date | moment("dddd, MMMM Do YYYY") }}
-              <br />
-              <b>Closing on : </b>
-              {{ auction.end_date | moment("dddd, MMMM Do YYYY") }}
-              <br />
-              <b>Variety :</b> {{ auction.variety_name }}
-              <br />
-              <b>Weight :</b> {{ auction.weight }}kg
-              <br />
-              <b>Reserve : </b> ${{ auction.reserve_amount }}
-              <br />
-              <b>Reserve : </b> ${{ auction.reserve_amount }}
-              <br />
-              <span v-if="(auction.buy_now = 1)">
-                <b>Buy now :</b> available for ${{ auction.buy_now_amount }}
-              </span>
-              <span v-if="(auction.buy_now = 0)"
-                ><b>Buy now :</b> unavailable
-              </span>
-              <br />
-              <span v-if="(auction.delivery = 1)"
-                ><b>Delivery :</b> available +${{ auction.delivery_amount }} to
-                total
-              </span>
-              <span v-if="(auction.delivery = 0)"
-                ><b>Delivery :</b> unavailable
-              </span>
-              <br />
-            </p>
-          </div>
-          <div class="auction_button_box_style">
+    <b-row class="row_style">
+      <b-col class="col_style" xs="6" sm="6" md="3" lg="3" xl="3"
+        v-for="(auction, index) in auctions"
+        :key="`auction-${index}`"
+      >
+        <div class="auctions_style">
+          <h2 class="auctions_heading_style">
+            {{ auction.title }}
+          </h2>
+          <img
+            v-if="auction.variety_name === 'Baujade'"
+            class="auctions_image_style"
+            :src="'images/auction_baujade.png'"
+          />
+          <img
+            v-else-if="auction.variety_name === 'Blenheim Orange'"
+            class="auctions_image_style"
+            :src="'images/auction_blenheim_orange.png'"
+          />
+          <img
+            v-else-if="auction.variety_name === 'Bramleys Seedling'"
+            class="auctions_image_style"
+            :src="'images/auction_bramleys_seedling.png'"
+          />
+          <img
+            v-else-if="auction.variety_name === 'Golden Delicious'"
+            class="auctions_image_style"
+            :src="'images/auction_golden_delicious.png'"
+          />
+          <img
+            v-else-if="auction.variety_name === 'Tydemans Late Orange'"
+            class="auctions_image_style"
+            :src="'images/auction_tydemans_late_orange.png'"
+          />
+          <img
+            v-else-if="auction.variety_name === 'Worcester Pearmain'"
+            class="auctions_image_style"
+            :src="'images/auction_worcester_pearmain.png'"
+          />
+          <p class="auctions_text_style">
+            <b>Listed on :</b>
+            {{ auction.start_date | moment("DD, MM, YYYY") }}
             <br />
-            <b-button class="auction_button_style">View auction</b-button>
+            <b>Closing on :</b>
+            {{ auction.end_date | moment("DD, MM, YYYY") }}
             <br />
+            <b>Variety :</b>
+            {{ auction.variety_name }}
             <br />
-            <b-button class="auction_button_style">Watch auction</b-button>
+            <b>Weight :</b>
+            {{ auction.weight }}kg
             <br />
+            <b>Reserve :</b>
+            ${{ auction.reserve_amount }}
             <br />
-            <b-button class="auction_button_style">Place bid</b-button>
-          </div>
-        </b-col>
-      </b-row>
-    </div>
+            <span v-if="auction.buy_now > 0"> <b>Buy now :</b> available </span>
+            <span v-else-if="auction.buy_now === 0">
+              <b>Buy now :</b> unavailable
+            </span>
+            <br />
+            <span v-if="auction.delivery > 0">
+              <b>Delivery :</b> available
+            </span>
+            <span v-else-if="auction.delivery === 0">
+              <b>Delivery :</b> unavailable
+            </span>
+          </p>
+          <b-button
+            class="auction_button_style"
+            v-on:click="navToAuction(auction.auction_number)"
+            >View Auction</b-button
+          >
+          <br />
+          <br />
+        </div>
+      </b-col>
+    </b-row>
+
+    <!-- SPACING -->
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+      </b-col>
+    </b-row>
 
     <!-- FOOTER -->
     <b-row class="footer_style">
@@ -145,16 +173,59 @@
           <img src="@/assets/images/social_media_icons/phone.png" class="footer_icon_style" />
         </div>
       </b-col>
-    </b-row>
-
-    <!-- SUBFOOTER -->
-    <b-row class="sub_footer_style">
-      <b-col cols="12">
+      <b-col cols="12" class="sub_footer_style">
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
   </b-container>
 </template>
+
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "Auctions",
+  components: {},
+  data() {
+    return {
+      auctions: [],
+      breadcrumbs: [
+        {
+          text: "Home",
+          to: { name: "HOME" }
+        },
+        {
+          text: "Auctions",
+          to: { name: "AUCTIONS" },
+          active: true
+        }
+      ]
+    };
+  },
+
+  methods: {
+    // Get call for auctions array
+    getAuctions() {
+      axios.get("http://localhost:3333/get_auctions").then(response => {
+        this.auctions = response.data;
+        console.log(this.auctions);
+      });
+    },
+    // Set a grower_id and navigate to grower page
+    navToAuction(id) {
+      this.$store.dispatch("addAuctionId", id);
+      this.$router.push("auction");
+      console.log(this.$store.state.auction_id);
+    }
+  },
+  // run on page mount
+  mounted: function() {
+    this.getAuctions();
+  }
+};
+</script>
+
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -231,67 +302,41 @@
   display: flex;
 }
 
-// styling for the auction image box
-.auction_image_box_style {
-  padding: none;
-  margin: none;
-  background-color: white;
-  flex: 1.5;
-  float: left;
-}
-
-// styling for the auction image
-.auction_image_style {
+// styling for the grower image
+.auctions_image_style {
   display: flex;
   margin: auto;
-  width: 100%;
+  width: 80%;
   border: thin black solid;
   border-radius: 3px;
 }
 
 // styling for the auction content box
-.auction_content_box_style {
-  padding: none;
-  margin: none;
+.auctions_style {
   background-color: white;
-  float: left;
-  flex: 2.5;
+  text-align: center;
 }
 
-// styling for the auction heading
-.auction_heading_style {
+// styling for the grower heading
+.auctions_heading_style {
   font: Lato;
   font-size: 1.5vw;
+  text-align: center;
   font-weight: semi-bold;
   color: black;
-  padding-top: 1vh;
-  margin-left: 4vw;
+  margin-right: 5% !important;
+  margin-left: 5% !important;
+  padding-top: 5%;
 }
 
-// styling for the auction text
-.auction_text_style {
-  font: Merriweather;
-  color: #3d3d3d;
-  margin-left: 4vw;
-  font-size: 1vw;
-}
-
-// styling for the auction link
-.auction_link_style {
+// styling for the tile text
+.auctions_text_style {
   font: Merriweather;
   color: #3d3d3d;
   font-size: 1vw;
-}
-
-// styling for the auction controls box
-.auction_button_box_style {
-  align-items: center;
-  text-align: right;
-  padding: none;
-  margin: none;
-  background-color: white;
-  flex: 1;
-  float: left;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-top: 2.5vh;
 }
 
 .auction_button_style {
@@ -299,8 +344,7 @@
   background-color: 64676c !important;
   width: 10vw !important;
   border: medium #2a6f03 solid !important;
-  margin-right: 2vw;
-  margin-top: 1vh;
+  justify-content: center;
 }
 
 // FOOTER ////////////////////////////////////////////////
@@ -358,38 +402,3 @@
   font-family: Lato;
 }
 </style>
-
-<script>
-import axios from "axios";
-
-
-
-export default {
-  name: "Auctions",
-  components: {},
-  data() {
-    return {
-      auctions: [],
-      breadcrumbs: [
-        {
-          text: "Home",
-          to: { name: "HOME" }
-        },
-        {
-          text: "Auctions",
-          to: { name: "AUCTIONS" },
-          active: true
-        }
-      ]
-    };
-  },
-
-  // run on launch
-  mounted: function() {
-    axios.get("http://localhost:3333/get_auctions").then(response => {
-      this.auctions = response.data;
-      console.log(response.data);
-    });
-  }
-};
-</script>
