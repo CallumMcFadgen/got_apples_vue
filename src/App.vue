@@ -44,8 +44,7 @@
       <router-link to="/varieties">VARIETIES</router-link>
       <router-link to="/news">NEWS</router-link>
       <router-link to="/contact">CONTACT</router-link>
-      <router-link v-if="login_status || login_status == true" class="login_style" to="/login">LOGIN</router-link>
-      <router-link v-else-if="login_status || login_status == false" class="login_style" to="/dashboard">DASH</router-link>
+      <router-link class="login_style" to="/login">LOGIN</router-link>
     </div>
     <router-view />
   </div>
@@ -61,7 +60,7 @@ export default {
     };
   },
   methods: {
-    // Check for a user_id
+    // Check for a user_id - NOT WORKING YET :( need some way to call method
     loggedInCheck() {
       if (localStorage.getItem("user_id")) {
         this.login_status = true;
@@ -72,9 +71,9 @@ export default {
       }
     }
   },
-    watch() {
-    this.check();
-  }
+  //   watch() {
+  //   this.check();
+  // }
 };
 </script>
 
@@ -149,4 +148,10 @@ export default {
 .login_style {
   float: right !important;
 }
+
+
+// v-if="login_status || login_status == true"
+//    <router-link v-else-if="login_status || login_status == false" class="login_style" to="/dashboard">DASH</router-link>
+
 </style>
+

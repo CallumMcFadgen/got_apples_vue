@@ -16,7 +16,7 @@
           class="img-fluid"
           alt="heading background"
         />
-        <h1 class="page_heading_txt" >Dashboard</h1>
+        <h1 class="page_heading_txt">Dashboard</h1>
       </b-col>
     </b-row>
 
@@ -28,50 +28,85 @@
     </b-row>
 
     <!-- ACCOUNT INFORMATION -->
-    <b-row  class="form_row_style">
+    <b-row class="form_row_style">
       <b-col xs="8" sm="8" md="8" lg="8" xl="8">
-        <div class="login_form_style">
+        <div class="account_form_style">
           <br />
           <h2>Account Details</h2>
           <br />
-          <h3>Personal information</h3>
-          <br />
-          <b-list-group>
+          <h4>Personal information</h4>
+          <b-list-group v-if="user.length > 0">
             <b-list-group-item class="account_text_style"
-              >First name</b-list-group-item
-            >
+              ><b>First name : </b> {{ user[0].first_name }}
+            </b-list-group-item>
             <b-list-group-item class="account_text_style"
-              >Last name</b-list-group-item
-            >
+              ><b>Last name : </b> {{ user[0].last_name }}
+            </b-list-group-item>
             <b-list-group-item class="account_text_style"
-              >Username</b-list-group-item
-            >
+              ><b>Username : </b> {{ user[0].user_name }}
+            </b-list-group-item>
             <b-list-group-item class="account_text_style"
-              >Email address</b-list-group-item
-            >
+              ><b>Email Address : </b> {{ user[0].email_address }}
+            </b-list-group-item>
             <b-list-group-item class="account_text_style"
-              >Phone number</b-list-group-item
-            >
+              ><b>Phone Number : </b> {{ user[0].phone_number }}
+            </b-list-group-item>
             <b-list-group-item class="account_text_style"
-              >Address line 1</b-list-group-item
-            >
+              ><b>Address Line 1 : </b> {{ user[0].address_line_1 }}
+            </b-list-group-item>
             <b-list-group-item class="account_text_style"
-              >Address line 2</b-list-group-item
-            >
+              ><b>Address Line 2 : </b> {{ user[0].address_line_2 }}
+            </b-list-group-item>
             <b-list-group-item class="account_text_style"
-              >Region</b-list-group-item
-            >
+              ><b>Region : </b> {{ user[0].region }}
+            </b-list-group-item>
             <b-list-group-item class="account_text_style"
-              >City</b-list-group-item
-            >
+              ><b>City : </b> {{ user[0].city }}
+            </b-list-group-item>
             <b-list-group-item class="account_text_style"
-              >Zip code</b-list-group-item
-            >
-            <b-list-group-item class="account_text_style"
-              >Account status</b-list-group-item
+              ><b>Zip Code : </b> {{ user[0].zip_code }}
+            </b-list-group-item>
+            <b-list-group-item
+              v-if="user[0].got_apples_member > 0"
+              class="account_text_style"
+              ><b>Got Apples Member</b></b-list-group-item
             >
           </b-list-group>
           <br />
+          <template v-if="orchard.length > 0">
+            <br />
+            <h4>Orchard information</h4>
+            <b-list-group>
+              <b-list-group-item class="account_text_style"
+                ><b>Name : </b> {{ orchard[0].orchard_name }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Desc : </b> {{ orchard[0].description }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Variety : </b> {{ orchard[0].variety_name }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Address Line 1 : </b> {{ orchard[0].address_line_1 }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Address Line 2 : </b> {{ orchard[0].address_line_2 }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Region : </b> {{ orchard[0].region }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>City : </b> {{ orchard[0].city }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Zip Code : </b> {{ orchard[0].zip_code }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>GST Number : </b> {{ orchard[0].gst_number }}
+              </b-list-group-item>
+            </b-list-group>
+            <br />
+          </template>
         </div>
       </b-col>
     </b-row>
@@ -135,13 +170,12 @@
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
-    
+
   </b-container>
 </template>
 
-
 <script>
-//import axios from "axios";
+import axios from "axios";
 export default {
   name: "Dashboard",
   components: {},
@@ -149,6 +183,7 @@ export default {
     return {
       user_id: null,
       user: [],
+      orchard: [],
       breadcrumbs: [
         {
           text: "Home",
@@ -168,11 +203,35 @@ export default {
       if (localStorage.getItem("user_id") === null || undefined) {
         this.$router.push("login");
       }
+    },
+    // Get call for user array
+    getUser() {
+      this.user_id = localStorage.getItem("user_id");
+      axios
+        .get("http://localhost:3333/get_user/" + this.user_id)
+        .then(response => {
+          this.user = response.data;
+          console.log(this.user);
+          if (this.user[0].got_apples_member) {
+            this.getOrchard();
+          }
+        });
+    },
+    // Get call for orchard array
+    getOrchard() {
+      this.user_id = localStorage.getItem("user_id");
+      axios
+        .get("http://localhost:3333/get_orchard/" + this.user_id)
+        .then(response => {
+          this.orchard = response.data;
+          console.log(this.orchard);
+        });
     }
   },
   // run on page mount
   mounted: function() {
     this.authCheck();
+    this.getUser();
   }
 };
 </script>
@@ -242,22 +301,21 @@ export default {
   margin-left: 7% !important;
 }
 
-// .login_form_style {
-//   background-color: white;
-//   text-align: center;
-//   padding: none;
-// }
+.account_form_style {
+  background-color: white;
+  text-align: center;
+}
 
-// .login_input_style {
-//   width: 80%;
-//   margin-left: 10%;
-//   margin-right: 10%;
-// }
+.account_text_style {
+  width: 90%;
+  margin-left: 5%;
+  //margin-right: ;
+}
 
-// .register_tile_text {
-//   margin-left: 3%;
-//   margin-right: 3%;
-// }
+.register_tile_text {
+  margin-left: 3%;
+  margin-right: 3%;
+}
 
 .button_style {
   color: white !important;
