@@ -1,6 +1,6 @@
 <template>
   <b-container fluid class="container_style">
-    
+
     <!-- NAVIGATION BREADCRUMBS -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
@@ -57,7 +57,13 @@
 
     <!-- VARIETIES -->
     <b-row class="row_style">
-      <b-col class="col_style" xs="6" sm="6" md="3" lg="3" xl="3"
+      <b-col
+        class="col_style"
+        xs="6"
+        sm="6"
+        md="3"
+        lg="3"
+        xl="3"
         v-for="(variety, index) in varieties"
         :key="`variety-${index}`"
       >
@@ -65,20 +71,21 @@
           <h2 class="varieties_heading_style">
             {{ variety.variety_name }}
           </h2>
-          <img 
-            class="varieties_image_style" 
-            :src="'images/' + variety.image" 
-            />
+          <img class="varieties_image_style" :src="'images/' + variety.image" />
           <p class="varieties_text_style">
             <b>Colour: </b> {{ variety.colour }}
             <br />
             <b>Taste: </b> {{ variety.taste }}
             <br />
             <b>Texture: </b> {{ variety.texture }}
-            <br />
-            Click <b-button class="varieties_button_style" variant="link" v-on:click="navToVariety(variety.variety_name)">here</b-button> to learn more
-            <br />
           </p>
+          <b-button
+            class="varieties_button_style"
+            v-on:click="navToVariety(variety.variety_name)"
+            >View Variety Info</b-button
+          >
+          <br />
+          <br />
         </div>
       </b-col>
     </b-row>
@@ -102,18 +109,33 @@
       <b-col cols="4">
         <div class="footer_icons_style">
           <a href="https://www.facebook.com/">
-            <img src="@/assets/images/social_media_icons/facebook.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/facebook.png"
+              class="footer_icon_style"
+            />
           </a>
           <a href="https://www.twitter.com/">
-            <img src="@/assets/images/social_media_icons/twitter.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/twitter.png"
+              class="footer_icon_style"
+            />
           </a>
           <a href="https://www.instagram.com/">
-            <img src="@/assets/images/social_media_icons/instagram.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/instagram.png"
+              class="footer_icon_style"
+            />
           </a>
           <a href="https://www.linkedin.com/">
-            <img src="@/assets/images/social_media_icons/linkedin.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/linkedin.png"
+              class="footer_icon_style"
+            />
           </a>
-          <img src="@/assets/images/social_media_icons/phone.png" class="footer_icon_style" />
+          <img
+            src="@/assets/images/social_media_icons/phone.png"
+            class="footer_icon_style"
+          />
         </div>
       </b-col>
     </b-row>
@@ -124,13 +146,12 @@
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
+
   </b-container>
 </template>
 
-
 <script>
 import axios from "axios";
-
 export default {
   name: "Varieties",
   components: {},
@@ -151,19 +172,17 @@ export default {
     };
   },
   methods: {
-
+    // Get call for varieties array
     getVarieties() {
-      axios.get("http://localhost:3333/get_varieties")
-      .then(response => {
+      axios.get("http://localhost:3333/get_varieties").then(response => {
         this.varieties = response.data;
         console.log(this.varieties);
       });
     },
-
+    // Set a variety_id and navigate to variety page
     navToVariety(id) {
-      this.$store.dispatch("addVarietyId", id);
+      localStorage.setItem("variety_id", id);
       this.$router.push("variety");
-      console.log(this.$store.state.variety_id);
     }
   },
   // run on launch
@@ -259,6 +278,8 @@ export default {
 // styling for the auction content box
 .varieties_style {
   background-color: white;
+  text-align: center;
+  border-radius: 3px;
 }
 
 // styling for the grower heading
@@ -268,7 +289,10 @@ export default {
   text-align: center;
   font-weight: semi-bold;
   color: black;
-  padding-top: 3%;
+  margin-right: 5% !important;
+  margin-left: 5% !important;
+  padding-top: 5%;
+  padding-bottom: 3%;
 }
 
 // styling for the tile text
@@ -282,18 +306,11 @@ export default {
 }
 
 .varieties_button_style {
-  font: Merriweather !important;
-  font-size: 1vw !important;
-  padding-left: 0% !important;
-  padding-right: 0% !important;
-  padding-bottom: 4% !important;
-}
-
-// styling for the tile link
-.varieties_link_style {
-  font: Merriweather;
-  color: #3d3d3d;
-  font-size: 1vw;
+  color: white !important;
+  background-color: 64676c !important;
+  width: 10vw !important;
+  border: medium #2a6f03 solid !important;
+  justify-content: center;
 }
 
 // FOOTER ////////////////////////////////////////////////
@@ -351,6 +368,3 @@ export default {
   font-family: Lato;
 }
 </style>
-
-
-

@@ -317,12 +317,13 @@
 
 
 <script>
+//import App from "./App.vue";
+
 export default {
   name: "Home",
   components: {},
   data() {
     return {
-      publicPath: process.env.BASE_URL,
       breadcrumbs: [
         {
           text: "Home",
@@ -331,6 +332,24 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    // check() {
+    //   this.$root.loggedInCheck();
+    //   console.log("check fired");
+    // },
+    // Check for a user_id if non navigate to login
+    authCheck() {
+      if (localStorage.getItem("user_id") === null || undefined) {
+        console.log("user_id does not exist");
+
+        this.$router.push("login");
+      }
+    }
+  },
+  // run on launch
+  mounted: function() {
+    //this.check();
   }
 };
 </script>

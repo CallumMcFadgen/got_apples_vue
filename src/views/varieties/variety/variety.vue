@@ -28,8 +28,28 @@
       </b-col>
     </b-row>
 
+    <!-- STATEMENT -->
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <b-card class="statement_style">
+          <h2 class="statement_heading_style">Content comming soon</h2>
+          <br />
+          <p class="statement_text_style">
+            Keep an eye on this space for upcoming content and features!
+          </p>
+        </b-card>
+      </b-col>
+    </b-row>
+
+    <!-- SPACING -->
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+      </b-col>
+    </b-row>
+
     <!-- FOOTER -->
-    <b-row class="footer_style">
+    <b-row class="blank_page_footer_style">
       <b-col cols="4">
         <div class="footer_affiliate_style">
           <span>Affiliate Link</span>
@@ -47,43 +67,25 @@
       <b-col cols="4">
         <div class="footer_icons_style">
           <a href="https://www.facebook.com/">
-            <img
-              src="@/assets/images/social_media_icons/facebook.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/facebook.png" class="footer_icon_style" />
           </a>
           <a href="https://www.twitter.com/">
-            <img
-              src="@/assets/images/social_media_icons/twitter.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/twitter.png" class="footer_icon_style" />
           </a>
           <a href="https://www.instagram.com/">
-            <img
-              src="@/assets/images/social_media_icons/instagram.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/instagram.png" class="footer_icon_style" />
           </a>
           <a href="https://www.linkedin.com/">
-            <img
-              src="@/assets/images/social_media_icons/linkedin.png"
-              class="footer_icon_style"
-            />
+            <img src="@/assets/images/social_media_icons/linkedin.png" class="footer_icon_style" />
           </a>
-          <img
-            src="@/assets/images/social_media_icons/phone.png"
-            class="footer_icon_style"
-          />
+          <img src="@/assets/images/social_media_icons/phone.png" class="footer_icon_style" />
         </div>
       </b-col>
-    </b-row>
-
-    <!-- SUBFOOTER -->
-    <b-row class="sub_footer_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+      <b-col cols="12" class="sub_footer_style">
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
+
   </b-container>
 </template>
 
@@ -115,16 +117,15 @@ export default {
     };
   },
   methods: {
-
+    // Get the variety array based on the variety id
     getVariety() {
-      this.variety_id = this.$store.state.variety_id;
+      this.variety_id = localStorage.getItem("variety_id");
       axios.get("http://localhost:3333/get_variety/"+this.variety_id)
         .then(response => {
           this.variety = response.data;
           console.log(this.variety);
         });
-    },
-
+    }
   },
   // run on launch
   mounted: function() {
@@ -132,3 +133,198 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+// HEADING STYLE /////////////////////////////////////////////
+
+//sizing for a heading image
+.heading_img_style {
+  width: 100%;
+  height: auto;
+}
+
+//page heading text
+.page_heading_txt {
+  font-family: Lato;
+  color: #fff;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  font-size: 4.6vw;
+  font-weight: 500;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// PAGE STYLE ////////////////////////////////////////////////
+
+// background color
+.container_style {
+  background-color: #e3e4e6;
+}
+
+.no_padding {
+  padding: 0;
+}
+
+// navigation breadcrumbs style
+.breadcrumb_style {
+  background-color: #e3e4e6 !important;
+  position: relative;
+  font-size: 100% !important;
+  left: 0;
+  margin-left: 8vw;
+  align-items: center;
+}
+
+// spacing
+.spacing_style {
+  background-color: #e3e4e6;
+  min-height: 5vh;
+}
+
+.spacing_style_2 {
+  background-color: #e3e4e6;
+  min-height: 3vh;
+}
+
+// styling for the statment
+.statement_style {
+  background-color: white;
+}
+
+// styling for the statment heading
+.statement_heading_style {
+  text-align: center;
+  font: Lato;
+  font-size: 2vw;
+  font-weight: bold;
+  color: black;
+  padding-top: 1vh;
+}
+
+// styling for the statment heading
+.statement_text_style {
+  font: Merriweather;
+  font-style: italic;
+  color: #3d3d3d;
+  font-size: 1.05vw;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-bottom: 2.5vh;
+}
+
+// padding for the tile row
+// .tile_row_style {
+//   padding-left: 14vh;
+//   padding-right: 14vh;
+// }
+
+// styling for the tile
+.tile_style {
+  background-color: white;
+}
+
+// styling for the tile heading
+.title_heading_style {
+  font: Lato;
+  font-size: 1.5vw;
+  text-align: center;
+  font-weight: semi-bold;
+  color: black;
+}
+
+// styling for the tile image
+.tile_image_style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+// styling for the tile text
+.tile_text_style {
+  font: Merriweather;
+  color: #3d3d3d;
+  font-size: 1vw;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-top: 2.5vh;
+}
+
+// styling for the tile link
+.tile_link_style {
+  font: Merriweather;
+  color: #3d3d3d;
+  font-size: 1vw;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-bottom: 2.5vh;
+}
+
+// FOOTER ////////////////////////////////////////////////
+
+// overall styling for page footer
+.footer_style {
+  align-items: center;
+  background: #64676c;
+  color: #ffffff;
+}
+
+// overall styling for page footer
+.blank_page_footer_style {
+  align-items: center;
+  background: #64676c;
+  color: #ffffff;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+// styling for the affilate links in the footer
+.footer_affiliate_style {
+  font: Merriweather;
+  font-size: 0.8vw;
+  text-align: center;
+  border: thin, white, solid;
+}
+
+// styling for the page footer heading
+.footer_logo_style {
+  text-align: center;
+  font-family: Lato;
+  font-size: 1.8vw;
+  font-weight: bold;
+  color: white;
+  padding-top: 0.5vh;
+}
+
+// styling for the header icons
+.footer_icons_style {
+  align-items: center;
+  display: flex;
+  margin-left: 10vw;
+}
+
+// styling for a header icon
+.footer_icon_style {
+  padding: 0.5vh;
+}
+
+// over all styling for the page sub footer
+.sub_footer_style {
+  height: 3vh;
+  background: #2a6f03;
+  align-items: center;
+}
+
+// styling for the copyright text
+.sub_footer_style {
+  padding: 0;
+  font-size: 1.5vh;
+  text-align: center;
+  color: white;
+  font-family: Lato;
+}
+</style>
+

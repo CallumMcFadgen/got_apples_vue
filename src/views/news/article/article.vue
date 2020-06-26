@@ -31,7 +31,7 @@
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-card class="statement_style">
-          <h2 class="statement_heading_style">Page content pending</h2>
+          <h2 class="statement_heading_style">Content comming soon</h2>
           <br />
           <p class="statement_text_style">
             Keep an eye on this space for upcoming content and features!

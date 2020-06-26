@@ -38,18 +38,45 @@
     <!-- NAVBAR -->
     <div id="nav">
       <router-link to="/">HOME</router-link>
-
       <router-link to="/about">ABOUT</router-link>
       <router-link to="/growers">GROWERS</router-link>
       <router-link to="/auctions">AUCTIONS</router-link>
       <router-link to="/varieties">VARIETIES</router-link>
       <router-link to="/news">NEWS</router-link>
       <router-link to="/contact">CONTACT</router-link>
-      <router-link to="/login">LOGIN</router-link>
+      <router-link v-if="login_status || login_status == true" class="login_style" to="/login">LOGIN</router-link>
+      <router-link v-else-if="login_status || login_status == false" class="login_style" to="/dashboard">DASH</router-link>
     </div>
     <router-view />
   </div>
 </template>
+
+
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      login_status: true
+    };
+  },
+  methods: {
+    // Check for a user_id
+    loggedInCheck() {
+      if (localStorage.getItem("user_id")) {
+        this.login_status = true;
+        console.log("logged in status = " + this.login_status);
+      } else {
+        this.login_status = false;
+        console.log("logged in status = " + this.login_status);
+      }
+    }
+  },
+    watch() {
+    this.check();
+  }
+};
+</script>
 
 <style lang="scss">
 // APP STYLE /////////////////////////////////////////
@@ -117,5 +144,9 @@
       font-weight: 650;
     }
   }
+}
+
+.login_style {
+  float: right !important;
 }
 </style>

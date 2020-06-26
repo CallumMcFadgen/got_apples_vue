@@ -96,10 +96,10 @@
           />
           <p class="auctions_text_style">
             <b>Listed on :</b>
-            {{ auction.start_date | moment("DD, MM, YYYY") }}
+            {{ auction.start_date | moment("DD/MM/YYYY") }}
             <br />
             <b>Closing on :</b>
-            {{ auction.end_date | moment("DD, MM, YYYY") }}
+            {{ auction.end_date | moment("DD/MM/YYYY") }}
             <br />
             <b>Variety :</b>
             {{ auction.variety_name }}
@@ -183,7 +183,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   name: "Auctions",
   components: {},
@@ -214,9 +213,8 @@ export default {
     },
     // Set a grower_id and navigate to grower page
     navToAuction(id) {
-      this.$store.dispatch("addAuctionId", id);
+      localStorage.setItem("auction_id", id);
       this.$router.push("auction");
-      console.log(this.$store.state.auction_id);
     }
   },
   // run on page mount
@@ -315,6 +313,7 @@ export default {
 .auctions_style {
   background-color: white;
   text-align: center;
+  border-radius: 3px;
 }
 
 // styling for the grower heading
@@ -327,6 +326,7 @@ export default {
   margin-right: 5% !important;
   margin-left: 5% !important;
   padding-top: 5%;
+  padding-bottom: 3%;
 }
 
 // styling for the tile text

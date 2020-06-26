@@ -1,6 +1,5 @@
 <template>
   <b-container fluid class="container_style">
-
     <!-- NAVIGATION BREADCRUMBS -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
@@ -40,6 +39,7 @@
               type="text"
               required
               placeholder="Username"
+              v-model="username"
             >
             </b-form-input>
           </b-form-group>
@@ -49,14 +49,15 @@
               type="password"
               required
               placeholder="Password"
+              v-model="password"
             >
             </b-form-input>
           </b-form-group>
           <br />
           <div>
-            <router-link to="dashboard">
-              <b-button class="button_style" type="submit">Login</b-button>
-            </router-link>
+            <b-button class="button_style" v-on:click="getAuthentication()"
+              >Login</b-button
+            >
           </div>
           <br />
         </b-form>
@@ -153,22 +154,25 @@
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
-
   </b-container>
 </template>
 
 
 <script>
+import axios from "axios";
 export default {
   name: "Login",
   components: {},
   data() {
     return {
-      publicPath: process.env.BASE_URL,
+      user: null,
+      username: null,
+      password: null,
+      login_status: null,
       breadcrumbs: [
         {
           text: "Home",
-          to: { name: "HOME" },
+          to: { name: "HOME" }
         },
         {
           text: "Login",
@@ -177,6 +181,23 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    // Get call for authentication response
+    getAuthentication() {
+      axios.get("http://localhost:3333/get_login_auth/" + this.username + "/" + this.password)
+        .then(response => {
+          this.login_status = response.data;
+          if (this.login_status[0].MESSAGE == "success") {
+            localStorage.setItem("user_id", this.username);
+            this.$router.push("dashboard");
+          } else {
+            // display fail message
+            this.username = null;
+            this.password = null;
+          }
+        });
+    }
   }
 };
 </script>
@@ -302,5 +323,3 @@ export default {
   background: #2a6f03;
 }
 </style>
-
-

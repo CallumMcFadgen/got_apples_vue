@@ -85,7 +85,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   name: "Auction",
   components: {},
@@ -111,10 +110,15 @@ export default {
     };
   },
   methods: {
+    // Check for a user_id if none, boot to login
+    authCheck() {
+      if (localStorage.getItem("user_id") === null || undefined) {
+        this.$router.push("login");
+      }
+    },
     // Get call for growers array
     getAuction() {
-      this.auction_id = this.$store.state.auction_id;
-      console.log(this.$store.state.auction_id);
+      this.auction_id = localStorage.getItem("auction_id");
       axios
         .get("http://localhost:3333/get_auction/" + this.auction_id)
         .then(response => {
@@ -125,7 +129,7 @@ export default {
   },
   // run on page mount
   mounted: function() {
-    console.log("test");
+    this.authCheck();
     this.getAuction();
   }
 };

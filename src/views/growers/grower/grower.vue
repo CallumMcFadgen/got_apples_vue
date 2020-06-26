@@ -22,6 +22,26 @@
 
     <!-- SPACING -->
     <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+      </b-col>
+    </b-row>
+
+    <!-- STATEMENT -->
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <b-card class="statement_style">
+          <h2 class="statement_heading_style">Content comming soon</h2>
+          <br />
+          <p class="statement_text_style">
+            Keep an eye on this space for upcoming content and features!
+          </p>
+        </b-card>
+      </b-col>
+    </b-row>
+
+    <!-- SPACING -->
+    <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12" v-if="orchard.length > 0">
         Orchard test : {{ orchard[0].orchard_name }}
         <br />
@@ -29,7 +49,7 @@
     </b-row>
 
     <!-- FOOTER -->
-    <b-row class="footer_style">
+    <b-row class="blank_page_footer_style">
       <b-col cols="4">
         <div class="footer_affiliate_style">
           <span>Affiliate Link</span>
@@ -87,7 +107,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   name: "Grower",
   components: {},
@@ -114,22 +133,20 @@ export default {
     };
   },
   methods: {
-
+    // Get the grower array based on the grower id
     getGrower() {
-      this.grower_id = this.$store.state.grower_id;
+      this.grower_id = localStorage.getItem("grower_id");
       axios.get("http://localhost:3333/get_user/"+this.grower_id)
         .then(response => {
           this.grower = response.data;
-          console.log(this.grower);
         });
     },
-
+    // Get the orchard array based on the grower_id
     getOrchard() {
-      this.grower_id = this.$store.state.grower_id;
+      this.grower_id = localStorage.getItem("grower_id");
       axios.get("http://localhost:3333/get_orchard/"+this.grower_id)
         .then(response => {
           this.orchard = response.data;
-          console.log(this.orchard);
         });
     }
   },
@@ -278,6 +295,16 @@ export default {
   align-items: center;
   background: #64676c;
   color: #ffffff;
+}
+
+// overall styling for page footer
+.blank_page_footer_style {
+  align-items: center;
+  background: #64676c;
+  color: #ffffff;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
 
 // styling for the affilate links in the footer

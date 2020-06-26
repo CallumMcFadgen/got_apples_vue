@@ -1,6 +1,6 @@
 <template>
   <b-container fluid class="container_style">
-    
+
     <!-- NAVIGATION BREADCRUMBS -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
@@ -148,14 +148,12 @@
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
-    
+
   </b-container>
 </template>
 
-
 <script>
 import axios from "axios";
-
 export default {
   name: "Growers",
   components: {},
@@ -185,9 +183,8 @@ export default {
     },
     // Set a grower_id and navigate to grower page
     navToGrower(id) {
-      this.$store.dispatch("addGrowerId", id);
+      localStorage.setItem("grower_id", id);
       this.$router.push("grower");
-      console.log(this.$store.state.grower_id);
     }
   },
   // run on page mount
@@ -290,7 +287,6 @@ export default {
   border-radius: 3px;
 }
 
-
 // styling for the auction content box
 .grower_content_box_style {
   padding: none;
@@ -390,4 +386,3 @@ export default {
   font-family: Lato;
 }
 </style>
-
