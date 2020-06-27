@@ -1,130 +1,208 @@
 <template>
   <b-container fluid class="container_style">
-    <!-- NAVIGATION BREADCRUMBS -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
-        <div class="breadcrumbs_style">
-          <router-link class="breadcrumb_style" to="/">Home</router-link>
-          &nbsp;
-          <span class="breadcrumb_style">></span>
-          &nbsp;
-          <router-link class="breadcrumb_style" to="login">Login</router-link>
-          &nbsp;
-          <span class="breadcrumb_style">></span>
-          &nbsp;
-          <router-link class="breadcrumb_style" to="register"
-            >Register</router-link
-          >
+    <!-- HEADER -->
+    <b-row class="header_style">
+      <b-col class="">
+        <h1 class="header_logo_style">Got Apples!</h1>
+        <div class="header_icons_style">
+          <a href="https://www.facebook.com/">
+            <img
+              src="@/assets/images/social_media_icons/facebook.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.twitter.com/">
+            <img
+              src="@/assets/images/social_media_icons/twitter.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.instagram.com/">
+            <img
+              src="@/assets/images/social_media_icons/instagram.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.linkedin.com/">
+            <img
+              src="@/assets/images/social_media_icons/linkedin.png"
+              class="header_icon_style"
+            />
+          </a>
+          <img
+            src="@/assets/images/social_media_icons/phone.png"
+            class="header_icon_style"
+          />
         </div>
-        <div class="crumb_padding"></div>
+      </b-col>
+    </b-row>
+
+    <!-- NAVBAR -->
+    <b-row id="nav">
+      <b-col>
+        <router-link to="/">HOME</router-link>
+        <router-link to="/about">ABOUT</router-link>
+        <router-link to="/growers">GROWERS</router-link>
+        <router-link to="/auctions">AUCTIONS</router-link>
+        <router-link to="/varieties">VARIETIES</router-link>
+        <router-link to="/news">NEWS</router-link>
+        <router-link to="/contact">CONTACT</router-link>
+        <router-link
+          v-if="login_status == false"
+          class="login_style"
+          to="/login"
+          >LOGIN</router-link
+        >
+        <router-link
+          v-else-if="login_status == true"
+          class="login_style"
+          to="/dashboard"
+          >DASH</router-link
+        >
+      </b-col>
+    </b-row>
+
+    <!-- BREADCRUMBS -->
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </b-col>
     </b-row>
 
     <!-- PAGE HEADING -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <img
           src="@/assets/images/heading_backgrounds/home.png"
           class="img-fluid"
-          alt="Responsive image"
+          alt="heading background"
         />
         <h1 class="page_heading_txt">Register</h1>
       </b-col>
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <br />
       </b-col>
     </b-row>
 
     <!-- REGISTER FORM -->
-    <b-row>
-      <b-col
-        xs="12"
-        sm="12"
-        md="6"
-        offsetMd="3"
-        lg="6"
-        offsetlg="3"
-        xl="6"
-        offsetxl="3"
-      >
+    <b-row class="form_row_style">
+      <b-col xs="8" sm="8" md="8" lg="8" xl="8">
         <b-form class="login_form_style">
           <br />
           <h2>Create your account</h2>
           <br />
           <b-form-group class="login_input_style">
-            <b-form-input id="first_name" type="text" required placeholder="First name">
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="login_input_style">
-            <b-form-input id="last_name" type="text" required placeholder="Last name">
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="login_input_style">
-            <b-form-input id="username" type="text" required placeholder="Username">
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="login_input_style">
-            <b-form-input id="password" type="password" required placeholder="Password">
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="login_input_style">
-            <b-form-input id="email" type="email" required placeholder="Email">
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="login_input_style">
-            <b-form-input id="phone_number" type="text" required placeholder="Phone number">
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="login_input_style">
-            <b-form-input id="address_line_1" type="text" required placeholder="Address line 1">
+            <b-form-input
+              id="first_name"
+              type="text"
+              maxlength="50"
+              required
+              placeholder="First name"
+              v-model="user.first_name"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
             <b-form-input
-              id="address_line_2" type="text" required placeholder="Address line 2">
+              id="last_name"
+              type="text"
+              maxlength="50"
+              required
+              placeholder="Last name"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
-            <b-form-input id="region" type="text" required placeholder="Region">
+            <b-form-input
+              id="username"
+              type="text"
+              maxlength="50"
+              required
+              placeholder="Username"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
-            <b-form-input id="city" type="text" required placeholder="City">
+            <b-form-input
+              id="password"
+              type="password"
+              maxlength="50"
+              required
+              placeholder="Password"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
-            <b-form-input id="zip_code" type="text" required placeholder="ZIP code">
+            <b-form-input
+              id="email"
+              type="email"
+              maxlength="50"
+              required
+              placeholder="Email">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+              id="phone_number"
+              type="text"
+              maxlength="50"
+              required
+              placeholder="Phone number"
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+              id="address_line_1"
+              type="text"
+              maxlength="50"
+              required
+              placeholder="Address line 1"
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+              id="address_line_2"
+              type="text"
+              maxlength="50"
+              required
+              placeholder="Address line 2"
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+              id="region"
+              type="text" 
+              maxlength="50"
+              required
+              placeholder="Region"
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+              id="city"
+              type="text"
+              maxlength="50"
+              required
+              placeholder="City"
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="login_input_style">
+            <b-form-input
+              id="zip_code"
+              type="text"
+              maxlength="50"
+              required
+              placeholder="ZIP code"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group>
@@ -134,9 +212,11 @@
           </b-form-group>
           <br />
           <div>
-            <router-link to="dashboard">
-              <b-button class="button_style" type="submit">Register</b-button>
-            </router-link>
+            <b-button 
+            class="button_style" 
+            v-on:click="test()"
+            >Register</b-button
+            >
           </div>
           <br />
         </b-form>
@@ -144,59 +224,131 @@
     </b-row>
 
     <!-- SPACING -->
-    <b-row class="spacing_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <br />
       </b-col>
     </b-row>
 
     <!-- FOOTER -->
-    <b-row class="page_footer_style">
-      <b-col class="affiliate_link_style" xs="4" sm="4" md="4" lg="4" xl="4">
-        <div>
-          Links
-          <br />Here
+    <b-row class="footer_style">
+      <b-col cols="4">
+        <div class="footer_affiliate_style">
+          <span>Affiliate Link</span>
+          <br />
+          <span>Affiliate Link</span>
+          <br />
+          <span>Affiliate Link</span>
         </div>
       </b-col>
-      <b-col class="footer_logo_style" xs="4" sm="4" md="4" lg="4" xl="4">
+      <b-col class="footer_logo_style" cols="4">
         <div>
-          Logo
-          <br />Here
+          <p>Got Apples!</p>
         </div>
       </b-col>
-      <b-col class="social_media_link_style" xs="4" sm="4" md="4" lg="4" xl="4">
-        <div>
-          Social Media
-          <br />Here
+      <b-col cols="4">
+        <div class="footer_icons_style">
+          <a href="https://www.facebook.com/">
+            <img
+              src="@/assets/images/social_media_icons/facebook.png"
+              class="footer_icon_style"
+            />
+          </a>
+          <a href="https://www.twitter.com/">
+            <img
+              src="@/assets/images/social_media_icons/twitter.png"
+              class="footer_icon_style"
+            />
+          </a>
+          <a href="https://www.instagram.com/">
+            <img
+              src="@/assets/images/social_media_icons/instagram.png"
+              class="footer_icon_style"
+            />
+          </a>
+          <a href="https://www.linkedin.com/">
+            <img
+              src="@/assets/images/social_media_icons/linkedin.png"
+              class="footer_icon_style"
+            />
+          </a>
+          <img
+            src="@/assets/images/social_media_icons/phone.png"
+            class="footer_icon_style"
+          />
         </div>
       </b-col>
-    </b-row>
-
-    <!-- SUBFOOTER -->
-    <b-row class="sub_footer_style">
-      <b-col
-        xs="12"
-        sm="12"
-        md="10"
-        offsetMd="1"
-        lg="10"
-        offsetlg="1"
-        xl="10"
-        offsetxl="1"
-      >
+      <b-col cols="12" class="sub_footer_style">
+        <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
   </b-container>
 </template>
+
+<script>
+//import axios from "axios";
+export default {
+  name: "Register",
+  components: {},
+  data() {
+    return {
+      login_status: null,
+      user:{
+        first_name: null,
+        last_name: null,
+        user_name: null,
+        password: null,
+        email_address: null,
+        phone_number: null,
+        address_line_1: null,
+        address_line_2: null,
+        region: null,
+        city: null,
+        zip_code: null
+      },
+      breadcrumbs: [
+        {
+          text: "Home",
+          to: { name: "HOME" }
+        },
+        {
+          text: "Register",
+          to: { name: "REGISTER" },
+          active: true
+        }
+      ]
+    };
+  },
+  methods: {
+    test() {
+      console.log(this.user.first_name);
+    },
+    // Check for a user_id for nav modification
+    loggedInCheck() {
+      if (localStorage.getItem("user_id")) {
+        this.login_status = true;
+      } else {
+        this.login_status = false;
+      }
+    },
+      isFirstNameValid() {
+      if (!(!this.username || this.username.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid username into the Username field",
+          "Empty Username field",
+          "error"
+        );
+      }
+    },
+  },
+  // run on launch
+  mounted: function() {
+    this.loggedInCheck();
+  }
+};
+</script>
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -219,14 +371,86 @@
   transform: translate(-50%, -50%);
 }
 
-// PAGE STYLE ////////////////////////////////////////////////
+// OVERALL STYLE ////////////////////////////////////////////////
 
 // background color
 .container_style {
   background-color: #e3e4e6;
 }
 
-// navigation breadcrumbs style
+// HEADER STYLE /////////////////////////////////////////////
+
+// overall styling for the page header
+.header_style {
+  display: flex;
+  align-items: center;
+  background: #2a6f03;
+  border: thin, black, solid;
+  min-height: 9vh;
+}
+
+// styling for the header logo
+.header_logo_style {
+  font-family: Lato;
+  font-size: 2.25vw;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  float: left;
+  margin-left: 1%;
+}
+
+// styling for a header icon
+.header_icon_style {
+  padding: 0.5vh;
+}
+
+// styling for the header icons
+.header_icons_style {
+  position: absolute;
+  right: 0;
+  margin-right: 1vw;
+}
+
+// NAV BAR STYLE ////////////////////////////////////////
+#nav {
+  background: #64676c;
+  align-items: center;
+  min-height: 5.8vh;
+
+  a {
+    padding-top: 1.25vh;
+    padding-bottom: 1.25vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    color: white;
+    background: #64676c;
+    font-size: 1vw;
+    font-weight: 500;
+    font-family: Lato;
+    float: left;
+
+    &.router-link-exact-active {
+      font-weight: 650;
+    }
+  }
+}
+
+// margins for a row
+.nav_row_style {
+  margin-right: 0% !important;
+  margin-left: 0% !important;
+}
+
+// styling for the login/dash button
+.login_style {
+  float: right !important;
+}
+
+// CONTENT STYLE ///////////////////////////////////////
+
+// breadcrumbs style
 .breadcrumbs_style {
   background-color: transparent;
   text-align: left;
@@ -306,9 +530,4 @@
 }
 </style>
 
-<script>
-export default {
-  name: "Register",
-  components: {}
-};
-</script>
+

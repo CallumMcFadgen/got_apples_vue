@@ -1,6 +1,57 @@
 <template>
   <b-container fluid class="container_style">
-    <!-- NAVIGATION BREADCRUMBS -->
+    <!-- HEADER -->
+    <b-row class="header_style">
+      <b-col class="">
+        <h1 class="header_logo_style">Got Apples!</h1>
+        <div class="header_icons_style">
+          <a href="https://www.facebook.com/">
+            <img
+              src="@/assets/images/social_media_icons/facebook.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.twitter.com/">
+            <img
+              src="@/assets/images/social_media_icons/twitter.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.instagram.com/">
+            <img
+              src="@/assets/images/social_media_icons/instagram.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.linkedin.com/">
+            <img
+              src="@/assets/images/social_media_icons/linkedin.png"
+              class="header_icon_style"
+            />
+          </a>
+          <img
+            src="@/assets/images/social_media_icons/phone.png"
+            class="header_icon_style"
+          />
+        </div>
+      </b-col>
+    </b-row>
+
+    <!-- NAVBAR -->
+    <b-row id="nav">
+      <b-col>
+        <router-link to="/">HOME</router-link>
+        <router-link to="/about">ABOUT</router-link>
+        <router-link to="/growers">GROWERS</router-link>
+        <router-link to="/auctions">AUCTIONS</router-link>
+        <router-link to="/varieties">VARIETIES</router-link>
+        <router-link to="/news">NEWS</router-link>
+        <router-link to="/contact">CONTACT</router-link>
+        <router-link class="login_style" to="/login">LOGIN</router-link>
+      </b-col>
+    </b-row>
+
+    <!-- BREADCRUMBS -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
@@ -37,6 +88,7 @@
             <b-form-input
               id="username"
               type="text"
+              maxlength="50"
               required
               placeholder="Username"
               v-model="username"
@@ -47,15 +99,18 @@
             <b-form-input
               id="password"
               type="password"
+              maxlength="50"
               required
-              placeholder="Password"
+              placeholder="Username"
               v-model="password"
             >
             </b-form-input>
           </b-form-group>
           <br />
           <div>
-            <b-button class="button_style" v-on:click="getAuthentication()"
+            <b-button
+              class="button_style"
+              v-on:click="validationAndAuthentication()"
               >Login</b-button
             >
           </div>
@@ -157,7 +212,6 @@
   </b-container>
 </template>
 
-
 <script>
 import axios from "axios";
 export default {
@@ -183,16 +237,61 @@ export default {
     };
   },
   methods: {
+    // run validation and if successful, authentication
+    validationAndAuthentication() {
+      if (this.isUsernameValid() === true && this.isPasswordValid() === true) {
+        this.getAuthentication();
+      }
+    },
+    // Check username for null or empty
+    isUsernameValid() {
+      if (!(!this.username || this.username.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid username into the Username field",
+          "Empty Username field",
+          "error"
+        );
+      }
+    },
+    // Check password for null or empty
+    isPasswordValid() {
+      if (!(!this.password || this.password.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid password into the Pasword field",
+          "Empty Password field",
+          "error"
+        );
+      }
+    },
     // Get call for authentication response
     getAuthentication() {
-      axios.get("http://localhost:3333/get_login_auth/" + this.username + "/" + this.password)
+      axios
+        .get(
+          "http://localhost:3333/get_login_auth/" +
+            this.username +
+            "/" +
+            this.password
+        )
         .then(response => {
           this.login_status = response.data;
           if (this.login_status[0].MESSAGE == "success") {
+            this.$alert(
+              "Your login attempt was successful, welcome back " + this.username,
+              "Logging in",
+              "success"
+            );
             localStorage.setItem("user_id", this.username);
             this.$router.push("dashboard");
           } else {
-            // display fail message
+            this.$alert(
+              "Your login attempt was unsuccessful, please check your credentials and try again",
+              "Login Failed",
+              "error"
+            );
             this.username = null;
             this.password = null;
           }
@@ -223,14 +322,86 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-// PAGE STYLE ////////////////////////////////////////////////
+// OVERALL STYLE ////////////////////////////////////////////////
 
 // background color
 .container_style {
   background-color: #e3e4e6;
 }
 
-// navigation breadcrumbs style
+// HEADER STYLE /////////////////////////////////////////////
+
+// overall styling for the page header
+.header_style {
+  display: flex;
+  align-items: center;
+  background: #2a6f03;
+  border: thin, black, solid;
+  min-height: 9vh;
+}
+
+// styling for the header logo
+.header_logo_style {
+  font-family: Lato;
+  font-size: 2.25vw;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  float: left;
+  margin-left: 1%;
+}
+
+// styling for a header icon
+.header_icon_style {
+  padding: 0.5vh;
+}
+
+// styling for the header icons
+.header_icons_style {
+  position: absolute;
+  right: 0;
+  margin-right: 1vw;
+}
+
+// NAV BAR STYLE ////////////////////////////////////////
+#nav {
+  background: #64676c;
+  align-items: center;
+  min-height: 5.8vh;
+
+  a {
+    padding-top: 1.25vh;
+    padding-bottom: 1.25vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    color: white;
+    background: #64676c;
+    font-size: 1vw;
+    font-weight: 500;
+    font-family: Lato;
+    float: left;
+
+    &.router-link-exact-active {
+      font-weight: 650;
+    }
+  }
+}
+
+// margins for a row
+.nav_row_style {
+  margin-right: 0% !important;
+  margin-left: 0% !important;
+}
+
+// styling for the login/dash button
+.login_style {
+  float: right !important;
+}
+
+// CONTENT STYLE ///////////////////////////////////////
+
+// breadcrumbs style
 .breadcrumbs_style {
   background-color: transparent;
   text-align: left;

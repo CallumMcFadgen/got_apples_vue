@@ -1,7 +1,68 @@
 <template>
   <b-container fluid class="container_style">
+    <!-- HEADER -->
+    <b-row class="header_style">
+      <b-col class="">
+        <h1 class="header_logo_style">Got Apples!</h1>
+        <div class="header_icons_style">
+          <a href="https://www.facebook.com/">
+            <img
+              src="@/assets/images/social_media_icons/facebook.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.twitter.com/">
+            <img
+              src="@/assets/images/social_media_icons/twitter.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.instagram.com/">
+            <img
+              src="@/assets/images/social_media_icons/instagram.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.linkedin.com/">
+            <img
+              src="@/assets/images/social_media_icons/linkedin.png"
+              class="header_icon_style"
+            />
+          </a>
+          <img
+            src="@/assets/images/social_media_icons/phone.png"
+            class="header_icon_style"
+          />
+        </div>
+      </b-col>
+    </b-row>
 
-    <!-- NAVIGATION BREADCRUMBS -->
+    <!-- NAVBAR -->
+    <b-row id="nav">
+      <b-col>
+        <router-link to="/">HOME</router-link>
+        <router-link to="/about">ABOUT</router-link>
+        <router-link to="/growers">GROWERS</router-link>
+        <router-link to="/auctions">AUCTIONS</router-link>
+        <router-link to="/varieties">VARIETIES</router-link>
+        <router-link to="/news">NEWS</router-link>
+        <router-link to="/contact">CONTACT</router-link>
+        <router-link
+          v-if="login_status == false"
+          class="login_style"
+          to="/login"
+          >LOGIN</router-link
+        >
+        <router-link
+          v-else-if="login_status == true"
+          class="login_style"
+          to="/dashboard"
+          >DASH</router-link
+        >
+      </b-col>
+    </b-row>
+
+    <!-- BREADCRUMBS -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
@@ -311,19 +372,16 @@
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
-
   </b-container>
 </template>
 
-
 <script>
-//import App from "./App.vue";
-
 export default {
   name: "Home",
   components: {},
   data() {
     return {
+      login_status: null,
       breadcrumbs: [
         {
           text: "Home",
@@ -334,26 +392,21 @@ export default {
     };
   },
   methods: {
-    // check() {
-    //   this.$root.loggedInCheck();
-    //   console.log("check fired");
-    // },
-    // Check for a user_id if non navigate to login
-    authCheck() {
-      if (localStorage.getItem("user_id") === null || undefined) {
-        console.log("user_id does not exist");
-
-        this.$router.push("login");
+    // Check for a user_id for nav modification
+    loggedInCheck() {
+      if (localStorage.getItem("user_id")) {
+        this.login_status = true;
+      } else {
+        this.login_status = false;
       }
     }
   },
   // run on launch
   mounted: function() {
-    //this.check();
+    this.loggedInCheck();
   }
 };
 </script>
-
 
 <style lang="scss">
 // HEADING STYLE /////////////////////////////////////////////
@@ -377,14 +430,86 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-// PAGE STYLE ////////////////////////////////////////////////
+// OVERALL STYLE ////////////////////////////////////////////////
 
 // background color
 .container_style {
   background-color: #e3e4e6;
 }
 
-// navigation breadcrumbs style
+// HEADER STYLE /////////////////////////////////////////////
+
+// overall styling for the page header
+.header_style {
+  display: flex;
+  align-items: center;
+  background: #2a6f03;
+  border: thin, black, solid;
+  min-height: 9vh;
+}
+
+// styling for the header logo
+.header_logo_style {
+  font-family: Lato;
+  font-size: 2.25vw;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  float: left;
+  margin-left: 1%;
+}
+
+// styling for a header icon
+.header_icon_style {
+  padding: 0.5vh;
+}
+
+// styling for the header icons
+.header_icons_style {
+  position: absolute;
+  right: 0;
+  margin-right: 1vw;
+}
+
+// NAV BAR STYLE ////////////////////////////////////////
+#nav {
+  background: #64676c;
+  align-items: center;
+  min-height: 5.8vh;
+
+  a {
+    padding-top: 1.25vh;
+    padding-bottom: 1.25vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    color: white;
+    background: #64676c;
+    font-size: 1vw;
+    font-weight: 500;
+    font-family: Lato;
+    float: left;
+
+    &.router-link-exact-active {
+      font-weight: 650;
+    }
+  }
+}
+
+// margins for a row
+.nav_row_style {
+  margin-right: 0% !important;
+  margin-left: 0% !important;
+}
+
+// styling for the login/dash button
+.login_style {
+  float: right !important;
+}
+
+// CONTENT STYLE ///////////////////////////////////////
+
+// breadcrumbs style
 .breadcrumb {
   background-color: #e3e4e6 !important;
   position: relative;
@@ -550,4 +675,3 @@ export default {
   font-family: Lato;
 }
 </style>
-

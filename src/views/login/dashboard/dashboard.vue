@@ -1,7 +1,57 @@
 <template>
   <b-container fluid class="container_style">
+    <!-- HEADER -->
+    <b-row class="header_style">
+      <b-col class="">
+        <h1 class="header_logo_style">Got Apples!</h1>
+        <div class="header_icons_style">
+          <a href="https://www.facebook.com/">
+            <img
+              src="@/assets/images/social_media_icons/facebook.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.twitter.com/">
+            <img
+              src="@/assets/images/social_media_icons/twitter.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.instagram.com/">
+            <img
+              src="@/assets/images/social_media_icons/instagram.png"
+              class="header_icon_style"
+            />
+          </a>
+          <a href="https://www.linkedin.com/">
+            <img
+              src="@/assets/images/social_media_icons/linkedin.png"
+              class="header_icon_style"
+            />
+          </a>
+          <img
+            src="@/assets/images/social_media_icons/phone.png"
+            class="header_icon_style"
+          />
+        </div>
+      </b-col>
+    </b-row>
 
-    <!-- NAVIGATION BREADCRUMBS -->
+    <!-- NAVBAR -->
+    <b-row id="nav">
+      <b-col>
+        <router-link to="/">HOME</router-link>
+        <router-link to="/about">ABOUT</router-link>
+        <router-link to="/growers">GROWERS</router-link>
+        <router-link to="/auctions">AUCTIONS</router-link>
+        <router-link to="/varieties">VARIETIES</router-link>
+        <router-link to="/news">NEWS</router-link>
+        <router-link to="/contact">CONTACT</router-link>
+        <router-link class="login_style" to="/dashboard">DASH</router-link>
+      </b-col>
+    </b-row>
+
+    <!-- BREADCRUMBS -->
     <b-row class="row_style">
       <b-col xs="12" sm="12" md="12" lg="12" xl="12">
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
@@ -32,47 +82,49 @@
       <b-col xs="8" sm="8" md="8" lg="8" xl="8">
         <div class="account_form_style">
           <br />
-          <h2>Account Details</h2>
-          <br />
-          <h4>Personal information</h4>
-          <b-list-group v-if="user.length > 0">
-            <b-list-group-item class="account_text_style"
-              ><b>First name : </b> {{ user[0].first_name }}
-            </b-list-group-item>
-            <b-list-group-item class="account_text_style"
-              ><b>Last name : </b> {{ user[0].last_name }}
-            </b-list-group-item>
-            <b-list-group-item class="account_text_style"
-              ><b>Username : </b> {{ user[0].user_name }}
-            </b-list-group-item>
-            <b-list-group-item class="account_text_style"
-              ><b>Email Address : </b> {{ user[0].email_address }}
-            </b-list-group-item>
-            <b-list-group-item class="account_text_style"
-              ><b>Phone Number : </b> {{ user[0].phone_number }}
-            </b-list-group-item>
-            <b-list-group-item class="account_text_style"
-              ><b>Address Line 1 : </b> {{ user[0].address_line_1 }}
-            </b-list-group-item>
-            <b-list-group-item class="account_text_style"
-              ><b>Address Line 2 : </b> {{ user[0].address_line_2 }}
-            </b-list-group-item>
-            <b-list-group-item class="account_text_style"
-              ><b>Region : </b> {{ user[0].region }}
-            </b-list-group-item>
-            <b-list-group-item class="account_text_style"
-              ><b>City : </b> {{ user[0].city }}
-            </b-list-group-item>
-            <b-list-group-item class="account_text_style"
-              ><b>Zip Code : </b> {{ user[0].zip_code }}
-            </b-list-group-item>
-            <b-list-group-item
-              v-if="user[0].got_apples_member > 0"
-              class="account_text_style"
-              ><b>Got Apples Member</b></b-list-group-item
-            >
-          </b-list-group>
-          <br />
+          <template v-if="user.length > 0">
+            <h2>Account Details</h2>
+            <br />
+            <h4>Personal information</h4>
+            <b-list-group>
+              <b-list-group-item class="account_text_style"
+                ><b>First name : </b> {{ user[0].first_name }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Last name : </b> {{ user[0].last_name }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Username : </b> {{ user[0].user_name }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Email Address : </b> {{ user[0].email_address }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Phone Number : </b> {{ user[0].phone_number }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Address Line 1 : </b> {{ user[0].address_line_1 }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Address Line 2 : </b> {{ user[0].address_line_2 }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Region : </b> {{ user[0].region }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>City : </b> {{ user[0].city }}
+              </b-list-group-item>
+              <b-list-group-item class="account_text_style"
+                ><b>Zip Code : </b> {{ user[0].zip_code }}
+              </b-list-group-item>
+              <b-list-group-item
+                v-if="user[0].got_apples_member > 0"
+                class="account_text_style"
+                ><b>Got Apples Member</b></b-list-group-item
+              >
+            </b-list-group>
+            <br />
+          </template>
           <template v-if="orchard.length > 0">
             <br />
             <h4>Orchard information</h4>
@@ -170,7 +222,6 @@
         <span class="subfooter_text_style">© Got Apples Limited 2020</span>
       </b-col>
     </b-row>
-
   </b-container>
 </template>
 
@@ -257,14 +308,86 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-// PAGE STYLE ////////////////////////////////////////////////
+// OVERALL STYLE ////////////////////////////////////////////////
 
 // background color
 .container_style {
   background-color: #e3e4e6;
 }
 
-// navigation breadcrumbs style
+// HEADER STYLE /////////////////////////////////////////////
+
+// overall styling for the page header
+.header_style {
+  display: flex;
+  align-items: center;
+  background: #2a6f03;
+  border: thin, black, solid;
+  min-height: 9vh;
+}
+
+// styling for the header logo
+.header_logo_style {
+  font-family: Lato;
+  font-size: 2.25vw;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  float: left;
+  margin-left: 1%;
+}
+
+// styling for a header icon
+.header_icon_style {
+  padding: 0.5vh;
+}
+
+// styling for the header icons
+.header_icons_style {
+  position: absolute;
+  right: 0;
+  margin-right: 1vw;
+}
+
+// NAV BAR STYLE ////////////////////////////////////////
+#nav {
+  background: #64676c;
+  align-items: center;
+  min-height: 5.8vh;
+
+  a {
+    padding-top: 1.25vh;
+    padding-bottom: 1.25vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    color: white;
+    background: #64676c;
+    font-size: 1vw;
+    font-weight: 500;
+    font-family: Lato;
+    float: left;
+
+    &.router-link-exact-active {
+      font-weight: 650;
+    }
+  }
+}
+
+// margins for a row
+.nav_row_style {
+  margin-right: 0% !important;
+  margin-left: 0% !important;
+}
+
+// styling for the login/dash button
+.login_style {
+  float: right !important;
+}
+
+// CONTENT STYLE ///////////////////////////////////////
+
+// breadcrumbs style
 .breadcrumbs_style {
   background-color: transparent;
   text-align: left;
