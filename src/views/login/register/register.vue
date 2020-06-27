@@ -303,6 +303,7 @@ export default {
   components: {},
   data() {
     return {
+      username_count: null,
       login_status: null,
       user: {
         first_name: null,
@@ -494,24 +495,23 @@ export default {
     getUsernameCount() {
       axios.get("http://localhost:3333/get_username_count/" + this.user.user_name)
         .then(response => {
-          console.log(response);
-          // if (this.login_status[0].MESSAGE == "success") {
-          //   this.$alert(
-          //     "Your login attempt was successful, welcome back " + this.username,
-          //     "Logging in",
-          //     "success"
-          //   );
-          //   localStorage.setItem("user_id", this.username);
-          //   this.$router.push("dashboard");
-          // } else {
-          //   this.$alert(
-          //     "Your login attempt was unsuccessful, please check your credentials and try again",
-          //     "Login Failed",
-          //     "error"
-          //   );
-          //   this.username = null;
-          //   this.password = null;
-          // }
+          this.username_status = response.data;
+          if (this.username_status[0].MESSAGE == "AVAILABLE") {
+            this.$alert(
+              "Your registration attempt was successful, welcome " + this.user.user_name,
+              "Registered",
+              "success"
+            );
+            // localStorage.setItem("user_id", this.username);
+            // this.$router.push("dashboard");
+          } else {
+            this.$alert(
+              "Your registration attempt was unsuccessful, please try again with a diffrent username",
+              "Login Failed",
+              "error"
+            );
+
+          }
         });
     },
 
