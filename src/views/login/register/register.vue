@@ -497,25 +497,18 @@ export default {
         .then(response => {
           this.username_status = response.data;
           if (this.username_status[0].MESSAGE == "AVAILABLE") {
-            this.$alert(
-              "Your registration attempt was successful, welcome " + this.user.user_name,
-              "Registered",
-              "success"
-            );
-            // localStorage.setItem("user_id", this.username);
-            // this.$router.push("dashboard");
+            this.postUser();
           } else {
             this.$alert(
               "Your registration attempt was unsuccessful, please try again with a diffrent username",
               "Login Failed",
               "error"
             );
-
           }
         });
     },
 
-    // POST call to create new user - a bit messy, should just pass an object?
+    // POST call to create new user
     postUser() {
       const first_name = this.user.first_name;
       const last_name = this.user.last_name;
@@ -543,7 +536,7 @@ export default {
             "/" +
             phone_number +
             "/" +
-            address_line_1 + 
+            address_line_1 +
             "/" +
             address_line_2 +
             "/" +
@@ -555,6 +548,13 @@ export default {
         )
         .then(response => {
           console.log(response);
+          this.$alert(
+            "Your registration attempt was successful, welcome " + this.user.user_name,
+            "Registered",
+            "success"
+          );
+          localStorage.setItem("user_id", this.user.user_name);
+          this.$router.push("dashboard");
         });
     }
   },
