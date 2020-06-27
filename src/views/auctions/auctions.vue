@@ -250,6 +250,7 @@ export default {
   components: {},
   data() {
     return {
+      login_status: null,
       auctions: [],
       breadcrumbs: [
         {

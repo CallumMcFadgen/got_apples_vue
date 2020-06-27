@@ -269,13 +269,7 @@ export default {
     },
     // Get call for authentication response
     getAuthentication() {
-      axios
-        .get(
-          "http://localhost:3333/get_login_auth/" +
-            this.username +
-            "/" +
-            this.password
-        )
+      axios.get("http://localhost:3333/get_login_auth/" +this.username + "/" + this.password)
         .then(response => {
           this.login_status = response.data;
           if (this.login_status[0].MESSAGE == "success") {

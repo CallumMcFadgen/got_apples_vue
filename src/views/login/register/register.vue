@@ -113,6 +113,7 @@
               maxlength="50"
               required
               placeholder="Last name"
+              v-model="user.last_name"
             >
             </b-form-input>
           </b-form-group>
@@ -123,6 +124,7 @@
               maxlength="50"
               required
               placeholder="Username"
+              v-model="user.user_name"
             >
             </b-form-input>
           </b-form-group>
@@ -133,6 +135,7 @@
               maxlength="50"
               required
               placeholder="Password"
+              v-model="user.password"
             >
             </b-form-input>
           </b-form-group>
@@ -142,7 +145,9 @@
               type="email"
               maxlength="50"
               required
-              placeholder="Email">
+              placeholder="Email"
+              v-model="user.email_address"
+            >
             </b-form-input>
           </b-form-group>
           <b-form-group class="login_input_style">
@@ -152,6 +157,7 @@
               maxlength="50"
               required
               placeholder="Phone number"
+              v-model="user.phone_number"
             >
             </b-form-input>
           </b-form-group>
@@ -162,6 +168,7 @@
               maxlength="50"
               required
               placeholder="Address line 1"
+              v-model="user.address_line_1"
             >
             </b-form-input>
           </b-form-group>
@@ -172,6 +179,7 @@
               maxlength="50"
               required
               placeholder="Address line 2"
+              v-model="user.address_line_2"
             >
             </b-form-input>
           </b-form-group>
@@ -182,6 +190,7 @@
               maxlength="50"
               required
               placeholder="Region"
+              v-model="user.region"
             >
             </b-form-input>
           </b-form-group>
@@ -192,6 +201,7 @@
               maxlength="50"
               required
               placeholder="City"
+              v-model="user.city"
             >
             </b-form-input>
           </b-form-group>
@@ -202,6 +212,7 @@
               maxlength="50"
               required
               placeholder="ZIP code"
+              v-model="user.zip_code"
             >
             </b-form-input>
           </b-form-group>
@@ -213,9 +224,9 @@
           <br />
           <div>
             <b-button 
-            class="button_style" 
-            v-on:click="test()"
-            >Register</b-button
+              class="button_style"
+              v-on:click="userValidationAndPosting()"
+              >Register</b-button
             >
           </div>
           <br />
@@ -286,14 +297,14 @@
 </template>
 
 <script>
-//import axios from "axios";
+import axios from "axios";
 export default {
   name: "Register",
   components: {},
   data() {
     return {
       login_status: null,
-      user:{
+      user: {
         first_name: null,
         last_name: null,
         user_name: null,
@@ -320,9 +331,6 @@ export default {
     };
   },
   methods: {
-    test() {
-      console.log(this.user.first_name);
-    },
     // Check for a user_id for nav modification
     loggedInCheck() {
       if (localStorage.getItem("user_id")) {
@@ -331,17 +339,224 @@ export default {
         this.login_status = false;
       }
     },
-      isFirstNameValid() {
-      if (!(!this.username || this.username.trim().length === 0)) {
+    // run validation and if successful, authentication
+    userValidationAndPosting() {
+      console.log("userValidationAndPosting called");
+      if (
+        this.isFirstNameValid() === true &&
+        this.isLastNameValid() === true &&
+        this.isUsernameValid() === true &&
+        this.isPasswordValid() === true &&
+        this.isEmailValid() === true &&
+        this.isPhoneValid() === true &&
+        this.isAddress1Valid() === true &&
+        this.isAddress2Valid() === true &&
+        this.isregionValid() === true &&
+        this.isCityValid() === true &&
+        this.isZipValid() === true
+      ) {
+        this.getUsernameCount();
+      }
+    },
+    // Check first name for null or empty
+    isFirstNameValid() {
+      if (!(!this.user.first_name || this.user.first_name.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
-          "Please enter a valid username into the Username field",
-          "Empty Username field",
+          "Please enter a valid name into the first name field",
+          "Empty first name field",
           "error"
         );
       }
     },
+    // Check last name for null or empty
+    isLastNameValid() {
+      if (!(!this.user.last_name || this.user.last_name.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid name into the last name field",
+          "Empty last name field",
+          "error"
+        );
+      }
+    },
+    // Check username for null or empty
+    isUsernameValid() {
+      if (!(!this.user.user_name || this.user.user_name.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid name into the username field",
+          "Empty username field",
+          "error"
+        );
+      }
+    },
+    // Check password for null or empty
+    isPasswordValid() {
+      if (!(!this.user.password || this.user.password.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid password into the password field",
+          "Empty password field",
+          "error"
+        );
+      }
+    },
+    // Check password for null or empty
+    isEmailValid() {
+      if (!(!this.user.email_address || this.user.email_address.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid email address into the email field",
+          "Empty email field",
+          "error"
+        );
+      }
+    },
+    // Check password for null or empty
+    isPhoneValid() {
+      if (!(!this.user.phone_number || this.user.phone_number.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid phone number into the phone number field",
+          "Empty phone number field",
+          "error"
+        );
+      }
+    },
+    // Check password for null or empty
+    isAddress1Valid() {
+      if (!(!this.user.address_line_1 || this.user.address_line_1.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid address into the first address field",
+          "Empty address field",
+          "error"
+        );
+      }
+    },
+    // Check password for null or empty
+    isAddress2Valid() {
+      if (!(!this.user.address_line_2 || this.user.address_line_2.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid address into the second address field",
+          "Empty address field",
+          "error"
+        );
+      }
+    },
+    // Check password for null or empty
+    isregionValid() {
+      if (!(!this.user.region || this.user.region.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid region into the region field",
+          "Empty region field",
+          "error"
+        );
+      }
+    },
+    // Check password for null or empty
+    isCityValid() {
+      if (!(!this.user.city || this.user.city.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid city into the City field",
+          "Empty city field",
+          "error"
+        );
+      }
+    },
+    // Check password for null or empty
+    isZipValid() {
+      if (!(!this.user.zip_code || this.user.zip_code.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid zip code into the Zip code field",
+          "Empty Zip Code field",
+          "error"
+        );
+      }
+    },
+    // Get call for username match response
+    getUsernameCount() {
+      axios.get("http://localhost:3333/get_username_count/" + this.user.user_name)
+        .then(response => {
+          console.log(response);
+          // if (this.login_status[0].MESSAGE == "success") {
+          //   this.$alert(
+          //     "Your login attempt was successful, welcome back " + this.username,
+          //     "Logging in",
+          //     "success"
+          //   );
+          //   localStorage.setItem("user_id", this.username);
+          //   this.$router.push("dashboard");
+          // } else {
+          //   this.$alert(
+          //     "Your login attempt was unsuccessful, please check your credentials and try again",
+          //     "Login Failed",
+          //     "error"
+          //   );
+          //   this.username = null;
+          //   this.password = null;
+          // }
+        });
+    },
+
+    // POST call to create new user - a bit messy, should just pass an object?
+    postUser() {
+      const first_name = this.user.first_name;
+      const last_name = this.user.last_name;
+      const user_name = this.user.user_name;
+      const password = this.user.password;
+      const email_address = this.user.email_address;
+      const phone_number = this.user.phone_number;
+      const address_line_1 = this.user.address_line_1;
+      const address_line_2 = this.user.address_line_2;
+      const region = this.user.region;
+      const city = this.user.city;
+      const zip_code = this.user.zip_code;
+      axios
+        .post(
+          "http://localhost:3333/post_user/" +
+            first_name +
+            "/" +
+            last_name +
+            "/" +
+            user_name +
+            "/" +
+            password +
+            "/" +
+            email_address +
+            "/" +
+            phone_number +
+            "/" +
+            address_line_1 + 
+            "/" +
+            address_line_2 +
+            "/" +
+            region +
+            "/" +
+            city +
+            "/" +
+            zip_code
+        )
+        .then(response => {
+          console.log(response);
+        });
+    }
   },
   // run on launch
   mounted: function() {
