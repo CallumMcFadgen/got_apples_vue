@@ -13,8 +13,9 @@ import Article from "../views/news/article/article.vue";
 import Contact from "../views/contact/contact.vue";
 import Login from "../views/login/login.vue";
 import Dashboard from "../views/login/dashboard/dashboard.vue";
-import ManageAccount from "../views/login/dashboard/manage_account/manage_account.vue";
-import ManageAuctions from "../views/login/dashboard/manage_auctions/manage_auctions.vue";
+import EditUser from "../views/login/dashboard/edit_user/edit_user.vue";
+import CreateAuction from "../views/login/dashboard/auctions/create_auction.vue";
+import ViewAuctions from "../views/login/dashboard/auctions/view_auctions.vue";
 import Register from "../views/login/register/register.vue";
 
 Vue.use(VueRouter);
@@ -86,14 +87,19 @@ const routes = [
     component: Dashboard
   },
   {
-    path: "/manage_account",
-    name: "MANAGEACCOUNT",
-    component: ManageAccount
+    path: "/edit_user",
+    name: "EDITUSER",
+    component: EditUser
   },
   {
-    path: "/manage_auctions",
-    name: "MANAGEAUCTIONS",
-    component: ManageAuctions
+    path: "/create_auction",
+    name: "CREATEAUCTION",
+    component: CreateAuction
+  },
+  {
+    path: "/view_auctions",
+    name: "VIEWAUCTIONS",
+    component: ViewAuctions
   },
   {
     path: "/register",

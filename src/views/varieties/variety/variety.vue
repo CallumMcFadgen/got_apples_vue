@@ -219,14 +219,16 @@ export default {
       localStorage.removeItem("user_id");
       window.location.reload();
     },
-    // Get the variety array based on the variety id
+    // GET the variety array based on the variety id
     getVariety() {
       this.variety_id = localStorage.getItem("variety_id");
-      axios
-        .get("http://localhost:3333/get_variety/" + this.variety_id)
+      axios.get("http://localhost:3333/get_variety/" + this.variety_id)
         .then(response => {
           this.variety = response.data;
           console.log(this.variety);
+        })
+        .catch(error => {
+          console.log(error);
         });
     }
   },

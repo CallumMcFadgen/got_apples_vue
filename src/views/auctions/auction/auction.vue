@@ -82,9 +82,103 @@
           class="img-fluid"
           alt="heading background"
         />
-        <h1 class="page_heading_txt" v-if="auction.length > 0">{{auction[0].weight }}kg of {{auction[0].variety_name}} apples</h1>
+        <h1 class="page_heading_txt" v-if="auction.length > 0">
+          {{ auction[0].title }}
+        </h1>
       </b-col>
     </b-row>
+
+    <!-- SPACING -->
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+      </b-col>
+    </b-row>
+
+    <!-- AUCTION -->
+    <template v-if="auction.length > 0">
+    <b-row class="row_style">
+      <b-col xs="8" sm="8" md="8" lg="8" xl="8">
+        <div class="auctions_style">
+          <img
+            v-if="auction[0].variety_name === 'Baujade'"
+            class="auctions_image_style"
+            :src="'images/auction_baujade.png'"
+          />
+          <img
+            v-else-if="auction[0].variety_name === 'Blenheim Orange'"
+            class="auctions_image_style"
+            :src="'images/auction_blenheim_orange.png'"
+          />
+          <img
+            v-else-if="auction[0].variety_name === 'Bramleys Seedling'"
+            class="auctions_image_style"
+            :src="'images/auction_bramleys_seedling.png'"
+          />
+          <img
+            v-else-if="auction[0].variety_name === 'Golden Delicious'"
+            class="auctions_image_style"
+            :src="'images/auction_golden_delicious.png'"
+          />
+          <img
+            v-else-if="auction[0].variety_name === 'Tydemans Late Orange'"
+            class="auctions_image_style"
+            :src="'images/auction_tydemans_late_orange.png'"
+          />
+          <img
+            v-else-if="auction[0].variety_name === 'Worcester Pearmain'"
+            class="auctions_image_style"
+            :src="'images/auction_worcester_pearmain.png'"
+          />
+
+          <p class="auctions_text_style">
+            <b>Listed on :</b>
+            {{ auction[0].start_date | moment("DD/MM/YYYY") }}
+            <br />
+            <b>Closing on :</b>
+            {{ auction[0].end_date | moment("DD/MM/YYYY") }}
+            <br />
+            <b>Variety :</b>
+            {{ auction[0].variety_name }}
+            <br />
+            <b>Weight :</b>
+            {{ auction[0].weight }}kg
+            <br />
+            <b>Reserve :</b>
+            ${{ auction[0].reserve_amount }}
+            <br />
+            <span v-if="auction[0].buy_now > 0"> <b>Buy now :</b> available </span>
+            <span v-else-if="auction[0].buy_now === 0">
+              <b>Buy now :</b> unavailable
+            </span>
+            <br />
+            <span v-if="auction[0].delivery > 0">
+              <b>Delivery :</b> available
+            </span>
+            <span v-else-if="auction[0].delivery === 0">
+              <b>Delivery :</b> unavailable
+            </span>
+          </p>
+          <!-- <b-button
+            v-if="login_status == true"
+            class="auction_button_style"
+            v-on:click="navToAuction(auction.auction_number)"
+            >View Auction</b-button
+          >
+          <span
+            v-else-if="login_status == false"
+            class="auctions_login_message_text"
+          >
+            <b>Login or register to view </b>
+            <br />
+            <b>and bid on auctions</b>
+          </span> -->
+          <br />
+          <br />
+        </div>
+      </b-col>
+    </b-row>
+    </template>
 
     <!-- SPACING -->
     <b-row class="row_style">
@@ -155,6 +249,7 @@ export default {
   components: {},
   data() {
     return {
+      login_status: null,
       auction_id: null,
       auction: [],
       breadcrumbs: [
@@ -194,14 +289,16 @@ export default {
         this.$router.push("login");
       }
     },
-    // Get call for growers array
+    // GET call for growers array
     getAuction() {
       this.auction_id = localStorage.getItem("auction_id");
-      axios
-        .get("http://localhost:3333/get_auction/" + this.auction_id)
+      axios.get("http://localhost:3333/get_auction/" + this.auction_id)
         .then(response => {
           this.auction = response.data;
           console.log(this.auction);
+        })
+        .catch(error => {
+          console.log(error);
         });
     }
   },

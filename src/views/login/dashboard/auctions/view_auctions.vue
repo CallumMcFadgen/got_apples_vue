@@ -82,132 +82,78 @@
           class="img-fluid"
           alt="heading background"
         />
-        <h1 class="page_heading_txt">Auctions</h1>
+        <h1 class="page_heading_txt">View Auctions</h1>
       </b-col>
     </b-row>
 
-    <!-- SPACING -->
-    <b-row class="row_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
-        <br />
-      </b-col>
-    </b-row>
-
-    <!-- STATEMENT -->
-    <b-row class="row_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
-        <b-card class="statement_style">
-          <h2 class="statement_heading_style">How it works</h2>
-          <p class="statement_text_style">
-            Ka riri haere a Maui. “Maku e whai kaha, whai mana hei whakamana i
-            ahau ano”, noku te mana hei whakaarahi i oku tuakana. Ka whakaritea
-            e Maui he tatai hei whakamanahia i ona ake pukenga mo tenei mea te
-            hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
-            te rarangahia he rakau hii-ika. Ko te moemoea a Maui kia haere
-            ngatahi ai ratou ko ona tuakana ki te hii ika. I te hokinga mai o
-            ona tuakana ki tatahi, ka kii atu a Maui, “ka taea e au te haramai i
-            koutou na taha ki te hii ika?” Engari, ko te whakautu o ona “Kao, he
-            rangatahi noa iho koe. Kaore he wahi mau kei te waka te te waka nei,
-            na reira me noho tau ki tatahi ke”.
-          </p>
-        </b-card>
-      </b-col>
-    </b-row>
-
-    <!-- SPACING -->
-    <b-row class="row_style">
-      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
-        <br />
-      </b-col>
-    </b-row>
-
-    <!-- AUCTIONS -->
-    <b-row class="row_style">
-      <b-col class="col_style" xs="6" sm="6" md="3" lg="3" xl="3"
-        v-for="(auction, index) in auctions"
-        :key="`auction-${index}`"
-      >
-        <div class="auctions_style">
-          <h2 class="auctions_heading_style">
-            {{ auction.title }}
-          </h2>
-          <img
-            v-if="auction.variety_name === 'Baujade'"
-            class="auctions_image_style"
-            :src="'images/auction_baujade.png'"
-          />
-          <img
-            v-else-if="auction.variety_name === 'Blenheim Orange'"
-            class="auctions_image_style"
-            :src="'images/auction_blenheim_orange.png'"
-          />
-          <img
-            v-else-if="auction.variety_name === 'Bramleys Seedling'"
-            class="auctions_image_style"
-            :src="'images/auction_bramleys_seedling.png'"
-          />
-          <img
-            v-else-if="auction.variety_name === 'Golden Delicious'"
-            class="auctions_image_style"
-            :src="'images/auction_golden_delicious.png'"
-          />
-          <img
-            v-else-if="auction.variety_name === 'Tydemans Late Orange'"
-            class="auctions_image_style"
-            :src="'images/auction_tydemans_late_orange.png'"
-          />
-          <img
-            v-else-if="auction.variety_name === 'Worcester Pearmain'"
-            class="auctions_image_style"
-            :src="'images/auction_worcester_pearmain.png'"
-          />
-          <p class="auctions_text_style">
-            <b>Listed on :</b>
-            {{ auction.start_date | moment("DD/MM/YYYY") }}
+    <template v-if="auctions.length > 0">
+      <div v-for="(auction, index) in auctions" :key="`auction-${index}`">
+        <!-- SPACING -->
+        <b-row class="row_style">
+          <b-col xs="12" sm="12" md="12" lg="12" xl="12">
             <br />
-            <b>Closing on :</b>
-            {{ auction.end_date | moment("DD/MM/YYYY") }}
-            <br />
-            <b>Variety :</b>
-            {{ auction.variety_name }}
-            <br />
-            <b>Weight :</b>
-            {{ auction.weight }}kg
-            <br />
-            <b>Reserve :</b>
-            ${{ auction.reserve_amount }}
-            <br />
-            <span v-if="auction.buy_now > 0"> <b>Buy now :</b> available </span>
-            <span v-else-if="auction.buy_now === 0">
-              <b>Buy now :</b> unavailable
-            </span>
-            <br />
-            <span v-if="auction.delivery > 0">
-              <b>Delivery :</b> available
-            </span>
-            <span v-else-if="auction.delivery === 0">
-              <b>Delivery :</b> unavailable
-            </span>
-          </p>
-          <b-button
-            v-if="login_status == true"
-            class="auction_button_style"
-            v-on:click="navToAuction(auction.auction_number)"
-            >View Auction</b-button
-          >
-          <span
-            v-else-if="login_status == false"
-            class="auctions_login_message_text"
-          >
-            <b>Login or register to view </b>
-            <br />
-            <b>and bid on auctions</b>
-          </span>
-          <br />
-          <br />
-        </div>
-      </b-col>
-    </b-row>
+          </b-col>
+        </b-row>
+        <!-- AUCTION INFORMATION -->
+        <b-row class="form_row_style">
+          <b-col xs="8" sm="8" md="8" lg="8" xl="8">
+            <div class="account_form_style">
+              <br />
+              <h4>Auction Number {{ auction.auction_number }} </h4>
+              <b-list-group>
+                <b-list-group-item class="account_text_style"
+                  ><b>Title : </b> {{ auction.title }}
+                </b-list-group-item>
+                <b-list-group-item class="account_text_style"
+                  ><b>Description : </b> {{ auction.description }}
+                </b-list-group-item>
+                <b-list-group-item class="account_text_style"
+                  ><b>Start Date : </b> {{ auction.start_date | moment("DD/MM/YYYY") }}
+                </b-list-group-item>
+                <b-list-group-item class="account_text_style"
+                  ><b>End Date : </b> {{ auction.end_date | moment("DD/MM/YYYY") }}
+                </b-list-group-item>
+                <b-list-group-item class="account_text_style"
+                  ><b>Variety : </b> {{ auction.variety_name }}
+                </b-list-group-item>
+                <b-list-group-item class="account_text_style"
+                  ><b>Weight : </b> {{ auction.weight }}kg
+                </b-list-group-item>
+                <b-list-group-item class="account_text_style"
+                  ><b>Reserve Amount : </b> ${{ auction.reserve_amount }}
+                </b-list-group-item>
+                <template v-if="auction.buy_now > 0" >
+                  <b-list-group-item v-if="auction.buy_now > 0" class="account_text_style"
+                    ><b>Buy Now :</b> available
+                  </b-list-group-item>
+                  <b-list-group-item class="account_text_style"
+                    ><b>Buy Now Amount :</b> ${{ auction.buy_now_amount}}
+                  </b-list-group-item>
+                </template>
+                <b-list-group-item v-else-if="auction.buy_now === 0" class="account_text_style"
+                  ><b>Buy now :</b> unavailable
+                </b-list-group-item>
+                <template v-if="auction.delivery > 0">
+                  <b-list-group-item class="account_text_style"
+                    ><b>Delivery :</b> available
+                  </b-list-group-item>
+                  <b-list-group-item class="account_text_style"
+                    ><b>Delivery Amount :</b> ${{ auction.delivery_amount}}
+                  </b-list-group-item>
+                </template>
+                <b-list-group-item v-if="auction.sold > 0" class="account_text_style"
+                  ><b>Current status :</b> Sold
+                </b-list-group-item>
+                <b-list-group-item v-else-if="auction.sold === 0" class="account_text_style"
+                  ><b>Current status :</b> Unsold
+                </b-list-group-item>
+              </b-list-group>
+              <br />
+            </div>
+          </b-col>
+        </b-row>
+      </div>
+    </template>
 
     <!-- SPACING -->
     <b-row class="row_style">
@@ -235,18 +181,33 @@
       <b-col cols="4">
         <div class="footer_icons_style">
           <a href="https://www.facebook.com/">
-            <img src="@/assets/images/social_media_icons/facebook.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/facebook.png"
+              class="footer_icon_style"
+            />
           </a>
           <a href="https://www.twitter.com/">
-            <img src="@/assets/images/social_media_icons/twitter.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/twitter.png"
+              class="footer_icon_style"
+            />
           </a>
           <a href="https://www.instagram.com/">
-            <img src="@/assets/images/social_media_icons/instagram.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/instagram.png"
+              class="footer_icon_style"
+            />
           </a>
           <a href="https://www.linkedin.com/">
-            <img src="@/assets/images/social_media_icons/linkedin.png" class="footer_icon_style" />
+            <img
+              src="@/assets/images/social_media_icons/linkedin.png"
+              class="footer_icon_style"
+            />
           </a>
-          <img src="@/assets/images/social_media_icons/phone.png" class="footer_icon_style" />
+          <img
+            src="@/assets/images/social_media_icons/phone.png"
+            class="footer_icon_style"
+          />
         </div>
       </b-col>
       <b-col cols="12" class="sub_footer_style">
@@ -256,15 +217,15 @@
   </b-container>
 </template>
 
-
 <script>
 import axios from "axios";
 export default {
-  name: "Auctions",
+  name: "Dashboard",
   components: {},
   data() {
     return {
       login_status: null,
+      user_id: null,
       auctions: [],
       breadcrumbs: [
         {
@@ -272,14 +233,17 @@ export default {
           to: { name: "HOME" }
         },
         {
-          text: "Auctions",
-          to: { name: "AUCTIONS" },
+          text: "Dash",
+          to: { name: "DASHBOARD" }
+        },
+        {
+          text: "View Auctions",
+          to: { name: "VIEWAUCTIONS" },
           active: true
         }
       ]
     };
   },
-
   methods: {
     // Check for a user_id for nav modification
     loggedInCheck() {
@@ -294,9 +258,16 @@ export default {
       localStorage.removeItem("user_id");
       window.location.reload();
     },
+    // Check for a user_id if none, boot to login
+    authCheck() {
+      if (localStorage.getItem("user_id") === null || undefined) {
+        this.$router.push("login");
+      }
+    },
     // GET call for auctions array
     getAuctions() {
-      axios.get("http://localhost:3333/get_auctions")
+      this.user_id = localStorage.getItem("user_id");
+      axios.get("http://localhost:3333/get_grower_auctions/" + this.user_id)
         .then(response => {
           this.auctions = response.data;
           console.log(this.auctions);
@@ -304,16 +275,12 @@ export default {
         .catch(error => {
           console.log(error);
         });
-    },
-    // Set a auction id and navigate to auction page
-    navToAuction(id) {
-      localStorage.setItem("auction_id", id);
-      this.$router.push("auction");
     }
   },
   // run on page mount
   mounted: function() {
     this.loggedInCheck();
+    this.authCheck();
     this.getAuctions();
   }
 };
@@ -330,11 +297,10 @@ export default {
 
 //page heading text
 .page_heading_txt {
-  font-family: Lato;
   color: #fff;
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-  font-size: 10vw;
-  font-weight: 500;
+  font-size: 3vw;
+  font-weight: 400;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -434,36 +400,35 @@ export default {
 
 // CONTENT STYLE ///////////////////////////////////////
 
-// navigation breadcrumbs style
-.breadcrumb {
-  background-color: #e3e4e6 !important;
-  position: relative;
-  font-size: 100% !important;
+// breadcrumbs style
+.breadcrumbs_style {
+  background-color: transparent;
+  text-align: left;
 }
 
-// styling for the statment
-.statement_style {
-  background-color: white;
+// navigation breadcrumb style
+.breadcrumb_style {
+  text-decoration: none;
+  background-color: transparent;
+  font-size: 1.5vh;
+  color: black !important;
+  text-align: left;
 }
 
-// styling for the statment heading
-.statement_heading_style {
-  text-align: center;
-  font: Lato;
-  font-size: 2vw;
-  font-weight: bold;
-  color: black;
-  padding-top: 1vh;
+// padding for nav breadcrumbs
+.crumb_padding {
+  min-height: 0.5vh;
 }
 
-// styling for the statment heading
-.statement_text_style {
-  font: Merriweather;
-  color: #3d3d3d;
-  font-size: 1.05vw;
-  padding-left: 5vh;
-  padding-right: 5vh;
-  padding-bottom: 2.5vh;
+// margins for a form row
+.form_row_style {
+  //margin-right: 50% !important;
+  margin-left: 25% !important;
+}
+
+// spacing
+.spacing_style {
+  background-color: #e3e4e6;
 }
 
 // margins for a row
@@ -472,82 +437,41 @@ export default {
   margin-left: 7% !important;
 }
 
-// overall styling for a col
-.col_style {
-  display: inline-block;
-  padding: none;
-  margin: none;
-  display: flex;
-}
-
-// styling for the grower image
-.auctions_image_style {
-  display: flex;
-  margin: auto;
-  width: 80%;
-  border: thin black solid;
-  border-radius: 3px;
-}
-
-// styling for the auction content box
-.auctions_style {
+.account_form_style {
   background-color: white;
   text-align: center;
-  border-radius: 3px;
+  padding: none;
 }
 
-// styling for the grower heading
-.auctions_heading_style {
-  font: Lato;
-  font-size: 1.5vw;
-  text-align: center;
-  font-weight: semi-bold;
-  color: black;
-  margin-right: 5% !important;
-  margin-left: 5% !important;
-  padding-top: 5%;
-  padding-bottom: 3%;
+.account_text_style {
+  width: 90%;
+  margin-left: 5%;
+  //margin-right: ;
 }
 
-// styling for the tile text
-.auctions_text_style {
-  font: Merriweather;
-  color: #3d3d3d;
-  font-size: 1vw;
-  padding-left: 5vh;
-  padding-right: 5vh;
-  padding-top: 2.5vh;
+.register_tile_text {
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
-.auctions_login_message_text {
-  font: Merriweather;
-  color: #3d3d3d;
-  font-size: 1vw;
-  text-align: center;
-}
-
-// styling for the auction button
-.auction_button_style {
+.button_style {
   color: white !important;
   background-color: 64676c !important;
-  width: 10vw !important;
   border: medium #2a6f03 solid !important;
-  justify-content: center;
 }
 
 // FOOTER ////////////////////////////////////////////////
 
 // overall styling for page footer
-.footer_style {
-  align-items: center;
+.page_footer_style {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
   background: #64676c;
   color: #ffffff;
 }
 
 // styling for the affilate links in the footer
-.footer_affiliate_style {
-  font: Merriweather;
-  font-size: 0.8vw;
+.affiliate_link_style {
   text-align: center;
   border: thin, white, solid;
 }
@@ -555,38 +479,17 @@ export default {
 // styling for the page footer heading
 .footer_logo_style {
   text-align: center;
-  font-family: Lato;
-  font-size: 1.8vw;
-  font-weight: bold;
-  color: white;
-  padding-top: 0.5vh;
 }
 
-// styling for the header icons
-.footer_icons_style {
-  align-items: center;
-  display: flex;
-  margin-left: 10vw;
-}
-
-// styling for a header icon
-.footer_icon_style {
-  padding: 0.5vh;
+// styling for the social media links in the footer
+.social_media_link_style {
+  text-align: center;
+  border: thin, white, solid;
 }
 
 // over all styling for the page sub footer
 .sub_footer_style {
   height: 3vh;
   background: #2a6f03;
-  align-items: center;
-}
-
-// styling for the copyright text
-.sub_footer_style {
-  padding: 0;
-  font-size: 1.5vh;
-  text-align: center;
-  color: white;
-  font-family: Lato;
 }
 </style>

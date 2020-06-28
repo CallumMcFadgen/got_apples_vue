@@ -267,7 +267,7 @@ export default {
         );
       }
     },
-    // Get call for authentication response
+    // GET call for authentication response
     getAuthentication() {
       axios.get("http://localhost:3333/get_login_auth/" +this.username + "/" + this.password)
         .then(response => {
@@ -289,6 +289,9 @@ export default {
             this.username = null;
             this.password = null;
           }
+        })
+        .catch(error => {
+          console.log(error);
         });
     }
   }

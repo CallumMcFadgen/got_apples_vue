@@ -82,7 +82,7 @@
           class="img-fluid"
           alt="heading background"
         />
-        <h1 class="page_heading_txt">Register</h1>
+        <h1 class="page_heading_txt">Create Auction</h1>
       </b-col>
     </b-row>
 
@@ -102,38 +102,71 @@
           <br />
           <b-form-group class="register_input_style">
             <b-form-input
-              id="first_name"
+              id="title"
               type="text"
               maxlength="50"
               required
-              placeholder="First name"
-              v-model="user.first_name"
+              placeholder="Title"
+              v-model="auction.title"
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="register_input_style">
+            <b-form-textarea
+              id="description"
+              type="text"
+              maxlength="16,777,215"
+              no-resize
+              rows="6"
+              required
+              placeholder="Description"
+              v-model="auction.description"
+            >
+            </b-form-textarea>
+          </b-form-group>
+          <b-form-group>
+            <b-form-select
+              id="variety"
+              maxlength="50"
+              required
+              placeholder="Select a variety"
+              class="register_input_style"
+              v-model="auction.variety_name"
+            >
+              <b-form-select-option selected>Please select a variety</b-form-select-option>
+              <b-form-select-option value="Baujade">Baujade</b-form-select-option>
+              <b-form-select-option value="Blenheim Orange">Blenheim Orange</b-form-select-option>
+              <b-form-select-option value="Bramleys Seedling">Bramleys Seedling</b-form-select-option>
+              <b-form-select-option value="Golden Delicious">Golden Delicious</b-form-select-option>
+              <b-form-select-option value="Tydemans Late Orange">Tydemans Late Orange</b-form-select-option>
+              <b-form-select-option value="Worcester Pearmain">Worcester Pearmain</b-form-select-option>
+            </b-form-select>
+          </b-form-group>
+          <b-form-group class="register_input_style">
+            <b-form-input
+              id="weight"
+              type="number"
+              maxlength="13"
+              required
+              placeholder="Weight"
+              min="0"
+              v-model="auction.weight"
             >
             </b-form-input>
           </b-form-group>
           <b-form-group class="register_input_style">
             <b-form-input
-              id="last_name"
-              type="text"
-              maxlength="50"
+              id="reserve_amount"
+              type="number"
+              maxlength="13"
               required
-              placeholder="Last name"
-              v-model="user.last_name"
+              placeholder="Reserve amount"
+              min="0"
+              v-model="auction.reserve_amount"
             >
             </b-form-input>
           </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="username"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="Username"
-              v-model="user.user_name"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
+          <!--<b-form-group class="register_input_style">
             <b-form-input
               id="password"
               type="password"
@@ -158,7 +191,7 @@
           <b-form-group class="register_input_style">
             <b-form-input
               id="phone_number"
-              type="tel"
+              type="text"
               maxlength="50"
               required
               placeholder="Phone number"
@@ -213,7 +246,7 @@
           <b-form-group class="register_input_style">
             <b-form-input
               id="zip_code"
-              type="number"
+              type="text"
               maxlength="50"
               required
               placeholder="ZIP code"
@@ -225,7 +258,7 @@
             <b-form-checkbox-group>
               <b-form-checkbox>Request membership privilages</b-form-checkbox>
             </b-form-checkbox-group>
-          </b-form-group>
+          </b-form-group> -->
           <br />
           <div>
             <b-button 
@@ -304,24 +337,13 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Register",
+  name: "CreateAuction",
   components: {},
   data() {
     return {
-      username_count: null,
       login_status: null,
-      user: {
-        first_name: null,
-        last_name: null,
-        user_name: null,
-        password: null,
-        email_address: null,
-        phone_number: null,
-        address_line_1: null,
-        address_line_2: null,
-        region: null,
-        city: null,
-        zip_code: null
+      auction: {
+
       },
       breadcrumbs: [
         {
@@ -329,12 +351,12 @@ export default {
           to: { name: "HOME" }
         },
         {
-          text: "Login",
-          to: { name: "LOGIN" }
+          text: "Dash",
+          to: { name: "DASHBOARD" }
         },
         {
-          text: "Register",
-          to: { name: "REGISTER" },
+          text: "Create Auction",
+          to: { name: "CREATEAUCTION" },
           active: true
         }
       ]
@@ -355,8 +377,8 @@ export default {
       window.location.reload();
     },
     // run validation and if successful, authentication
-    userValidationAndPosting() {
-      console.log("userValidationAndPosting called");
+    auctionValidationAndPosting() {
+      console.log("auctionValidationAndPosting called");
       if (
         this.isFirstNameValid() === true &&
         this.isLastNameValid() === true &&
@@ -776,5 +798,4 @@ export default {
   background: #2a6f03;
 }
 </style>
-
 

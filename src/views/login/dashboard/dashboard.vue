@@ -93,15 +93,13 @@
       </b-col>
     </b-row>
 
-    <!-- ACCOUNT INFORMATION -->
-    <b-row class="form_row_style">
-      <b-col xs="8" sm="8" md="8" lg="8" xl="8">
-        <div class="account_form_style">
-          <br />
-          <template v-if="user.length > 0">
-            <h2>Account Details</h2>
+    <!-- USER INFORMATION -->
+    <template v-if="user.length > 0">
+      <b-row class="form_row_style">
+        <b-col xs="8" sm="8" md="8" lg="8" xl="8">
+          <div class="account_form_style">
             <br />
-            <h4>Personal information</h4>
+            <h4>Account details</h4>
             <b-list-group>
               <b-list-group-item class="account_text_style"
                 ><b>First name : </b> {{ user[0].first_name }}
@@ -136,14 +134,37 @@
               <b-list-group-item
                 v-if="user[0].got_apples_member > 0"
                 class="account_text_style"
-                ><b>Got Apples Member</b></b-list-group-item
-              >
+                ><b>Got Apples Member</b>
+              </b-list-group-item>
             </b-list-group>
             <br />
-          </template>
-          <template v-if="orchard.length > 0">
+            <div>
+            <b-button 
+              class="button_style"
+              v-on:click="navToUserEdit()"
+              >Edit Account</b-button
+            >
+            </div>
             <br />
-            <h4>Orchard information</h4>
+          </div>
+        </b-col>
+      </b-row>
+    </template>
+
+    <template v-if="orchard.length > 0">
+      <!-- SPACING -->
+      <b-row class="row_style">
+        <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+          <br />
+        </b-col>
+      </b-row>
+
+      <!-- ORCHARD INFORMATION -->
+      <b-row class="form_row_style">
+        <b-col xs="8" sm="8" md="8" lg="8" xl="8">
+          <div class="account_form_style">
+            <br />
+            <h4>Orchard details</h4>
             <b-list-group>
               <b-list-group-item class="account_text_style"
                 ><b>Name : </b> {{ orchard[0].orchard_name }}
@@ -174,10 +195,64 @@
               </b-list-group-item>
             </b-list-group>
             <br />
-          </template>
-        </div>
-      </b-col>
-    </b-row>
+            <div>
+              <b-button class="button_style">Edit Orchard</b-button>
+            </div>
+            <br />
+          </div>
+        </b-col>
+      </b-row>
+    </template>
+
+    <template v-if="user[0] && user[0].got_apples_member > 0">
+      <!-- SPACING -->
+      <b-row class="row_style">
+        <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+          <br />
+        </b-col>
+      </b-row>
+
+      <!-- CREATE AN AUCTION -->
+      <b-row class="form_row_style">
+        <b-col xs="8" sm="8" md="8" lg="8" xl="8">
+          <div class="account_form_style">
+            <br />
+            <h4>Add New Auction</h4>
+            <div>
+              <b-button 
+              v-on:click="navToCreateAuction()"
+              class="button_style">Create Auction</b-button>
+            </div>
+            <br />
+          </div>
+        </b-col>
+      </b-row>
+    </template>
+
+    <template v-if="auctions.length > 0">
+      <!-- SPACING -->
+      <b-row class="row_style">
+        <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+          <br />
+        </b-col>
+      </b-row>
+
+      <!-- VIEW AUCTIONS -->
+      <b-row class="form_row_style">
+        <b-col xs="8" sm="8" md="8" lg="8" xl="8">
+          <div class="account_form_style">
+            <br />
+            <h4>View {{ auction_count }} listed auctions</h4>
+            <div>
+              <b-button 
+              v-on:click="navToViewAuctions()"
+              class="button_style">View Auctions</b-button>
+            </div>
+            <br />
+          </div>
+        </b-col>
+      </b-row>
+    </template>
 
     <!-- SPACING -->
     <b-row class="row_style">
@@ -250,8 +325,10 @@ export default {
     return {
       login_status: null,
       user_id: null,
+      auction_count: null,
       user: [],
       orchard: [],
+      auctions: [],
       breadcrumbs: [
         {
           text: "Home",
@@ -278,35 +355,65 @@ export default {
     logout() {
       localStorage.removeItem("user_id");
       window.location.reload();
-    },    
+    },
     // Check for a user_id if none, boot to login
     authCheck() {
       if (localStorage.getItem("user_id") === null || undefined) {
         this.$router.push("login");
       }
     },
-    // Get call for user array
+    // GET call for user array
     getUser() {
       this.user_id = localStorage.getItem("user_id");
-      axios
-        .get("http://localhost:3333/get_user/" + this.user_id)
+      axios.get("http://localhost:3333/get_user/" + this.user_id)
         .then(response => {
           this.user = response.data;
           console.log(this.user);
           if (this.user[0].got_apples_member) {
             this.getOrchard();
+            this.getAuctions();
           }
+        })
+        .catch(error => {
+          console.log(error);
         });
     },
-    // Get call for orchard array
+    // GET call for orchard array
     getOrchard() {
       this.user_id = localStorage.getItem("user_id");
-      axios
-        .get("http://localhost:3333/get_orchard/" + this.user_id)
+      axios.get("http://localhost:3333/get_orchard/" + this.user_id)
         .then(response => {
           this.orchard = response.data;
           console.log(this.orchard);
+        })
+        .catch(error => {
+          console.log(error);
         });
+    },
+    // GET call for auctions array
+    getAuctions() {
+      this.user_id = localStorage.getItem("user_id");
+      axios.get("http://localhost:3333/get_grower_auctions/" + this.user_id)
+        .then(response => {
+          this.auctions = response.data;
+          console.log(this.auctions);
+          this.auction_count = this.auctions.length;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    // Navigate to user edit page
+    navToUserEdit() {
+      this.$router.push("edit_user");
+    },
+    // Navigate to create auction page
+    navToCreateAuction() {
+      this.$router.push("create_auction");
+    },
+    // Navigate to view auctions page
+    navToViewAuctions() {
+      this.$router.push("view_auctions");
     }
   },
   // run on page mount
@@ -472,6 +579,7 @@ export default {
 .account_form_style {
   background-color: white;
   text-align: center;
+  padding: none;
 }
 
 .account_text_style {

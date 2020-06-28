@@ -244,12 +244,16 @@ export default {
       localStorage.removeItem("user_id");
       window.location.reload();
     },
-    // Get call for growers array
+    // GET call for growers array
     getGrowers() {
-      axios.get("http://localhost:3333/get_growers").then(response => {
-        this.growers = response.data;
-        console.log(this.growers);
-      });
+      axios.get("http://localhost:3333/get_growers")
+        .then(response => {
+          this.growers = response.data;
+          console.log(this.growers);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
     // Set a grower_id and navigate to grower page
     navToGrower(id) {

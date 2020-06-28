@@ -239,12 +239,16 @@ export default {
       localStorage.removeItem("user_id");
       window.location.reload();
     },
-    // Get call for varieties array
+    // GET call for varieties array
     getVarieties() {
-      axios.get("http://localhost:3333/get_varieties").then(response => {
-        this.varieties = response.data;
-        console.log(this.varieties);
-      });
+      axios.get("http://localhost:3333/get_varieties")
+        .then(response => {
+          this.varieties = response.data;
+          console.log(this.varieties);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
     // Set a variety_id and navigate to variety page
     navToVariety(id) {

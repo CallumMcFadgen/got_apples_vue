@@ -37,7 +37,7 @@
       </b-col>
     </b-row>
 
-   <!-- NAVBAR -->
+    <!-- NAVBAR -->
     <b-row id="nav">
       <b-col>
         <router-link to="/">HOME</router-link>
@@ -82,7 +82,7 @@
           class="img-fluid"
           alt="heading background"
         />
-        <h1 class="page_heading_txt">Register</h1>
+        <h1 class="page_heading_txt">Edit Account</h1>
       </b-col>
     </b-row>
 
@@ -93,151 +93,167 @@
       </b-col>
     </b-row>
 
-    <!-- REGISTER FORM -->
-    <b-row class="form_row_style">
-      <b-col xs="8" sm="8" md="8" lg="8" xl="8">
-        <b-form class="register_form_style">
-          <br />
-          <h2>Create your account</h2>
-          <br />
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="first_name"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="First name"
-              v-model="user.first_name"
+    <!-- USER INFORMATION -->
+    <template v-if="user.length > 0">
+      <b-row class="account_form_row_style">
+        <b-col xs="10" sm="10" md="10" lg="10" xl="10">
+          <b-form class="account_form_style">
+            <br />
+            <h2>Account details</h2>
+            <br />
+            <b-form-group
+              class="account_input_style"
+              label-cols-sm="4"
+              label="First Name :"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="last_name"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="Last name"
-              v-model="user.last_name"
+              <b-form-input
+                id="first_name"
+                type="text"
+                maxlength="50"
+                required
+                placeholder="First name"
+                v-model="user[0].first_name"
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group
+              class="account_input_style"
+              label-cols-sm="4"
+              label="Last Name :"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="username"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="Username"
-              v-model="user.user_name"
+              <b-form-input
+                id="last_name"
+                type="text"
+                maxlength="50"
+                required
+                placeholder="Last name"
+                v-model="user[0].last_name"
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group
+              class="account_input_style"
+              label-cols-sm="4"
+              label="Email Address :"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="password"
-              type="password"
-              maxlength="50"
-              required
-              placeholder="Password"
-              v-model="user.password"
+              <b-form-input
+                id="email"
+                type="email"
+                maxlength="50"
+                required
+                placeholder="Email"
+                v-model="user[0].email_address"
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group
+              class="account_input_style"
+              label-cols-sm="4"
+              label="Phone Number :"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="email"
-              type="email"
-              maxlength="50"
-              required
-              placeholder="Email"
-              v-model="user.email_address"
+              <b-form-input
+                id="phone_number"
+                type="text"
+                maxlength="50"
+                required
+                placeholder="Phone number"
+                v-model="user[0].phone_number"
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group
+              class="account_input_style"
+              label-cols-sm="4"
+              label="Address Line 1 :"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="phone_number"
-              type="tel"
-              maxlength="50"
-              required
-              placeholder="Phone number"
-              v-model="user.phone_number"
+              <b-form-input
+                id="address_line_1"
+                type="text"
+                maxlength="50"
+                required
+                placeholder="Address line 1"
+                v-model="user[0].address_line_1"
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group
+              class="account_input_style"
+              label-cols-sm="4"
+              label="Address Line 2 :"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="address_line_1"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="Address line 1"
-              v-model="user.address_line_1"
+              <b-form-input
+                id="address_line_2"
+                type="text"
+                maxlength="50"
+                required
+                placeholder="Address line 2"
+                v-model="user[0].address_line_2"
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group
+              class="account_input_style"
+              label-cols-sm="4"
+              label="Region :"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="address_line_2"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="Address line 2"
-              v-model="user.address_line_2"
+              <b-form-input
+                id="region"
+                type="text" 
+                maxlength="50"
+                required
+                placeholder="Region"
+                v-model="user[0].region"
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group
+              class="account_input_style"
+              label-cols-sm="4"
+              label="City :"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="region"
-              type="text" 
-              maxlength="50"
-              required
-              placeholder="Region"
-              v-model="user.region"
+              <b-form-input
+                id="city"
+                type="text"
+                maxlength="50"
+                required
+                placeholder="City"
+                v-model="user[0].city"
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group
+              class="account_input_style"
+              label-cols="4"
+              label="Zip Code:"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="city"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="City"
-              v-model="user.city"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="zip_code"
-              type="number"
-              maxlength="50"
-              required
-              placeholder="ZIP code"
-              v-model="user.zip_code"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group>
-            <b-form-checkbox-group>
-              <b-form-checkbox>Request membership privilages</b-form-checkbox>
-            </b-form-checkbox-group>
-          </b-form-group>
-          <br />
-          <div>
+              <b-form-input
+                id="zip_code"
+                type="text"
+                maxlength="50"
+                required
+                placeholder="ZIP code"
+                v-model="user[0].zip_code"
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group>
+              <b-form-checkbox-group>
+                <b-form-checkbox>Request membership privilages</b-form-checkbox>
+              </b-form-checkbox-group>
+            </b-form-group>
+            <br />
+            <div>
             <b-button 
               class="button_style"
-              v-on:click="userValidationAndPosting()"
-              >Register</b-button
+              v-on:click="userValidationAndPatching()"
+              >Update</b-button
             >
-          </div>
-          <br />
-        </b-form>
-      </b-col>
-    </b-row>
+            </div>
+            <br />
+          </b-form>
+        </b-col>
+      </b-row>
+    </template>
 
     <!-- SPACING -->
     <b-row class="row_style">
@@ -304,17 +320,16 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Register",
+  name: "EditUser",
   components: {},
   data() {
     return {
-      username_count: null,
       login_status: null,
+      user_id: null,
       user: {
         first_name: null,
         last_name: null,
         user_name: null,
-        password: null,
         email_address: null,
         phone_number: null,
         address_line_1: null,
@@ -329,12 +344,12 @@ export default {
           to: { name: "HOME" }
         },
         {
-          text: "Login",
-          to: { name: "LOGIN" }
+          text: "Dash",
+          to: { name: "DASHBOARD" }
         },
         {
-          text: "Register",
-          to: { name: "REGISTER" },
+          text: "Edit Account",
+          to: { name: "EDITUSER" },
           active: true
         }
       ]
@@ -354,14 +369,18 @@ export default {
       localStorage.removeItem("user_id");
       window.location.reload();
     },
-    // run validation and if successful, authentication
-    userValidationAndPosting() {
-      console.log("userValidationAndPosting called");
+    // Check for a user_id if none, boot to login
+    authCheck() {
+      if (localStorage.getItem("user_id") === null || undefined) {
+        this.$router.push("login");
+      }
+    },
+    // run validation and if successful, update
+    userValidationAndPatching() {
+      console.log("userValidationAndPatching called");
       if (
         this.isFirstNameValid() === true &&
         this.isLastNameValid() === true &&
-        this.isUsernameValid() === true &&
-        this.isPasswordValid() === true &&
         this.isEmailValid() === true &&
         this.isPhoneValid() === true &&
         this.isAddress1Valid() === true &&
@@ -370,12 +389,12 @@ export default {
         this.isCityValid() === true &&
         this.isZipValid() === true
       ) {
-        this.getUsernameCount();
+        this.patchUser();
       }
     },
     // Check first name for null or empty
     isFirstNameValid() {
-      if (!(!this.user.first_name || this.user.first_name.trim().length === 0)) {
+      if (!(!this.user[0].first_name || this.user[0].first_name.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
@@ -387,7 +406,7 @@ export default {
     },
     // Check last name for null or empty
     isLastNameValid() {
-      if (!(!this.user.last_name || this.user.last_name.trim().length === 0)) {
+      if (!(!this.user[0].last_name || this.user[0].last_name.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
@@ -397,33 +416,9 @@ export default {
         );
       }
     },
-    // Check username for null or empty
-    isUsernameValid() {
-      if (!(!this.user.user_name || this.user.user_name.trim().length === 0)) {
-        return true;
-      } else {
-        this.$alert(
-          "Please enter a valid name into the username field",
-          "Empty username field",
-          "error"
-        );
-      }
-    },
-    // Check password for null or empty
-    isPasswordValid() {
-      if (!(!this.user.password || this.user.password.trim().length === 0)) {
-        return true;
-      } else {
-        this.$alert(
-          "Please enter a valid password into the password field",
-          "Empty password field",
-          "error"
-        );
-      }
-    },
     // Check email for null or empty
     isEmailValid() {
-      if (!(!this.user.email_address || this.user.email_address.trim().length === 0)) {
+      if (!(!this.user[0].email_address || this.user[0].email_address.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
@@ -435,7 +430,7 @@ export default {
     },
     // Check phone number for null or empty
     isPhoneValid() {
-      if (!(!this.user.phone_number || this.user.phone_number.trim().length === 0)) {
+      if (!(!this.user[0].phone_number || this.user[0].phone_number.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
@@ -447,7 +442,7 @@ export default {
     },
     // Check address line for null or empty
     isAddress1Valid() {
-      if (!(!this.user.address_line_1 || this.user.address_line_1.trim().length === 0)) {
+      if (!(!this.user[0].address_line_1 || this.user[0].address_line_1.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
@@ -459,7 +454,7 @@ export default {
     },
     // Check address line for null or empty
     isAddress2Valid() {
-      if (!(!this.user.address_line_2 || this.user.address_line_2.trim().length === 0)) {
+      if (!(!this.user[0].address_line_2 || this.user[0].address_line_2.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
@@ -471,7 +466,7 @@ export default {
     },
     // Check region for null or empty
     isregionValid() {
-      if (!(!this.user.region || this.user.region.trim().length === 0)) {
+      if (!(!this.user[0].region || this.user[0].region.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
@@ -483,7 +478,7 @@ export default {
     },
     // Check city for null or empty
     isCityValid() {
-      if (!(!this.user.city || this.user.city.trim().length === 0)) {
+      if (!(!this.user[0].city || this.user[0].city.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
@@ -495,7 +490,7 @@ export default {
     },
     // Check zip code for null or empty
     isZipValid() {
-      if (!(!this.user.zip_code || this.user.zip_code.trim().length === 0)) {
+      if (!(!this.user[0].zip_code || this.user[0].zip_code.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
@@ -505,47 +500,34 @@ export default {
         );
       }
     },
-    // GET call for username match response
-    getUsernameCount() {
-      axios.get("http://localhost:3333/get_username_count/" + this.user.user_name)
+    // GET call for user array
+    getUser() {
+      this.user_id = localStorage.getItem("user_id");
+      axios.get("http://localhost:3333/get_user/" + this.user_id)
         .then(response => {
-          this.username_status = response.data;
-          if (this.username_status[0].MESSAGE == "AVAILABLE") {
-            this.postUser();
-          } else {
-            this.$alert(
-              "Your registration attempt was unsuccessful, please try again with a diffrent username",
-              "Login Failed",
-              "error"
-            );
-          }
+          this.user = response.data;
+          console.log(this.user);
         })
         .catch(error => {
           console.log(error);
         });
     },
-
     // POST call to create new user
-    postUser() {
-      const first_name = this.user.first_name;
-      const last_name = this.user.last_name;
-      const user_name = this.user.user_name;
-      const password = this.user.password;
-      const email_address = this.user.email_address;
-      const phone_number = this.user.phone_number;
-      const address_line_1 = this.user.address_line_1;
-      const address_line_2 = this.user.address_line_2;
-      const region = this.user.region;
-      const city = this.user.city;
-      const zip_code = this.user.zip_code;
-      axios.post("http://localhost:3333/post_user/" +
+    patchUser() {
+      const first_name = this.user[0].first_name;
+      const last_name = this.user[0].last_name;
+      const email_address = this.user[0].email_address;
+      const phone_number = this.user[0].phone_number;
+      const address_line_1 = this.user[0].address_line_1;
+      const address_line_2 = this.user[0].address_line_2;
+      const region = this.user[0].region;
+      const city = this.user[0].city;
+      const zip_code = this.user[0].zip_code;
+      const user_name = this.user_id;
+      axios.patch("http://localhost:3333/patch_user/" +
             first_name +
             "/" +
             last_name +
-            "/" +
-            user_name +
-            "/" +
-            password +
             "/" +
             email_address +
             "/" +
@@ -559,16 +541,17 @@ export default {
             "/" +
             city +
             "/" +
-            zip_code
+            zip_code +
+            "/" +
+            user_name
         )
         .then(response => {
           console.log(response);
           this.$alert(
-            "Your registration attempt was successful, welcome " + this.user.user_name,
-            "Registered",
+            "Your update attempt was successful",
+            "Account updated",
             "success"
           );
-          localStorage.setItem("user_id", this.user.user_name);
           this.$router.push("dashboard");
         })
         .catch(error => {
@@ -576,9 +559,11 @@ export default {
         });
     }
   },
-  // run on launch
+  // run on page mount
   mounted: function() {
     this.loggedInCheck();
+    this.authCheck();
+    this.getUser();
   }
 };
 </script>
@@ -647,6 +632,7 @@ export default {
 }
 
 // NAV BAR STYLE ////////////////////////////////////////
+
 #nav {
   background: #64676c;
   align-items: center;
@@ -717,30 +703,43 @@ export default {
   min-height: 0.5vh;
 }
 
+// margins for a form row
+.account_form_row_style {
+  //margin-right: 50% !important;
+  margin-left: 15% !important;
+}
+
 // spacing
 .spacing_style {
   background-color: #e3e4e6;
 }
 
-.register_form_style {
+// margins for a row
+.row_style {
+  margin-right: 7% !important;
+  margin-left: 7% !important;
+}
+
+.account_form_style {
   background-color: white;
   text-align: center;
   padding: none;
 }
 
-.register_input_style {
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+.account_input_style {
+  width: 90%;
 }
 
-.register_tile_text {
-  margin-left: 3%;
-  margin-right: 3%;
+.account_text_style {
+  width: 90%;
+  margin-left: 5%;
+  //margin-right: ;
 }
 
 .button_style {
-  background-color: #64676c;
+  color: white !important;
+  background-color: 64676c !important;
+  border: medium #2a6f03 solid !important;
 }
 
 // FOOTER ////////////////////////////////////////////////
@@ -776,5 +775,4 @@ export default {
   background: #2a6f03;
 }
 </style>
-
 
