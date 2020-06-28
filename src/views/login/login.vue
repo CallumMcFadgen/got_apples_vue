@@ -101,7 +101,7 @@
               type="password"
               maxlength="50"
               required
-              placeholder="Username"
+              placeholder="Password"
               v-model="password"
             >
             </b-form-input>

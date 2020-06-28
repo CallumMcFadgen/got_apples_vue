@@ -53,12 +53,17 @@
           to="/login"
           >LOGIN</router-link
         >
+        <template v-else-if="login_status == true">
         <router-link
-          v-else-if="login_status == true"
-          class="login_style"
           to="/dashboard"
           >DASH</router-link
         >
+        <b-button 
+        v-on:click="logout()"
+        class="log_out_button_style"
+        variant="link"
+        >LOGOUT</b-button>
+        </template>
       </b-col>
     </b-row>
 
@@ -130,15 +135,7 @@
               {{ grower.first_name }} {{ grower.last_name }}
             </h2>
             <p class="grower_text_style">
-              Ki ta Maui e kii ai, “Kaore au e whakahoha i a koutou, ka noho hei
-              karetao noa iho, koinei taku whakapono ki a koutou.” Ko te
-              whakautu o te tuakana, “Na to hiroki ka pohehe matou he kai noa
-              iho ma nga ika”. Ka riri haere a Maui. “Maku e whai kaha, whai
-              mana hei whakamana i ahau ano”, noku te mana hei whakaarahi i oku
-              tuakana. Ka whakaritea e Maui he tatai hei whakamanahia i ona ake
-              pukenga mo tenei mea te hii-ika. I tetahi po i a Maui e noho tau
-              ana, ka timatahia e Maui ki te rarangahia he rakau hii-ika. I a ia
-              e rarangahia e waiatatia whakakaha i te rakau hii-ika.
+              <span class="grower_italic_text_style">"{{ grower.bio }}"</span>
               <br />
               <br />
               Click
@@ -148,7 +145,7 @@
                 v-on:click="navToGrower(grower.user_name)"
                 >here</b-button
               >
-              to learn more
+              to learn more about {{ grower.first_name }}
               <br />
             </p>
           </div>
@@ -241,6 +238,11 @@ export default {
       } else {
         this.login_status = false;
       }
+    },
+    // clear user_id and refresh page and show message
+    logout() {
+      localStorage.removeItem("user_id");
+      window.location.reload();
     },
     // Get call for growers array
     getGrowers() {
@@ -362,6 +364,20 @@ export default {
   float: right !important;
 }
 
+.log_out_button_style {
+  float: right !important;
+  color: white !important;
+  padding-top: 1.25vh;
+  padding-bottom: 1.25vh !important;
+  padding-left: 1vh !important;
+  padding-right: 1vh !important;
+  color: white !important;
+  background: #64676c !important;
+  font-size: 1vw !important;
+  font-weight: 500 !important;
+  font-family: Lato !important;
+}
+
 // CONTENT STYLE ///////////////////////////////////////
 
 // breadcrumbs style
@@ -389,7 +405,6 @@ export default {
 // styling for the statment heading
 .statement_text_style {
   font: Merriweather;
-  font-style: italic;
   color: #3d3d3d;
   font-size: 1.05vw;
   padding-left: 5vh;
@@ -456,6 +471,11 @@ export default {
   padding-left: 5vh;
   padding-right: 5vh;
   padding-top: 2.5vh;
+}
+
+// italics
+.grower_italic_text_style {
+  font-style: italic;
 }
 
 .grower_button_style {

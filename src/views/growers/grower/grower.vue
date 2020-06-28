@@ -53,12 +53,17 @@
           to="/login"
           >LOGIN</router-link
         >
+        <template v-else-if="login_status == true">
         <router-link
-          v-else-if="login_status == true"
-          class="login_style"
           to="/dashboard"
           >DASH</router-link
         >
+        <b-button 
+        v-on:click="logout()"
+        class="log_out_button_style"
+        variant="link"
+        >LOGOUT</b-button>
+        </template>
       </b-col>
     </b-row>
 
@@ -206,13 +211,19 @@ export default {
       } else {
         this.login_status = false;
       }
-    },    
+    },
+    // clear user_id and refresh page and show message
+    logout() {
+      localStorage.removeItem("user_id");
+      window.location.reload();
+    },
     // Get the grower array based on the grower id
     getGrower() {
       this.grower_id = localStorage.getItem("grower_id");
       axios.get("http://localhost:3333/get_user/"+this.grower_id)
         .then(response => {
           this.grower = response.data;
+          console.log(this.grower);
         });
     },
     // Get the orchard array based on the grower_id
@@ -221,6 +232,7 @@ export default {
       axios.get("http://localhost:3333/get_orchard/"+this.grower_id)
         .then(response => {
           this.orchard = response.data;
+          console.log(this.orchard);
         });
     }
   },
@@ -332,6 +344,20 @@ export default {
   float: right !important;
 }
 
+.log_out_button_style {
+  float: right !important;
+  color: white !important;
+  padding-top: 1.25vh;
+  padding-bottom: 1.25vh !important;
+  padding-left: 1vh !important;
+  padding-right: 1vh !important;
+  color: white !important;
+  background: #64676c !important;
+  font-size: 1vw !important;
+  font-weight: 500 !important;
+  font-family: Lato !important;
+}
+
 // CONTENT STYLE ///////////////////////////////////////
 
 // breadcrumbs style
@@ -373,19 +399,12 @@ export default {
 // styling for the statment heading
 .statement_text_style {
   font: Merriweather;
-  font-style: italic;
   color: #3d3d3d;
   font-size: 1.05vw;
   padding-left: 5vh;
   padding-right: 5vh;
   padding-bottom: 2.5vh;
 }
-
-// padding for the tile row
-// .tile_row_style {
-//   padding-left: 14vh;
-//   padding-right: 14vh;
-// }
 
 // styling for the tile
 .tile_style {

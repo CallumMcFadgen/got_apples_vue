@@ -47,7 +47,23 @@
         <router-link to="/varieties">VARIETIES</router-link>
         <router-link to="/news">NEWS</router-link>
         <router-link to="/contact">CONTACT</router-link>
-        <router-link class="login_style" to="/dashboard">DASH</router-link>
+        <router-link
+          v-if="login_status == false"
+          class="login_style"
+          to="/login"
+          >LOGIN</router-link
+        >
+        <template v-else-if="login_status == true">
+        <router-link
+          to="/dashboard"
+          >DASH</router-link
+        >
+        <b-button 
+        v-on:click="logout()"
+        class="log_out_button_style"
+        variant="link"
+        >LOGOUT</b-button>
+        </template>
       </b-col>
     </b-row>
 
@@ -232,6 +248,7 @@ export default {
   components: {},
   data() {
     return {
+      login_status: null,
       user_id: null,
       user: [],
       orchard: [],
@@ -249,6 +266,19 @@ export default {
     };
   },
   methods: {
+    // Check for a user_id for nav modification
+    loggedInCheck() {
+      if (localStorage.getItem("user_id")) {
+        this.login_status = true;
+      } else {
+        this.login_status = false;
+      }
+    },
+    // clear user_id and refresh page and show message
+    logout() {
+      localStorage.removeItem("user_id");
+      window.location.reload();
+    },    
     // Check for a user_id if none, boot to login
     authCheck() {
       if (localStorage.getItem("user_id") === null || undefined) {
@@ -281,6 +311,7 @@ export default {
   },
   // run on page mount
   mounted: function() {
+    this.loggedInCheck();
     this.authCheck();
     this.getUser();
   }
@@ -383,6 +414,20 @@ export default {
 // styling for the login/dash button
 .login_style {
   float: right !important;
+}
+
+.log_out_button_style {
+  float: right !important;
+  color: white !important;
+  padding-top: 1.25vh;
+  padding-bottom: 1.25vh !important;
+  padding-left: 1vh !important;
+  padding-right: 1vh !important;
+  color: white !important;
+  background: #64676c !important;
+  font-size: 1vw !important;
+  font-weight: 500 !important;
+  font-family: Lato !important;
 }
 
 // CONTENT STYLE ///////////////////////////////////////

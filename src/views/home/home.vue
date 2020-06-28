@@ -53,12 +53,17 @@
           to="/login"
           >LOGIN</router-link
         >
+        <template v-else-if="login_status == true">
         <router-link
-          v-else-if="login_status == true"
-          class="login_style"
           to="/dashboard"
           >DASH</router-link
         >
+        <b-button 
+        v-on:click="logout()"
+        class="log_out_button_style"
+        variant="link"
+        >LOGOUT</b-button>
+        </template>
       </b-col>
     </b-row>
 
@@ -259,7 +264,7 @@
     <b-row class="row_style">
       <b-col cols="4">
         <b-card class="tile_style">
-          <h4 class="title_heading_style">Try a new apple drink</h4>
+          <h4 class="title_heading_style">Intresting new ways to use apples</h4>
           <img
             class="tile_image_style"
             src="@/assets/images/home_page_tiles/tile_1.png"
@@ -271,13 +276,14 @@
             hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
             te rarangahia he rakau hii-ika.
             <br />
-            <br />Click <router-link to="login">here</router-link>to learn more
+            <br />Click <router-link to="news">here</router-link> to view more
+            articles
           </b-card-text>
         </b-card>
       </b-col>
       <b-col cols="4">
         <b-card class="tile_style">
-          <h4 class="title_heading_style">Meet our newest member</h4>
+          <h4 class="title_heading_style">Supporting local growers</h4>
           <img
             class="tile_image_style"
             src="@/assets/images/home_page_tiles/tile_2.png"
@@ -289,13 +295,14 @@
             hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
             te rarangahia he rakau hii-ika.
             <br />
-            <br />Click <router-link to="login">here</router-link>to learn more
+            <br />Click <router-link to="growers">here</router-link> to meet our
+            growers
           </b-card-text>
         </b-card>
       </b-col>
       <b-col cols="4">
         <b-card class="tile_style">
-          <h4 class="title_heading_style">Benifits of cleaning your apples</h4>
+          <h4 class="title_heading_style">Grab a great deal on apples</h4>
           <img
             class="tile_image_style"
             src="@/assets/images/home_page_tiles/tile_3.png"
@@ -307,7 +314,8 @@
             hii-ika. I tetahi po i a Maui e noho tau ana, ka timatahia e Maui ki
             te rarangahia he rakau hii-ika.
             <br />
-            <br />Click <router-link to="login">here</router-link>to learn more
+            <br />Click <router-link to="auctions">here</router-link> to view our
+            apple auctions
           </b-card-text>
         </b-card>
       </b-col>
@@ -399,6 +407,11 @@ export default {
       } else {
         this.login_status = false;
       }
+    },
+    // clear user_id and refresh page and show message
+    logout() {
+      localStorage.removeItem("user_id");
+      window.location.reload();
     }
   },
   // run on launch
@@ -502,9 +515,23 @@ export default {
   margin-left: 0% !important;
 }
 
-// styling for the login/dash button
+// styling for the login button
 .login_style {
   float: right !important;
+}
+
+.log_out_button_style {
+  float: right !important;
+  color: white !important;
+  padding-top: 1.25vh;
+  padding-bottom: 1.25vh !important;
+  padding-left: 1vh !important;
+  padding-right: 1vh !important;
+  color: white !important;
+  background: #64676c !important;
+  font-size: 1vw !important;
+  font-weight: 500 !important;
+  font-family: Lato !important;
 }
 
 // CONTENT STYLE ///////////////////////////////////////
@@ -564,7 +591,6 @@ export default {
 // styling for the statment heading
 .statement_text_style {
   font: Merriweather;
-  font-style: italic;
   color: #3d3d3d;
   font-size: 1.05vw;
   padding-left: 5vh;

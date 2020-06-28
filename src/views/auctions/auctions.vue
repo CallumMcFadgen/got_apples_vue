@@ -53,12 +53,17 @@
           to="/login"
           >LOGIN</router-link
         >
+        <template v-else-if="login_status == true">
         <router-link
-          v-else-if="login_status == true"
-          class="login_style"
           to="/dashboard"
           >DASH</router-link
         >
+        <b-button 
+        v-on:click="logout()"
+        class="log_out_button_style"
+        variant="link"
+        >LOGOUT</b-button>
+        </template>
       </b-col>
     </b-row>
 
@@ -185,10 +190,19 @@
             </span>
           </p>
           <b-button
+            v-if="login_status == true"
             class="auction_button_style"
             v-on:click="navToAuction(auction.auction_number)"
             >View Auction</b-button
           >
+          <span
+            v-else-if="login_status == false"
+            class="auctions_login_message_text"
+          >
+            <b>Login or register to view </b>
+            <br />
+            <b>and bid on auctions</b>
+          </span>
           <br />
           <br />
         </div>
@@ -274,6 +288,11 @@ export default {
       } else {
         this.login_status = false;
       }
+    },
+    // clear user_id and refresh page and show message
+    logout() {
+      localStorage.removeItem("user_id");
+      window.location.reload();
     },
     // Get call for auctions array
     getAuctions() {
@@ -395,6 +414,20 @@ export default {
   float: right !important;
 }
 
+.log_out_button_style {
+  float: right !important;
+  color: white !important;
+  padding-top: 1.25vh;
+  padding-bottom: 1.25vh !important;
+  padding-left: 1vh !important;
+  padding-right: 1vh !important;
+  color: white !important;
+  background: #64676c !important;
+  font-size: 1vw !important;
+  font-weight: 500 !important;
+  font-family: Lato !important;
+}
+
 // CONTENT STYLE ///////////////////////////////////////
 
 // navigation breadcrumbs style
@@ -422,7 +455,6 @@ export default {
 // styling for the statment heading
 .statement_text_style {
   font: Merriweather;
-  font-style: italic;
   color: #3d3d3d;
   font-size: 1.05vw;
   padding-left: 5vh;
@@ -481,6 +513,13 @@ export default {
   padding-left: 5vh;
   padding-right: 5vh;
   padding-top: 2.5vh;
+}
+
+.auctions_login_message_text {
+  font: Merriweather;
+  color: #3d3d3d;
+  font-size: 1vw;
+  text-align: center;
 }
 
 // styling for the auction button

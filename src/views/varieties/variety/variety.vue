@@ -37,7 +37,7 @@
       </b-col>
     </b-row>
 
-    <!-- NAVBAR -->
+   <!-- NAVBAR -->
     <b-row id="nav">
       <b-col>
         <router-link to="/">HOME</router-link>
@@ -53,12 +53,17 @@
           to="/login"
           >LOGIN</router-link
         >
+        <template v-else-if="login_status == true">
         <router-link
-          v-else-if="login_status == true"
-          class="login_style"
           to="/dashboard"
           >DASH</router-link
         >
+        <b-button 
+        v-on:click="logout()"
+        class="log_out_button_style"
+        variant="link"
+        >LOGOUT</b-button>
+        </template>
       </b-col>
     </b-row>
 
@@ -209,6 +214,11 @@ export default {
         this.login_status = false;
       }
     },
+    // clear user_id and refresh page and show message
+    logout() {
+      localStorage.removeItem("user_id");
+      window.location.reload();
+    },
     // Get the variety array based on the variety id
     getVariety() {
       this.variety_id = localStorage.getItem("variety_id");
@@ -327,6 +337,20 @@ export default {
   float: right !important;
 }
 
+.log_out_button_style {
+  float: right !important;
+  color: white !important;
+  padding-top: 1.25vh;
+  padding-bottom: 1.25vh !important;
+  padding-left: 1vh !important;
+  padding-right: 1vh !important;
+  color: white !important;
+  background: #64676c !important;
+  font-size: 1vw !important;
+  font-weight: 500 !important;
+  font-family: Lato !important;
+}
+
 // CONTENT STYLE ///////////////////////////////////////
 
 // breadcrumbs style
@@ -368,7 +392,6 @@ export default {
 // styling for the statment heading
 .statement_text_style {
   font: Merriweather;
-  font-style: italic;
   color: #3d3d3d;
   font-size: 1.05vw;
   padding-left: 5vh;
