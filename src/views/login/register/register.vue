@@ -676,6 +676,12 @@ export default {
   margin-left: 0% !important;
 }
 
+// margins for a form row
+.form_row_style {
+  //margin-right: 50% !important;
+  margin-left: 25% !important;
+}
+
 // styling for the login/dash button
 .login_style {
   float: right !important;

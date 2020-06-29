@@ -93,7 +93,7 @@
       </b-col>
     </b-row>
 
-    <!-- REGISTER FORM -->
+    <!-- CREATE AUCTION FORM -->
     <b-row class="form_row_style">
       <b-col xs="8" sm="8" md="8" lg="8" xl="8">
         <b-form class="register_form_style">
@@ -124,23 +124,8 @@
             >
             </b-form-textarea>
           </b-form-group>
-          <b-form-group>
-            <b-form-select
-              id="variety"
-              maxlength="50"
-              required
-              placeholder="Select a variety"
-              class="register_input_style"
-              v-model="auction.variety_name"
-            >
-              <b-form-select-option selected>Please select a variety</b-form-select-option>
-              <b-form-select-option value="Baujade">Baujade</b-form-select-option>
-              <b-form-select-option value="Blenheim Orange">Blenheim Orange</b-form-select-option>
-              <b-form-select-option value="Bramleys Seedling">Bramleys Seedling</b-form-select-option>
-              <b-form-select-option value="Golden Delicious">Golden Delicious</b-form-select-option>
-              <b-form-select-option value="Tydemans Late Orange">Tydemans Late Orange</b-form-select-option>
-              <b-form-select-option value="Worcester Pearmain">Worcester Pearmain</b-form-select-option>
-            </b-form-select>
+          <b-form-group class="register_input_style">
+            <b-form-select v-model="auction.variety_name" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group class="register_input_style">
             <b-form-input
@@ -166,105 +151,51 @@
             >
             </b-form-input>
           </b-form-group>
-          <!--<b-form-group class="register_input_style">
-            <b-form-input
-              id="password"
-              type="password"
-              maxlength="50"
-              required
-              placeholder="Password"
-              v-model="user.password"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="email"
-              type="email"
-              maxlength="50"
-              required
-              placeholder="Email"
-              v-model="user.email_address"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="phone_number"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="Phone number"
-              v-model="user.phone_number"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="address_line_1"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="Address line 1"
-              v-model="user.address_line_1"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="address_line_2"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="Address line 2"
-              v-model="user.address_line_2"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="region"
-              type="text" 
-              maxlength="50"
-              required
-              placeholder="Region"
-              v-model="user.region"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="city"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="City"
-              v-model="user.city"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group class="register_input_style">
-            <b-form-input
-              id="zip_code"
-              type="text"
-              maxlength="50"
-              required
-              placeholder="ZIP code"
-              v-model="user.zip_code"
-            >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group>
+          <b-form-group class="create_auction_checkbox_style">
             <b-form-checkbox-group>
-              <b-form-checkbox>Request membership privilages</b-form-checkbox>
+              <b-form-checkbox
+                v-model="auction.buy_now"
+              >Buy now</b-form-checkbox>
             </b-form-checkbox-group>
-          </b-form-group> -->
+          </b-form-group>
+          <b-form-group class="register_input_style">
+            <b-form-input
+              id="buy_now_amount"
+              type="number"
+              maxlength="13"
+              required
+              placeholder="Buy now amount"
+              min="0"
+              v-model="auction.buy_now_amount"
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group class="create_auction_checkbox_style">
+            <b-form-checkbox-group>
+              <b-form-checkbox
+               v-model="auction.delivery"
+              >Delivery</b-form-checkbox>
+            </b-form-checkbox-group>
+          </b-form-group>
+          <b-form-group class="register_input_style">
+            <b-form-input
+              id="delivery_amount"
+              type="number"
+              maxlength="13"
+              required
+              placeholder="Delivery amount"
+              min="0"
+              v-model="auction.delivery_amount"
+            >
+            </b-form-input>
+          </b-form-group>
+
           <br />
           <div>
             <b-button 
               class="button_style"
-              v-on:click="userValidationAndPosting()"
-              >Register</b-button
+              v-on:click="auctionValidationAndPosting()"
+              >Create Auction</b-button
             >
           </div>
           <br />
@@ -343,8 +274,32 @@ export default {
     return {
       login_status: null,
       auction: {
-
+        title: null,
+        weight: null,
+        start_date: null,
+        end_date: null,
+        description: null,
+        reserve_amount: null,
+        buy_now: {
+          0: null
+        },
+        buy_now_amount: null,
+        delivery: {
+          0: null
       },
+        delivery_amount: null,
+        user_name: null,
+        variety_name: null
+      },
+      options: [
+        { value: null, text: 'Please select a variety' },
+        { value: 'Baujade', text: 'Baujade' },
+        { value: 'Blenheim Orange', text: 'Blenheim Orange' },
+        { value: 'Bramleys Seedling', text: 'Bramleys Seedling' },
+        { value: 'Golden Delicious', text: 'Golden Delicious' },
+        { value: 'Tydemans Late Orange', text: 'Tydemans Late Orange' },
+        { value: 'Worcester Pearmain', text: 'Worcester Pearmain' }
+      ],
       breadcrumbs: [
         {
           text: "Home",
@@ -376,221 +331,170 @@ export default {
       localStorage.removeItem("user_id");
       window.location.reload();
     },
-    // run validation and if successful, authentication
+    // set Buy Now to correct vars for parsing
+    buyNowSetter() {
+      if (this.auction.buy_now[0] === true) {
+        this.auction.buy_now = "1";
+      } else {
+        this.auction.buy_now = "0";
+      }
+    },
+    // set Buy Now to correct vars for parsing
+    buyNowAmountSetter() {
+      if (this.auction.buy_now_amount === null) {
+        this.auction.buy_now_amount = "0";
+      }
+    },
+    // set Buy Now to correct vars for parsing
+    deliverySetter() {
+      if (this.auction.delivery[0] === true) {
+        this.auction.delivery = "1";
+      } else {
+        this.auction.delivery = "0";
+      }
+    },
+    // set Buy Now to correct vars for parsing
+    deliveryAmountSetter() {
+      if (this.auction.delivery_amount === null) {
+        this.auction.delivery_amount = "0";
+      }
+    },
+    // set dates to correct vars for parsing
+    dateSetter() {
+      this.auction.start_date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      let date = new Date();
+      date.setDate(date.getDate() + 7);
+      this.auction.end_date = date.toISOString().slice(0, 19).replace('T', ' ');
+    },
+    // run validation and if successful set some values and call POST
     auctionValidationAndPosting() {
       console.log("auctionValidationAndPosting called");
       if (
-        this.isFirstNameValid() === true &&
-        this.isLastNameValid() === true &&
-        this.isUsernameValid() === true &&
-        this.isPasswordValid() === true &&
-        this.isEmailValid() === true &&
-        this.isPhoneValid() === true &&
-        this.isAddress1Valid() === true &&
-        this.isAddress2Valid() === true &&
-        this.isregionValid() === true &&
-        this.isCityValid() === true &&
-        this.isZipValid() === true
+        this.isTitleValid() === true &&
+        this.isDescValid() === true &&
+        this.isVarietyValid() === true &&
+        this.isWeightValid() === true &&
+        this.isReserveValid() === true
       ) {
-        this.getUsernameCount();
+        this.buyNowSetter();
+        this.buyNowAmountSetter();
+        this.deliverySetter();
+        this.deliveryAmountSetter();
+        this.dateSetter();
+        this.auction.user_name = localStorage.getItem("user_id");
+        this.postAuction();
       }
     },
-    // Check first name for null or empty
-    isFirstNameValid() {
-      if (!(!this.user.first_name || this.user.first_name.trim().length === 0)) {
+    // Check title for null or empty
+    isTitleValid() {
+      if (!(!this.auction.title || this.auction.title.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
-          "Please enter a valid name into the first name field",
-          "Empty first name field",
+          "Please enter a valid title into the title field",
+          "Empty title field",
           "error"
         );
       }
     },
-    // Check last name for null or empty
-    isLastNameValid() {
-      if (!(!this.user.last_name || this.user.last_name.trim().length === 0)) {
+    // Check description for null or empty
+    isDescValid() {
+      if (!(!this.auction.description || this.auction.description.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
-          "Please enter a valid name into the last name field",
-          "Empty last name field",
+          "Please enter a valid description into the description field",
+          "Empty description field",
           "error"
         );
       }
     },
-    // Check username for null or empty
-    isUsernameValid() {
-      if (!(!this.user.user_name || this.user.user_name.trim().length === 0)) {
+    // Check description for null or empty
+    isVarietyValid() {
+      if (!(!this.auction.variety_name || this.auction.variety_name.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
-          "Please enter a valid name into the username field",
-          "Empty username field",
+          "Please select a valid variety in the variety selector",
+          "Empty variety selector",
           "error"
         );
       }
     },
-    // Check password for null or empty
-    isPasswordValid() {
-      if (!(!this.user.password || this.user.password.trim().length === 0)) {
+    // Check weight for null or empty
+    isWeightValid() {
+      if (!(!this.auction.weight || this.auction.weight.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
-          "Please enter a valid password into the password field",
-          "Empty password field",
+          "Please enter a valid weight into the weight field",
+          "Empty weight field",
           "error"
         );
       }
     },
-    // Check email for null or empty
-    isEmailValid() {
-      if (!(!this.user.email_address || this.user.email_address.trim().length === 0)) {
+    // Check reserve for null or empty
+    isReserveValid() {
+      if (!(!this.auction.reserve_amount || this.auction.reserve_amount.trim().length === 0)) {
         return true;
       } else {
         this.$alert(
-          "Please enter a valid email address into the email field",
-          "Empty email field",
+          "Please enter a valid amount into the reserve amount field",
+          "Empty reserve field",
           "error"
         );
       }
-    },
-    // Check phone number for null or empty
-    isPhoneValid() {
-      if (!(!this.user.phone_number || this.user.phone_number.trim().length === 0)) {
-        return true;
-      } else {
-        this.$alert(
-          "Please enter a valid phone number into the phone number field",
-          "Empty phone number field",
-          "error"
-        );
-      }
-    },
-    // Check address line for null or empty
-    isAddress1Valid() {
-      if (!(!this.user.address_line_1 || this.user.address_line_1.trim().length === 0)) {
-        return true;
-      } else {
-        this.$alert(
-          "Please enter a valid address into the first address field",
-          "Empty address field",
-          "error"
-        );
-      }
-    },
-    // Check address line for null or empty
-    isAddress2Valid() {
-      if (!(!this.user.address_line_2 || this.user.address_line_2.trim().length === 0)) {
-        return true;
-      } else {
-        this.$alert(
-          "Please enter a valid address into the second address field",
-          "Empty address field",
-          "error"
-        );
-      }
-    },
-    // Check region for null or empty
-    isregionValid() {
-      if (!(!this.user.region || this.user.region.trim().length === 0)) {
-        return true;
-      } else {
-        this.$alert(
-          "Please enter a valid region into the region field",
-          "Empty region field",
-          "error"
-        );
-      }
-    },
-    // Check city for null or empty
-    isCityValid() {
-      if (!(!this.user.city || this.user.city.trim().length === 0)) {
-        return true;
-      } else {
-        this.$alert(
-          "Please enter a valid city into the City field",
-          "Empty city field",
-          "error"
-        );
-      }
-    },
-    // Check zip code for null or empty
-    isZipValid() {
-      if (!(!this.user.zip_code || this.user.zip_code.trim().length === 0)) {
-        return true;
-      } else {
-        this.$alert(
-          "Please enter a valid zip code into the Zip code field",
-          "Empty Zip Code field",
-          "error"
-        );
-      }
-    },
-    // GET call for username match response
-    getUsernameCount() {
-      axios.get("http://localhost:3333/get_username_count/" + this.user.user_name)
-        .then(response => {
-          this.username_status = response.data;
-          if (this.username_status[0].MESSAGE == "AVAILABLE") {
-            this.postUser();
-          } else {
-            this.$alert(
-              "Your registration attempt was unsuccessful, please try again with a diffrent username",
-              "Login Failed",
-              "error"
-            );
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
     },
 
     // POST call to create new user
-    postUser() {
-      const first_name = this.user.first_name;
-      const last_name = this.user.last_name;
-      const user_name = this.user.user_name;
-      const password = this.user.password;
-      const email_address = this.user.email_address;
-      const phone_number = this.user.phone_number;
-      const address_line_1 = this.user.address_line_1;
-      const address_line_2 = this.user.address_line_2;
-      const region = this.user.region;
-      const city = this.user.city;
-      const zip_code = this.user.zip_code;
-      axios.post("http://localhost:3333/post_user/" +
-            first_name +
+    postAuction() {
+      console.log("post auction called");
+      console.log(this.auction);
+
+      const title = this.auction.title;
+      const weight = this.auction.weight;
+      const start_date = this.auction.start_date;
+      const end_date = this.auction.end_date;
+      const description = this.auction.description;
+      const reserve_amount = this.auction.reserve_amount;
+      const buy_now = this.auction.buy_now;
+      const buy_now_amount = this.auction.buy_now_amount;
+      const delivery = this.auction.delivery;
+      const delivery_amount = this.auction.delivery_amount;
+      const user_name = this.auction.user_name;
+      const variety_name = this.auction.variety_name;
+      axios.post("http://localhost:3333/post_auction/" +
+            title +
             "/" +
-            last_name +
+            weight +
+            "/" +
+            start_date +
+            "/" +
+            end_date +
+            "/" +
+            description +
+            "/" +
+            reserve_amount +
+            "/" +
+            buy_now +
+            "/" +
+            buy_now_amount +
+            "/" +
+            delivery +
+            "/" +
+            delivery_amount +
             "/" +
             user_name +
             "/" +
-            password +
-            "/" +
-            email_address +
-            "/" +
-            phone_number +
-            "/" +
-            address_line_1 +
-            "/" +
-            address_line_2 +
-            "/" +
-            region +
-            "/" +
-            city +
-            "/" +
-            zip_code
+            variety_name
         )
         .then(response => {
           console.log(response);
           this.$alert(
-            "Your registration attempt was successful, welcome " + this.user.user_name,
-            "Registered",
+            "Your auction was created successfully",
+            "Auction created",
             "success"
           );
-          localStorage.setItem("user_id", this.user.user_name);
           this.$router.push("dashboard");
         })
         .catch(error => {
@@ -698,6 +602,12 @@ export default {
   margin-left: 0% !important;
 }
 
+// margins for a form row
+.form_row_style {
+  //margin-right: 50% !important;
+  margin-left: 25% !important;
+}
+
 // styling for the login/dash button
 .login_style {
   float: right !important;
@@ -754,6 +664,15 @@ export default {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+.create_auction_checkbox_style {
+  float: left;
+  margin-left: 10%;
+}
+
+.create_auction_variety_style {
+  color: #707172 !important;
 }
 
 .register_tile_text {

@@ -141,6 +141,9 @@
                     ><b>Delivery Amount :</b> ${{ auction.delivery_amount}}
                   </b-list-group-item>
                 </template>
+                <b-list-group-item v-else-if="auction.delivery === 0" class="account_text_style"
+                  ><b>Delivery :</b> unavailable
+                </b-list-group-item>
                 <b-list-group-item v-if="auction.sold > 0" class="account_text_style"
                   ><b>Current status :</b> Sold
                 </b-list-group-item>
