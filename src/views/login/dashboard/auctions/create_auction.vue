@@ -98,7 +98,7 @@
       <b-col xs="8" sm="8" md="8" lg="8" xl="8">
         <b-form class="register_form_style">
           <br />
-          <h2>Create your account</h2>
+          <h2>Enter auction details</h2>
           <br />
           <b-form-group class="register_input_style">
             <b-form-input
@@ -189,13 +189,68 @@
             >
             </b-form-input>
           </b-form-group>
-
           <br />
           <div>
             <b-button 
               class="button_style"
               v-on:click="auctionValidationAndPosting()"
               >Create Auction</b-button
+            >
+          </div>
+          <br />
+        </b-form>
+      </b-col>
+    </b-row>
+
+    <!-- SPACING -->
+    <b-row class="row_style">
+      <b-col xs="12" sm="12" md="12" lg="12" xl="12">
+        <br />
+      </b-col>
+    </b-row>
+
+    <!-- PRICE CALCULATOR FORM -->
+    <b-row class="form_row_style">
+      <b-col xs="8" sm="8" md="8" lg="8" xl="8">
+        <b-form class="login_form_style">
+          <br />
+          <h2>Average reserve calculator</h2>
+          <br />
+          <b-form-group class="register_input_style">
+            <b-form-select v-model="calculator.variety_name" :options="options"></b-form-select>
+          </b-form-group>
+          <b-form-group class="register_input_style">
+            <b-form-input
+              id="weight"
+              type="number"
+              maxlength="13"
+              required
+              placeholder="Weight"
+              min="0"
+              v-model="calculator.weight"
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group
+            class="account_input_style"
+            label-cols="7"
+            label="Average Reserve:"
+          >
+            <b-form-input
+              id="zip_code"
+              type="text"
+              maxlength="50"
+              readonly
+              v-model="calculator.total"
+            >
+            </b-form-input>
+          </b-form-group>
+          <br />
+          <div>
+            <b-button
+              class="button_style"
+              v-on:click="calculatorValidationAndGet()"
+              >Calculate Reserve</b-button
             >
           </div>
           <br />
@@ -273,6 +328,13 @@ export default {
   data() {
     return {
       login_status: null,
+      calculator: {
+        variety_name: null,
+        weight: null,
+        total: null,
+        avg_price: null,
+        avg_weight: null
+      },
       auction: {
         title: null,
         weight: null,
@@ -367,8 +429,41 @@ export default {
       this.auction.end_date = date.toISOString().slice(0, 19).replace('T', ' ');
     },
     // run validation and if successful set some values and call POST
+    calculatorValidationAndGet() {
+      this.calculator.total = null;
+      if (
+        this.isCalcVarietyValid() === true &&
+        this.isCalcWeightValid() === true
+      ) {
+        this.getAvgReserve();
+      }
+    },
+    // Check variety for null or empty
+    isCalcVarietyValid() {
+      if (!(!this.calculator.variety_name || this.calculator.variety_name.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please select a valid variety in the variety selector",
+          "Empty variety selector",
+          "error"
+        );
+      }
+    },
+    // Check weight for null or empty
+    isCalcWeightValid() {
+      if (!(!this.calculator.weight || this.calculator.weight.trim().length === 0)) {
+        return true;
+      } else {
+        this.$alert(
+          "Please enter a valid weight into the weight field",
+          "Empty weight field",
+          "error"
+        );
+      }
+    },
+    // run validation and if successful set some values and call POST
     auctionValidationAndPosting() {
-      console.log("auctionValidationAndPosting called");
       if (
         this.isTitleValid() === true &&
         this.isDescValid() === true &&
@@ -445,12 +540,10 @@ export default {
         );
       }
     },
-
     // POST call to create new user
     postAuction() {
       console.log("post auction called");
       console.log(this.auction);
-
       const title = this.auction.title;
       const weight = this.auction.weight;
       const start_date = this.auction.start_date;
@@ -500,6 +593,36 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    // Get a price average array based on the variety_name
+    getAvgReserve() {
+      this.variety_id = this.calculator.variety_name;
+      axios.get("http://localhost:3333/get_avg_reserve/"+this.variety_id)
+        .then(response => {
+          this.calculator.avg_price = response.data;
+          this.getAvgWeight();
+          console.log(this.calculator.avg_price);
+        });
+    },
+    // Get a price average array based on the variety_name
+    getAvgWeight() {
+      this.variety_id = this.calculator.variety_name;
+      axios.get("http://localhost:3333/get_avg_weight/"+this.variety_id)
+        .then(response => {
+          this.calculator.avg_weight = response.data;
+          console.log(this.calculator.avg_weight);
+          this.calculateAvgPrice();
+        });
+    },
+    // check for nulls then reserve / weight * quantity = total
+    calculateAvgPrice() {
+      if (this.calculator.avg_price[0].reserve !== null || this.calculator.avg_weight[0].weight !== null)
+      {
+        this.calculator.total = (this.calculator.avg_price[0].reserve / this.calculator.avg_weight[0].weight * this.calculator.weight).toFixed(2);
+      }
+      else {
+      this.calculator.total = "Unavailable"
+      }
     }
   },
   // run on launch
