@@ -393,6 +393,12 @@ export default {
       localStorage.removeItem("user_id");
       window.location.reload();
     },
+    // Check for a user_id if none, boot to login
+    authCheck() {
+      if (localStorage.getItem("user_id") === null || undefined) {
+        this.$router.push("login");
+      }
+    },
     // set Buy Now to correct vars for parsing
     buyNowSetter() {
       if (this.auction.buy_now[0] === true) {
@@ -628,6 +634,7 @@ export default {
   // run on launch
   mounted: function() {
     this.loggedInCheck();
+    this.authCheck();
   }
 };
 </script>
