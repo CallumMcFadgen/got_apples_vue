@@ -1,13 +1,16 @@
-# WEB701 Milestone 2 Vue client prototype
+# WEB701 Milestone 3 Vue web application
 
 ### Overview
-This prototype is intended to be a testing platform for web application functionality testing in the Vue framework
-
-This client prototype is intended to be used in conjunction with back-end Express server prototype using REST APIs.  This will enable web application functionality testing for the Got Apples! website. 
-
+This application is a  Vue web application that uses a REST API service to access and manipulate data and is intended to be used in conjunction with the back-end Express.js REST API service in a Multi-Tier Client Server model.
+<br />
+<br />
 Click here to view the video walkthrough
+Link here
+<br />
+<br />
+<b>Note -</b> This API service needs to be installed and running before running the Vue web application, as the web application needs to be able to send requests to the APIs in this API service.
 
-<b>Note</b> - This prototype needs the server prototype to be installed and running as it will need to call the APIs in that API service.
+<b>Note</b> - The Vue web application needs the REST API service to be installed and running before the web application is started as the web application needs to be able to send requests to the APIs in this API service.
 
 ### Current features
 <ul>
@@ -15,15 +18,32 @@ Click here to view the video walkthrough
   <li>Page routing</li>
   <li>Page navigation</li>
   <li>Basic responsiveness</li>
-  <li>Basic CSS styling on some pages</li>
-  <li>Forms for login, register, account details, etc</li>
+  <li>Basic CSS styling</li>
+  <li>Use of local storage</li>
   <li>Dynamic web content - dynamic picture carousel on Home page</li> 
-  <li>Rest API implementation - growers information displayed on Growers page</li>
+  <li>GET requests for user, variety, auction data</li>
+  <li>GET request for login authentication response</li>
+  <li>GET request for user_name match response</li>
+  <li>GET request for average reserve data</li>
+  <li>GET request for average weight data</li>
+  <li>POST request for user registration response</li>
+  <li>POST request for auction creation response</li>
+  <li>PATCH request for user update response</li>
+  <li>Authentication check on some ‘private’ pages</li>
+  <li>Conditional content rendering</li>
+  <li>Calculator for average reserve calculation</li>
 </ul>
 
 ### Installation
-Simply fork and clone a copy of this repo to your local device, open the folder in a editor with a terminal, I recommend VS code, and enter the command line 
+Simply fork and clone a copy of this repo to your local device, open the folder in an editor with a terminal, I recommend VS code, and enter the command line 
+```
+npm install
+```
+This will ensure that all of the required packages and dependencies are imported and installed.  Then enter
 ```
 npm run serve
 ```
-to start a copy running on a development server, once it has compiled ctrl click the local ip address in the terminal to open a version in your local devices default internet browser.
+To start the application running on a development server,  if the application does not open automatically after compiling, hold ctrl and click the local ip address to open the application in your default browser.
+<br />
+<br />
+If there are any issues with installing or running the Vue web app, please do not hesitate to contact me at Callum-McFadgen@live.nmit.ac.nz
