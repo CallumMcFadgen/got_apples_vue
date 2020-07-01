@@ -46,4 +46,19 @@ npm run serve
 To start the application running on a development server,  if the application does not open automatically after compiling, hold ctrl and click the local ip address to open the application in your default browser.
 <br />
 <br />
+To get the full functionality of the application, user login is required, I have been using the following users for testing
+<br />
+<br />
+Got Apples! member
+<br />
+Username: Col
+Password: P@ssword1
+<br />
+<br />
+Regular user
+<br />
+Username: Liza
+Password: P@ssword1
+<br />
+<br />
 If there are any issues with installing or running the Vue web app, please do not hesitate to contact me at Callum-McFadgen@live.nmit.ac.nz
