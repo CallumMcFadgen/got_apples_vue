@@ -1,7 +1,7 @@
 # WEB701 Milestone 3 Vue web application
 
 ### Overview
-This application is a  Vue web application that uses a REST API service to access and manipulate data and is intended to be used in conjunction with the back-end Express.js REST API service in a Multi-Tier Client Server model.
+This application is a  Vue web application that uses an API service to access and manipulate data and is intended to be used in conjunction with the back-end Express.js REST API service in a Multi-Tier Client Server model.
 <br />
 <br />
 Click here to view the video walkthrough
