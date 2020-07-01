@@ -49,14 +49,14 @@ To start the application running on a development server,  if the application do
 To get the full functionality of the application, user login is required, I have been using the following users for testing
 <br />
 <br />
-Got Apples! member
+<b>Got Apples! member</b>
 <br />
 Username: Col
 <br />
 Password: P@ssword1
 <br />
 <br />
-Regular user
+<b>Regular user</b>
 <br />
 Username: Liza
 <br />
