@@ -5,11 +5,9 @@ This application is a  Vue web application that uses an API service to access an
 <br />
 <br />
 Click here to view the video walkthrough
-Link here
+https://youtu.be/3LTW2lUhXrM
 <br />
 <br />
-<b>Note -</b> This API service needs to be installed and running before running the Vue web application, as the web application needs to be able to send requests to the APIs in this API service.
-
 <b>Note</b> - The Vue web application needs the REST API service to be installed and running before the web application is started as the web application needs to be able to send requests to the APIs in this API service.
 
 ### Current features
